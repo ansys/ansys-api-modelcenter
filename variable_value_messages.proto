@@ -1,7 +1,14 @@
 syntax = "proto3";
 
+import "element_messages.proto";
+
 message FileValue {
    string content_path = 1;
+}
+
+message SetFileValueRequest {
+   ElementId target = 1;
+   FileValue new_value = 2;
 }
 
 message ArrayDimensions {
@@ -13,9 +20,37 @@ message FileArrayValue {
    ArrayDimensions dims = 2;
 }
 
+message SetFileArrayValueRequest {
+   ElementId target = 1;
+   FileArrayValue new_value = 2;
+}
+
+message DoubleValue {
+   double value = 1;
+}
+
+message SetDoubleValueRequest {
+   ElementId target = 1;
+   double new_value = 2;
+}
+
 message DoubleArrayValue {
    repeated double values = 1;
    ArrayDimensions dims = 2;
+}
+
+message SetDoubleArrayValueRequest {
+   ElementId target = 1;
+   DoubleArrayValue new_value = 2;
+}
+
+message IntegerValue {
+   int64 value = 1;
+}
+
+message SetIntegerValueRequest {
+   ElementId target = 1;
+   int64 new_value = 2;
 }
 
 message IntegerArrayValue {
@@ -23,14 +58,51 @@ message IntegerArrayValue {
    ArrayDimensions dims = 2;
 }
 
+message SetIntegerArrayValueRequest {
+   ElementId target = 1;
+   IntegerArrayValue new_value = 2;
+}
+
 message BooleanArrayValue {
    repeated bool values = 1;
    ArrayDimensions dims = 2;
 }
 
+message SetBooleanArrayValueRequest {
+   ElementId target = 1;
+   BooleanArrayValue new_value = 2;
+}
+
+message BooleanValue {
+   bool value = 1;
+}
+
+message SetBooleanValueRequest {
+   ElementId target = 1;
+   bool new_value = 2;
+}
+
 message StringArrayValue {
    repeated string values = 1;
    ArrayDimensions dims = 2;
+}
+
+message SetStringArrayValueRequest {
+   ElementId target = 1;
+   StringArrayValue new_value = 2;
+}
+
+message StringValue {
+   string value = 1;
+}
+
+message SetStringValueRequest {
+   ElementId target = 1;
+   string new_value = 2;
+}
+
+message SetVariableValueResponse {
+   bool was_changed = 1;
 }
 
 message VariableValue {
@@ -45,4 +117,40 @@ message VariableValue {
       BooleanArrayValue bool_array_value = 8;
       StringArrayValue string_array_value = 9;
    }
+}
+
+message SetMetadataResponse {}
+
+message DoubleVariableMetadata {
+   double lower_bound = 1;
+   double upper_bound = 2;
+   repeated double enum_values = 3;
+   repeated string enum_aliases = 4;
+}
+
+message SetDoubleVariableMetadataRequest {
+   ElementId target = 1;
+   DoubleVariableMetadata new_metadata = 2;
+}
+
+message IntegerVariableMetadata {
+   int64 lower_bound = 1;
+   int64 upper_bound = 2;
+   repeated int64 enum_values = 3;
+   repeated string enum_aliases = 4;
+}
+
+message SetIntegerVariableMetadataRequest {
+   ElementId target = 1;
+   IntegerVariableMetadata new_metadata = 2;
+}
+
+message StringVariableMetadata {
+   repeated string enum_values = 1;
+   repeated string enum_aliases = 2;
+}
+
+message SetStringVariableMetadataRequest {
+   ElementId target = 1;
+   StringVariableMetadata new_metadata = 2;
 }

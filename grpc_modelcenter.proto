@@ -13,6 +13,11 @@ service GRPCModelCenterService {
    rpc ElementGetName(ElementId) returns (ElementName);
    
    /**
+    * Get an element's full name.
+    */
+   rpc ElementGetFullName(ElementId) returns (ElementName);
+   
+   /**
     * Get the parent element of an element.
     */
    rpc ElementGetParentElement(ElementId) returns (ElementId);
@@ -35,17 +40,17 @@ service GRPCModelCenterService {
    /**
     * Get the variables available on an assembly.
     */
-   rpc AssemblyGetVariables(ElementId) returns (ElementIdCollection);
+   rpc RegistryGetVariables(ElementId) returns (ElementIdCollection);
    
    /**
     * Get the groups available on an assembly.
     */
-   rpc AssemblyGetGroups(ElementId) returns (ElementIdCollection);
+   rpc RegistryGetGroups(ElementId) returns (ElementIdCollection);
    
    /**
     * Get the type of an assembly.
     */
-   rpc AssemblyGetControlType(ElementId) returns (AssemblyType);
+   rpc RegistryGetControlType(ElementId) returns (AssemblyType);
    
    /**
     * Get the components of an assembly.
@@ -55,7 +60,7 @@ service GRPCModelCenterService {
    /**
     * Get the child assemblies of an assembly.
     */
-   rpc AssemblyGetAssemblies(ElementId) returns (ElementIdCollection);
+   rpc RegistryGetAssemblies(ElementId) returns (ElementIdCollection);
    
    /**
     * Add a child assembly.
@@ -81,4 +86,104 @@ service GRPCModelCenterService {
     * Get an assembly's position on the analysis view.
     */
    rpc AssemblyGetAnalysisViewPosition(ElementId) returns (AnalysisViewPosition);
+   
+   /**
+    * Get an assembly's source.
+    */
+   rpc ComponentGetSource(ElementId) returns (ComponentSourceResponse);
+   
+   /**
+    * Run the specified component.
+    */
+   rpc ComponentRun(ElementId) returns (ComponentRunResponse);
+   
+   /**
+    * Invoke a method on the specified component.
+    */
+    rpc ComponentInvokeMethod(ComponentInvokeMethodRequest) returns (ComponentInvokeMethodResponse);
+    
+    /**
+     * Invalidate the specified component.
+     */
+    rpc ComponentInvalidate(ElementId) returns (ComponentInvalidateResponse);
+    
+    /**
+     * Reconnect or reload the specified component.
+     */
+    rpc ComponentReconnect(ElementId) returns (ComponentReconnectResponse);
+    
+    /**
+     * Download the component's variable values if it is a ModelCenter Remote Execution component.
+     */
+    rpc ComponentDownloadValues(ElementId) returns (ComponentDownloadValuesResponse);
+    
+    rpc DoubleArrayGetValue(ElementId) returns (DoubleArrayValue);
+    
+    rpc DoubleArraySetValue(SetDoubleArrayValueRequest) returns (SetVariableValueResponse);
+    
+    rpc FileArrayGetValue(ElementId) returns (FileArrayValue);
+    
+    rpc FileArrayGetValueAbsolute(ElementId) returns (FileArrayValue);
+    
+    rpc FileArraySetValue(SetFileArrayValueRequest) returns (SetVariableValueResponse);
+    
+    rpc IntegerArrayGetValue(ElementId) returns (IntegerArrayValue);
+    
+    rpc IntegerArrayGetValueAbsolute(ElementId) returns (IntegerArrayValue);
+    
+    rpc IntegerArraySetValue(SetIntegerArrayValueRequest) returns (SetVariableValueResponse);
+    
+    rpc BooleanArrayGetValue(ElementId) returns (BooleanArrayValue);
+    
+    rpc BooleanArrayGetValueAbsolute(ElementId) returns (BooleanArrayValue);
+    
+    rpc BooleanArraySetValue(SetBooleanArrayValueRequest) returns (SetVariableValueResponse);
+    
+    rpc StringArrayGetValue(ElementId) returns (StringArrayValue);
+   
+    rpc StringArrayGetValueAbsolute(ElementId) returns (StringArrayValue);
+   
+    rpc StringArraySetValue(SetStringArrayValueRequest) returns (SetVariableValueResponse);
+    
+    rpc DoubleVariableGetValue(ElementId) returns (DoubleValue);
+    
+    rpc DoubleVariableGetValueAbsolute(ElementId) returns (DoubleValue);
+    
+    rpc DoubleVariableSetValue(SetDoubleValueRequest) returns (SetVariableValueResponse);
+    
+    rpc IntegerVariableGetValue(ElementId) returns (IntegerValue);
+    
+    rpc IntegerVariableGetValueAbsolute(ElementId) returns (IntegerValue);
+    
+    rpc IntegerVariableSetValue(SetIntegerValueRequest) returns (SetVariableValueResponse);
+    
+    rpc BooleanVariableGetValue(ElementId) returns (BooleanValue);
+    
+    rpc BooleanVariableGetValueAbsolute(ElementId) returns (BooleanValue);
+    
+    rpc BooleanVariableSetValue(SetBooleanValueRequest) returns (SetVariableValueResponse);
+        
+    rpc StringVariableGetValue(ElementId) returns (StringValue);
+    
+    rpc StringVariableGetValueAbsolute(ElementId) returns (StringValue);
+    
+    rpc StringVariableSetValue(SetStringValueRequest) returns (SetVariableValueResponse);
+    
+    rpc FileVariableGetValue(ElementId) returns (FileValue);
+    
+    rpc FileVariableGetValueAbsolute(ElementId) returns (FileValue);
+    
+    rpc FileVariableSetValue(SetFileValueRequest) returns (SetVariableValueResponse);
+    
+    rpc DoubleVariableGetMetadata(ElementId) returns (DoubleVariableMetadata);
+    
+    rpc IntegerVariableGetMetadata(ElementId) returns (IntegerVariableMetadata);
+    
+    rpc StringVariableGetMetadata(ElementId) returns (StringVariableMetadata);
+    
+    rpc DoubleVariableSetMetadata(SetDoubleVariableMetadataRequest) returns (SetMetadataResponse);
+    
+    rpc IntegerVariableSetMetadata(SetIntegerVariableMetadataRequest) returns (SetMetadataResponse);
+    
+    rpc StringVariableSetMetadtata(SetStringVariableMetadataRequest) returns (SetMetadataResponse);
 }

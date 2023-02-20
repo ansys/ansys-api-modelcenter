@@ -115,3 +115,22 @@ message DeleteAssemblyVariableRequest {
 message DeleteAssemblyVariableResponse {
    bool existed = 1;
 }
+
+message ComponentSourceResponse {
+   string source = 1;
+}
+
+message ComponentRunResponse {}
+
+message ComponentInvokeMethodRequest{
+   ElementId target = 1;
+   string method_name = 2;
+}
+
+message ComponentInvokeMethodResponse {}
+
+message ComponentInvalidateResponse {}
+
+message ComponentReconnectResponse {}
+
+message ComponentDownloadValuesResponse {}

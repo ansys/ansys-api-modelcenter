@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+import "element_messages.proto";
+import "custom_metadata_messages.proto";
+import "variable_value_messages.proto";
+
+
+service GRPCModelCenterService {
+
+   /**
+    * Get an element name.
+    */
+   rpc ElementGetName(ElementId) returns (ElementName);
+   
+   /**
+    * Get the parent element of an element.
+    */
+   rpc ElementGetParentElement(ElementId) returns (ElementId);
+   
+   /**
+    * Get the custom metadata properties available for an element.
+    */
+   rpc PropertyOwnerGetProperties(ElementId) returns (MetadataPropertyNamesResponse);
+   
+   /**
+    * Set the value of a custom metadata property.
+    */
+   rpc PropertyOwnerSetPropertyValue(MetadataSetValueRequest) returns (MetadataSetValueResponse);
+   
+   /**
+    * Get the value of a custom metadata property.
+    */
+   rpc PropertyOwnerGetPropertyValue(MetadataGetValueRequest) returns (VariableValue);
+   
+   /**
+    * Get the variables available on an assembly.
+    */
+   rpc AssemblyGetVariables(ElementId) returns (ElementIdCollection);
+   
+   /**
+    * Get the groups available on an assembly.
+    */
+   rpc AssemblyGetGroups(ElementId) returns (ElementIdCollection);
+   
+   /**
+    * Get the type of an assembly.
+    */
+   rpc AssemblyGetControlType(ElementId) returns (AssemblyType);
+   
+   /**
+    * Get the components of an assembly.
+    */
+   rpc AssemblyGetComponents(ElementId) returns (ElementIdCollection);
+   
+   /**
+    * Get the child assemblies of an assembly.
+    */
+   rpc AssemblyGetAssemblies(ElementId) returns (ElementIdCollection);
+   
+   /**
+    * Add a child assembly.
+    */
+   rpc AssemblyAddAssembly(AddAssemblyRequest) returns (AddAssemblyResponse);
+   
+   /**
+    * Add a variable to an assembly.
+    */
+   rpc AssemblyAddVariable(AddAssemblyVariableRequest) returns (AddAssemblyVariableResponse);
+   
+   /**
+    * Delete a variable on an assembly.
+    */
+   rpc AssemblyDeleteVariable(DeleteAssemblyVariableRequest) returns (DeleteAssemblyVariableResponse);
+   
+   /**
+    * Rename an assembly.
+    */
+   rpc AssemblyRename(RenameRequest) returns (RenameResponse);
+   
+   /**
+    * Get an assembly's position on the analysis view.
+    */
+   rpc AssemblyGetAnalysisViewPosition(ElementId) returns (AnalysisViewPosition);
+}

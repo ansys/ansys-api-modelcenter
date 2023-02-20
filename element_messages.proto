@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+/** 
+ * Represents an element name.
+ */
+message ElementName {
+   string name = 1;
+}
+
+/**
+ * Represents a unique identifier for an element.
+ */
+message ElementId {
+   string id_string = 1;
+}
+
+/**
+ * Represents a collection of element IDs.
+ */
+message ElementIdCollection {
+   repeated ElementId ids = 1;
+}
+
+/**
+ * Represents an assembly type within ModelCenter (such as a Data assembly, Sequence, etc).
+ */
+message AssemblyType {
+   string type = 1;
+}
+
+/**
+ * Represents a request to set the icon of an assembly.
+ */
+message AssemblyIconSetRequest{
+   ElementId target = 1;
+   int64 new_icon_id = 2;
+}
+
+/**
+ * The response from setting an icon.
+ */
+message AssemblyIconSetResponse {}
+
+/**
+ * Represents a response to a query about an icon.
+ */
+message AssemblyIconResponse {
+   int64 id = 1;
+}
+
+/**
+ * Represents a position on the analysis view.
+ */
+message AnalysisViewPosition {
+   int64 x_pos = 1;
+   int64 y_pos = 2;
+}
+
+/**
+ * Represents a request to add an assembly.
+ */
+message AddAssemblyRequest {
+   ElementName name = 1;
+   ElementId parent = 2;
+   AnalysisViewPosition av_pos = 3;
+   string assembly_type = 4;
+}
+
+/**
+ * Represents a response to adding an assembly.
+ */
+message AddAssemblyResponse{
+   ElementId id = 1;
+}
+
+/**
+ * Represents a request to add a variable to an assembly.
+ */
+message AddAssemblyVariableRequest {
+   ElementName name = 1;
+   ElementId target_assembly = 2;
+   string variable_type = 3;
+}
+
+/**
+ * Represents a response to an attempt to add an assembly.
+ */
+message AddAssemblyVariableResponse {
+   ElementId id = 1;
+}
+
+/**
+ * Represents a request to rename an element.
+ */
+message RenameRequest {
+   ElementId target_assembly = 1;
+   ElementName new_name = 2;
+}
+
+/**
+ * Represents a response to the request to rename an element.
+ */
+message RenameResponse {}
+
+/**
+ * Represents a request to delete an assembly variable.
+ */
+message DeleteAssemblyVariableRequest {
+   ElementId target =1;
+}
+
+/**
+ * Represents a response to an attempt to delete an assembly variable.
+ */
+message DeleteAssemblyVariableResponse {
+   bool existed = 1;
+}

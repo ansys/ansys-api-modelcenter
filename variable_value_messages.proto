@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+message FileValue {
+   string content_path = 1;
+}
+
+message ArrayDimensions {
+   repeated uint64 dims = 1;
+}
+
+message FileArrayValue {
+   repeated FileValue values = 1;
+   ArrayDimensions dims = 2;
+}
+
+message DoubleArrayValue {
+   repeated double values = 1;
+   ArrayDimensions dims = 2;
+}
+
+message IntegerArrayValue {
+   repeated int64 values = 1;
+   ArrayDimensions dims = 2;
+}
+
+message BooleanArrayValue {
+   repeated bool values = 1;
+   ArrayDimensions dims = 2;
+}
+
+message StringArrayValue {
+   repeated string values = 1;
+   ArrayDimensions dims = 2;
+}
+
+message VariableValue {
+   oneof value {
+      int64 int_value = 1;
+      double double_value = 2;
+      bool bool_value = 3;
+      string string_value = 4;
+      FileValue file_value = 5;
+      IntegerArrayValue int_array_value = 6;
+      DoubleArrayValue double_array_value = 7;
+      BooleanArrayValue bool_array_value = 8;
+      StringArrayValue string_array_value = 9;
+   }
+}

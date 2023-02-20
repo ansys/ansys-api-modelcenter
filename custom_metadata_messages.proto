@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "element_messages.proto";
+import "variable_value_messages.proto";
+
+message MetadataPropertyNamesResponse {
+   repeated string names = 1;
+}
+
+message MetadataGetValueRequest {
+   ElementId id = 1;
+   string property_name = 2;
+}
+
+message MetadataSetValueRequest{
+   ElementId id = 1;
+   string property_name = 2;
+   VariableValue value = 3;
+}
+
+message MetadataSetValueResponse{
+}

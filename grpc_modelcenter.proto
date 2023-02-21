@@ -244,4 +244,18 @@ service GRPCModelCenterService {
     rpc WorkflowGetGroupByName(ElementName) returns (ElementId);
     
     rpc ReferenceVariableGetReferences(ElementId) returns (ReferenceResponse);
+    
+    rpc FormatStringToInteger(FormatFromStringRequest) returns (FormatToIntegerResponse);
+    
+    rpc FormatStringToDouble(FormatFromStringRequest) returns (FormatToDoubleResponse);
+    
+    rpc FormatIntegerToString(FormatFromIntegerRequest) returns (FormatToStringResponse);
+    
+    rpc FormatDoubleToString(FormatFromDoubleRequest) returns (FormatToStringResponse);
+    
+    rpc FormatStringToString(FormatFromStringRequest) returns (FormatToStringResponse);
+    
+    rpc FormatIntegerToEditString(FormatFromIntegerRequest) returns (FormatToStringResponse);
+    
+    rpc FormatDoubleToEditString(FormatFromDoubleRequest) returns (FormatToStringResponse);
 }

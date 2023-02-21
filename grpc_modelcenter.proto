@@ -1,8 +1,10 @@
 syntax = "proto3";
 
 import "element_messages.proto";
+import "engine_messages.proto";
 import "custom_metadata_messages.proto";
 import "variable_value_messages.proto";
+import "workflow_messages.proto";
 
 
 service GRPCModelCenterService {
@@ -162,7 +164,7 @@ service GRPCModelCenterService {
     rpc BooleanVariableGetValueAbsolute(ElementId) returns (BooleanValue);
     
     rpc BooleanVariableSetValue(SetBooleanValueRequest) returns (SetVariableValueResponse);
-        
+    
     rpc StringVariableGetValue(ElementId) returns (StringValue);
     
     rpc StringVariableGetValueAbsolute(ElementId) returns (StringValue);
@@ -186,4 +188,60 @@ service GRPCModelCenterService {
     rpc IntegerVariableSetMetadata(SetIntegerVariableMetadataRequest) returns (SetMetadataResponse);
     
     rpc StringVariableSetMetadtata(SetStringVariableMetadataRequest) returns (SetMetadataResponse);
+    
+    rpc EngineGetProcessId(EngineProcessIdRequest) returns (EngineProcessIdResponse);
+    
+    rpc EngineLoadWorkflow(LoadWorkflowRequest) returns (LoadWorkflowResponse);
+    
+    rpc EngineCreateWorkflow(NewWorkflowRequest) returns (NewWorkflowResponse);
+    
+    rpc EngineSetUserName(SetUserNameRequest) returns (SetUserNameResponse);
+    
+    rpc EngineSetPassword(SetPasswordRequest) returns (SetPasswordResponse);
+    
+    rpc EngineGetPreference(GetPreferenceRequest) returns (GetPreferenceResponse);
+    
+    rpc EngineGetUnitCategories(GetUnitCategoriesRequest) returns (GetUnitCategoriesResponse);
+    
+    rpc EngineGetUnitNames(GetUnitNamesRequest) returns (GetUnitNamesResponse);
+    
+    rpc EngineGetRunOnlyMode(GetRunOnlyModeRequest) returns (GetRunOnlyModeResponse);
+    
+    rpc EngineSetRunOnlyMode(SetRunOnlyModeRequest) returns (SetRunOnlyModeResponse);
+    
+    rpc WorkflowGetState(GetWorkflowStateRequest) returns (GetWorkflowStateResponse);
+    
+    rpc WorkflowRun(WorkflowRunRequest) returns (WorkflowRunResponse);
+    
+    rpc WorkflowStartRun(WorkflowRunRequest) returns (WorkflowStartRunResponse);
+    
+    rpc WorkflowGetRoot(WorkflowId) returns (WorkflowGetRootResponse);
+    
+    rpc WorkflowGetDirectory(WorkflowId) returns (WorkflowGetDirectoryResponse);
+    
+    rpc WorkflowCreateComponent(WorkflowCreateComponentRequest) returns (WorkflowCreateComponentResponse);
+    
+    rpc WorkflowCreateLink(WorkflowCreateLinkRequest) returns (WorkflowCreateLinkResponse);
+    
+    rpc WorkflowSave(WorkflowId) returns (WorkflowSaveResponse);
+    
+    rpc WorkflowSaveAs(WorkflowSaveAsRequest) returns (WorkflowSaveResponse);
+    
+    rpc WorkflowClose(WorkflowId) returns (WorkflowCloseResponse);
+    
+    rpc WorkflowRemoveComponent(WorkflowRemoveComponentRequest) returns (WorkflowRemoveComponentResponse);
+    
+    rpc WorkflowBreakLink(WorkflowBreakLinkRequest) returns (WorkflowBreakLinkResponse);
+    
+    rpc WorkflowAutoLink(WorkflowAutoLinkRequest) returns (WorkflowAutoLinkResponse);
+    
+    rpc WorkflowGetLinksRequest(WorkflowId) returns (WorkflowGetLinksResponse);
+    
+    rpc WorkflowGetComponentOrAssemblyByName(ElementName) returns (ElementId);
+    
+    rpc WorkflowGetVariableByName(ElementName) returns (ElementId);
+    
+    rpc WorkflowGetGroupByName(ElementName) returns (ElementId);
+    
+    rpc ReferenceVariableGetReferences(ElementId) returns (ReferenceResponse);
 }

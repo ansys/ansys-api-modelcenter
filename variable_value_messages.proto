@@ -119,6 +119,11 @@ message VariableValue {
    }
 }
 
+message VariableState {
+   VariableValue value = 1;
+   bool is_valid = 2;
+}
+
 message SetMetadataResponse {}
 
 message DoubleVariableMetadata {
@@ -153,4 +158,8 @@ message StringVariableMetadata {
 message SetStringVariableMetadataRequest {
    ElementId target = 1;
    StringVariableMetadata new_metadata = 2;
+}
+
+message ReferenceResponse {
+   repeated ElementId referenced_variables = 1;
 }

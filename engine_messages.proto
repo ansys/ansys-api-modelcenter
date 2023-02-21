@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+import "element_messages.proto";
+
+message EngineProcessIdRequest {}
+
+message EngineProcessIdResponse {
+   uint64 process_id = 1;
+}
+
+enum WorkflowType {
+   DATA = 0;
+   PROCESS = 1;
+}
+
+message NewWorkflowRequest {
+   string path = 1;
+   WorkflowType workflow_type = 2;
+}
+
+message NewWorkflowResponse {
+   ElementId root_element = 1;
+}
+
+enum OnConnectionErrorMode {
+   ERROR = 0;
+   IGNORE = 1;
+}
+
+message LoadWorkflowRequest {
+   string path = 1;
+   OnConnectionErrorMode connect_err_mode = 2;
+}
+
+message LoadWorkflowResponse {
+   ElementId root_element = 1;
+   WorkflowType workflow_type = 2;
+}
+
+message SetUserNameRequest {
+   string user_name = 1;
+}
+
+message SetUserNameResponse {}
+
+message SetPasswordRequest {
+   string password = 1;
+}
+
+message SetPasswordResponse {
+}
+
+message GetPreferenceRequest {
+   string preference_name = 1;
+}
+
+message GetPreferenceResponse {
+   oneof value{
+      bool bool_value = 1;
+      int64 int_value = 2;
+      double double_value = 3;
+      string str_value = 4;
+      }
+}
+
+message GetUnitCategoriesRequest {}
+
+message GetUnitCategoriesResponse {
+   repeated string names = 1;
+}
+
+message GetUnitNamesRequest {
+   string category = 1;
+}
+
+message GetUnitNamesResponse {
+   repeated string names = 1;
+}
+
+message GetRunOnlyModeRequest {}
+
+message GetRunOnlyModeResponse {
+   bool is_run_only = 1;
+}
+
+message SetRunOnlyModeRequest {
+   bool set_run_only = 1;
+}
+
+message SetRunOnlyModeResponse {}
+
+message GetServerInfoRequest {}
+
+message GetServerInfoResponse {
+   string major_ver = 1;
+   string minor_ver = 2;
+   string patch_ver = 3;
+   bool is_release = 4;
+   string build_type = 5;
+   string server_type = 6;
+}

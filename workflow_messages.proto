@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+import "element_messages.proto";
+import "variable_value_messages.proto";
+
+enum WorkflowInstanceState {
+   UNKNOWN = 0;
+   INVALID = 1;
+   RUNNING = 2;
+   PAUSED = 3;
+   FAILED = 4;
+   SUCCESS = 5;
+}
+
+message GetWorkflowStateRequest {}
+
+message GetWorkflowStateResponse {
+   WorkflowInstanceState state = 1;
+}
+
+message WorkflowId {
+   string id = 1;
+}
+
+message WorkflowRunRequest {
+   WorkflowId target = 1;
+   map<string, VariableState> inputs = 2;
+   bool reset = 3;
+   repeated string validation_ids = 4;
+}
+
+message WorkflowRunResponse {
+   map<string, VariableState> results= 1;
+}
+
+message WorkflowStartRunResponse {
+   string return = 1;
+}
+
+message WorkflowGetRootResponse {
+   ElementId id = 1;
+}
+
+message WorkflowGetDirectoryResponse {
+   string workflow_dir = 1;
+}
+
+message WorkflowCreateComponentRequest {
+   string source_path = 1;
+   string name = 2;
+   ElementId parent = 3;
+   AnalysisViewPosition desired_pos = 4;
+}
+
+message WorkflowCreateComponentResponse {
+   ElementId created = 1;
+}
+
+message WorkflowCreateLinkRequest {
+   ElementId target = 1;
+   string equation = 2;
+}
+
+message WorkflowCreateLinkResponse {}
+
+message WorkflowSaveResponse {}
+
+message WorkflowSaveAsRequest {
+   WorkflowId target = 1;
+   string new_target_path = 2;
+}
+
+message WorkflowCloseResponse {}
+
+message WorkflowRemoveComponentRequest {
+   ElementId target = 1;
+}
+
+message WorkflowRemoveComponentResponse {
+   bool existed = 1;
+}
+
+message WorkflowBreakLinkRequest {
+   ElementId target_var = 1;
+}
+
+message WorkflowBreakLinkResponse {
+   bool existed = 1;
+}
+
+message WorkflowLinkInfo {
+   ElementId lhs = 1;
+   string rhs = 2;
+}
+
+message WorkflowAutoLinkRequest {
+   ElementId source_comp = 1;
+   ElementId target_comp = 2;
+}
+
+message WorkflowAutoLinkResponse {
+   repeated WorkflowLinkInfo created_links = 1;
+}
+
+message WorkflowGetLinksResponse {
+   repeated WorkflowLinkInfo links = 1;
+}

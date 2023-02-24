@@ -50,7 +50,10 @@ message WorkflowCreateComponentRequest {
    string source_path = 1;
    string name = 2;
    ElementId parent = 3;
-   AnalysisViewPosition desired_pos = 4;
+   oneof position {
+      AnalysisViewPosition coords = 4;
+      ElementId after_comp = 5;
+   }
 }
 
 message WorkflowCreateComponentResponse {

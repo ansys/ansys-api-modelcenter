@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "engine_messages.proto";
+import "format_messages.proto";
 
 service ModelCenterFormatService{
     rpc FormatStringToInteger(FormatFromStringRequest) returns (FormatToIntegerResponse);

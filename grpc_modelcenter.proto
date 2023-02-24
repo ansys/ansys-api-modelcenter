@@ -243,7 +243,35 @@ service GRPCModelCenterService {
     
     rpc WorkflowGetGroupByName(ElementName) returns (ElementId);
     
-    rpc ReferenceVariableGetReferences(ElementId) returns (ReferenceResponse);
+    rpc ReferenceVariableGetReference(ElementId) returns (ReferenceResponse);
+    
+    rpc ReferenceVariableGetReferencedVariables(ElementId) returns (ReferencedVariablesResponse);
+    
+    rpc RealReferencePropertyCreate(ReferencePropertyIdentifier) returns (ReferencePropertyCreateResponse);
+    
+    rpc ReferencePropertyGetValue(ReferencePropertyIdentifier) returns (VariableValue);
+    
+    rpc ReferencePropertyGetValueAbsolute(ReferencePropertyIdentifier) returns (VariableValue);
+    
+    rpc ReferencePropertySetValue(ReferencePropertySetValueRequest) returns (ReferencePropertySetValueResponse);
+    
+    rpc ReferencePropertyGetIsInput(ReferencePropertyIdentifier) returns (ReferencePropertyGetIsInputResponse);
+    
+    rpc ReferencePropertySetIsInput(ReferencePropertySetIsInputRequest) returns (ReferencePropertyGetIsInputResponse);
+    
+    rpc ReferencePropertyGetEnumValues(ReferencePropertyIdentifier) returns (ReferencePropertyGetEnumValuesResponse);
+    
+    rpc ReferencePropertySetEnumValues(ReferencePropertySetEnumValuesRequest) returns (ReferencePropertyGetEnumValuesResponse);
+    
+    rpc ReferencePropertyGetTitle(ReferencePropertyIdentifier) returns (ReferencePropertyGetTitleResponse);
+    
+    rpc ReferencePropertySetTitle(ReferencePropertySetTitleRequest) returns (ReferencePropertyGetTitleResponse);
+    
+    rpc ReferencePropertyGetDescription(ReferencePropertyIdentifier) returns (ReferencePropertyGetDescriptionResponse);
+    
+    rpc ReferencePropertySetDescription(ReferencePropertySetDescriptionRequest) returns (ReferencePropertyGetDescriptionResponse);
+    
+    rpc ReferencePropertyGetType(ReferencePropertyIdentifier) returns (ReferencePropertyGetTypeResponse);
     
     rpc FormatStringToInteger(FormatFromStringRequest) returns (FormatToIntegerResponse);
     

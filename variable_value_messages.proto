@@ -161,5 +161,62 @@ message SetStringVariableMetadataRequest {
 }
 
 message ReferenceResponse {
+   string reference = 1;
+}
+
+message ReferencedVariablesResponse {
    repeated ElementId referenced_variables = 1;
+}
+
+message ReferencePropertyIdentifier {
+   ElementId reference_var = 1;
+   string prop_name = 2;
+}
+
+message ReferencePropertyCreateResponse {}
+
+message ReferencePropertySetValueRequest {}
+
+message ReferencePropertySetValueResponse {
+   VariableValue old_value = 1;
+}
+
+message ReferencePropertySetIsInputRequest {
+   ReferencePropertyIdentifier target = 1;
+   bool new_value = 2;
+}
+
+message ReferencePropertyGetIsInputResponse {
+   bool is_input = 1;
+}
+
+message ReferencePropertySetTitleRequest {
+   ReferencePropertyIdentifier target = 1;
+   string new_value = 2;
+}
+
+message ReferencePropertyGetTitleResponse {
+   string title = 1;
+}
+
+message ReferencePropertySetEnumValuesRequest {
+   ReferencePropertyIdentifier target = 1;
+   repeated VariableValue values = 2;
+}
+
+message ReferencePropertyGetEnumValuesResponse {
+   repeated VariableValue values = 1;
+}
+
+message ReferencePropertySetDescriptionRequest {
+   ReferencePropertyIdentifier target = 1;
+   string new_value = 2;
+}
+
+message ReferencePropertyGetDescriptionResponse {
+   string description = 1;
+}
+
+message ReferencePropertyGetTypeResponse {
+   string type = 1;
 }

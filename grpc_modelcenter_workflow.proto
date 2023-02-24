@@ -1,0 +1,253 @@
+syntax = "proto3";
+
+import "element_messages.proto";
+import "custom_metadata_messages.proto";
+import "variable_value_messages.proto";
+import "workflow_messages.proto";
+
+service ModelCenterWorkflowService {
+
+   /**
+    * Get an element name.
+    */
+   rpc ElementGetName(ElementId) returns (ElementName);
+   
+   /**
+    * Get an element's full name.
+    */
+   rpc ElementGetFullName(ElementId) returns (ElementName);
+   
+   /**
+    * Get the parent element of an element.
+    */
+   rpc ElementGetParentElement(ElementId) returns (ElementId);
+   
+   /**
+    * Get the custom metadata properties available for an element.
+    */
+   rpc PropertyOwnerGetProperties(ElementId) returns (MetadataPropertyNamesResponse);
+   
+   /**
+    * Set the value of a custom metadata property.
+    */
+   rpc PropertyOwnerSetPropertyValue(MetadataSetValueRequest) returns (MetadataSetValueResponse);
+   
+   /**
+    * Get the value of a custom metadata property.
+    */
+   rpc PropertyOwnerGetPropertyValue(MetadataGetValueRequest) returns (VariableValue);
+   
+   /**
+    * Get the variables available on an assembly.
+    */
+   rpc RegistryGetVariables(ElementId) returns (ElementIdCollection);
+   
+   /**
+    * Get the groups available on an assembly.
+    */
+   rpc RegistryGetGroups(ElementId) returns (ElementIdCollection);
+   
+   /**
+    * Get the type of an assembly.
+    */
+   rpc RegistryGetControlType(ElementId) returns (AssemblyType);
+   
+   /**
+    * Get the components of an assembly.
+    */
+   rpc AssemblyGetComponents(ElementId) returns (ElementIdCollection);
+   
+   /**
+    * Get the child assemblies of an assembly.
+    */
+   rpc RegistryGetAssemblies(ElementId) returns (ElementIdCollection);
+   
+   /**
+    * Add a child assembly.
+    */
+   rpc AssemblyAddAssembly(AddAssemblyRequest) returns (AddAssemblyResponse);
+   
+   /**
+    * Add a variable to an assembly.
+    */
+   rpc AssemblyAddVariable(AddAssemblyVariableRequest) returns (AddAssemblyVariableResponse);
+   
+   /**
+    * Delete a variable on an assembly.
+    */
+   rpc AssemblyDeleteVariable(DeleteAssemblyVariableRequest) returns (DeleteAssemblyVariableResponse);
+   
+   /**
+    * Rename an assembly.
+    */
+   rpc AssemblyRename(RenameRequest) returns (RenameResponse);
+   
+   /**
+    * Get an assembly's position on the analysis view.
+    */
+   rpc AssemblyGetAnalysisViewPosition(ElementId) returns (AnalysisViewPosition);
+   
+   /**
+    * Get an assembly's source.
+    */
+   rpc ComponentGetSource(ElementId) returns (ComponentSourceResponse);
+   
+   /**
+    * Run the specified component.
+    */
+   rpc ComponentRun(ElementId) returns (ComponentRunResponse);
+   
+   /**
+    * Invoke a method on the specified component.
+    */
+    rpc ComponentInvokeMethod(ComponentInvokeMethodRequest) returns (ComponentInvokeMethodResponse);
+    
+    /**
+     * Invalidate the specified component.
+     */
+    rpc ComponentInvalidate(ElementId) returns (ComponentInvalidateResponse);
+    
+    /**
+     * Reconnect or reload the specified component.
+     */
+    rpc ComponentReconnect(ElementId) returns (ComponentReconnectResponse);
+    
+    /**
+     * Download the component's variable values if it is a ModelCenter Remote Execution component.
+     */
+    rpc ComponentDownloadValues(ElementId) returns (ComponentDownloadValuesResponse);
+    
+    rpc DoubleArrayGetValue(ElementId) returns (DoubleArrayValue);
+    
+    rpc DoubleArraySetValue(SetDoubleArrayValueRequest) returns (SetVariableValueResponse);
+    
+    rpc FileArrayGetValue(ElementId) returns (FileArrayValue);
+    
+    rpc FileArrayGetValueAbsolute(ElementId) returns (FileArrayValue);
+    
+    rpc FileArraySetValue(SetFileArrayValueRequest) returns (SetVariableValueResponse);
+    
+    rpc IntegerArrayGetValue(ElementId) returns (IntegerArrayValue);
+    
+    rpc IntegerArrayGetValueAbsolute(ElementId) returns (IntegerArrayValue);
+    
+    rpc IntegerArraySetValue(SetIntegerArrayValueRequest) returns (SetVariableValueResponse);
+    
+    rpc BooleanArrayGetValue(ElementId) returns (BooleanArrayValue);
+    
+    rpc BooleanArrayGetValueAbsolute(ElementId) returns (BooleanArrayValue);
+    
+    rpc BooleanArraySetValue(SetBooleanArrayValueRequest) returns (SetVariableValueResponse);
+    
+    rpc StringArrayGetValue(ElementId) returns (StringArrayValue);
+   
+    rpc StringArrayGetValueAbsolute(ElementId) returns (StringArrayValue);
+   
+    rpc StringArraySetValue(SetStringArrayValueRequest) returns (SetVariableValueResponse);
+    
+    rpc DoubleVariableGetValue(ElementId) returns (DoubleValue);
+    
+    rpc DoubleVariableGetValueAbsolute(ElementId) returns (DoubleValue);
+    
+    rpc DoubleVariableSetValue(SetDoubleValueRequest) returns (SetVariableValueResponse);
+    
+    rpc IntegerVariableGetValue(ElementId) returns (IntegerValue);
+    
+    rpc IntegerVariableGetValueAbsolute(ElementId) returns (IntegerValue);
+    
+    rpc IntegerVariableSetValue(SetIntegerValueRequest) returns (SetVariableValueResponse);
+    
+    rpc BooleanVariableGetValue(ElementId) returns (BooleanValue);
+    
+    rpc BooleanVariableGetValueAbsolute(ElementId) returns (BooleanValue);
+    
+    rpc BooleanVariableSetValue(SetBooleanValueRequest) returns (SetVariableValueResponse);
+    
+    rpc StringVariableGetValue(ElementId) returns (StringValue);
+    
+    rpc StringVariableGetValueAbsolute(ElementId) returns (StringValue);
+    
+    rpc StringVariableSetValue(SetStringValueRequest) returns (SetVariableValueResponse);
+    
+    rpc FileVariableGetValue(ElementId) returns (FileValue);
+    
+    rpc FileVariableGetValueAbsolute(ElementId) returns (FileValue);
+    
+    rpc FileVariableSetValue(SetFileValueRequest) returns (SetVariableValueResponse);
+    
+    rpc DoubleVariableGetMetadata(ElementId) returns (DoubleVariableMetadata);
+    
+    rpc IntegerVariableGetMetadata(ElementId) returns (IntegerVariableMetadata);
+    
+    rpc StringVariableGetMetadata(ElementId) returns (StringVariableMetadata);
+    
+    rpc DoubleVariableSetMetadata(SetDoubleVariableMetadataRequest) returns (SetMetadataResponse);
+    
+    rpc IntegerVariableSetMetadata(SetIntegerVariableMetadataRequest) returns (SetMetadataResponse);
+    
+    rpc StringVariableSetMetadtata(SetStringVariableMetadataRequest) returns (SetMetadataResponse);
+    
+    rpc WorkflowGetState(GetWorkflowStateRequest) returns (GetWorkflowStateResponse);
+    
+    rpc WorkflowRun(WorkflowRunRequest) returns (WorkflowRunResponse);
+    
+    rpc WorkflowStartRun(WorkflowRunRequest) returns (WorkflowStartRunResponse);
+    
+    rpc WorkflowGetRoot(WorkflowId) returns (WorkflowGetRootResponse);
+    
+    rpc WorkflowGetDirectory(WorkflowId) returns (WorkflowGetDirectoryResponse);
+    
+    rpc WorkflowCreateComponent(WorkflowCreateComponentRequest) returns (WorkflowCreateComponentResponse);
+    
+    rpc WorkflowCreateLink(WorkflowCreateLinkRequest) returns (WorkflowCreateLinkResponse);
+    
+    rpc WorkflowSave(WorkflowId) returns (WorkflowSaveResponse);
+    
+    rpc WorkflowSaveAs(WorkflowSaveAsRequest) returns (WorkflowSaveResponse);
+    
+    rpc WorkflowClose(WorkflowId) returns (WorkflowCloseResponse);
+    
+    rpc WorkflowRemoveComponent(WorkflowRemoveComponentRequest) returns (WorkflowRemoveComponentResponse);
+    
+    rpc WorkflowBreakLink(WorkflowBreakLinkRequest) returns (WorkflowBreakLinkResponse);
+    
+    rpc WorkflowAutoLink(WorkflowAutoLinkRequest) returns (WorkflowAutoLinkResponse);
+    
+    rpc WorkflowGetLinksRequest(WorkflowId) returns (WorkflowGetLinksResponse);
+    
+    rpc WorkflowGetComponentOrAssemblyByName(ElementName) returns (ElementId);
+    
+    rpc WorkflowGetVariableByName(ElementName) returns (ElementId);
+    
+    rpc WorkflowGetGroupByName(ElementName) returns (ElementId);
+    
+    rpc ReferenceVariableGetReference(ElementId) returns (ReferenceResponse);
+    
+    rpc ReferenceVariableGetReferencedVariables(ElementId) returns (ReferencedVariablesResponse);
+    
+    rpc RealReferencePropertyCreate(ReferencePropertyIdentifier) returns (ReferencePropertyCreateResponse);
+    
+    rpc ReferencePropertyGetValue(ReferencePropertyIdentifier) returns (VariableValue);
+    
+    rpc ReferencePropertyGetValueAbsolute(ReferencePropertyIdentifier) returns (VariableValue);
+    
+    rpc ReferencePropertySetValue(ReferencePropertySetValueRequest) returns (ReferencePropertySetValueResponse);
+    
+    rpc ReferencePropertyGetIsInput(ReferencePropertyIdentifier) returns (ReferencePropertyGetIsInputResponse);
+    
+    rpc ReferencePropertySetIsInput(ReferencePropertySetIsInputRequest) returns (ReferencePropertyGetIsInputResponse);
+    
+    rpc ReferencePropertyGetEnumValues(ReferencePropertyIdentifier) returns (ReferencePropertyGetEnumValuesResponse);
+    
+    rpc ReferencePropertySetEnumValues(ReferencePropertySetEnumValuesRequest) returns (ReferencePropertyGetEnumValuesResponse);
+    
+    rpc ReferencePropertyGetTitle(ReferencePropertyIdentifier) returns (ReferencePropertyGetTitleResponse);
+    
+    rpc ReferencePropertySetTitle(ReferencePropertySetTitleRequest) returns (ReferencePropertyGetTitleResponse);
+    
+    rpc ReferencePropertyGetDescription(ReferencePropertyIdentifier) returns (ReferencePropertyGetDescriptionResponse);
+    
+    rpc ReferencePropertySetDescription(ReferencePropertySetDescriptionRequest) returns (ReferencePropertyGetDescriptionResponse);
+    
+    rpc ReferencePropertyGetType(ReferencePropertyIdentifier) returns (ReferencePropertyGetTypeResponse);
+}

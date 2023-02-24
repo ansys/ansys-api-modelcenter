@@ -1,4 +1,5 @@
 syntax = "proto3";
+package Ansys.ModelCenter.GRPCModelCenter;
 
 /** 
  * Represents an element name.

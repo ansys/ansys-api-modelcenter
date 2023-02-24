@@ -1,4 +1,5 @@
 syntax = "proto3";
+package Ansys.ModelCenter.GRPCModelCenter;
 
 message FormatFromStringRequest {
    string format = 1;

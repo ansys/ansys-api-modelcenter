@@ -1,4 +1,5 @@
 syntax = "proto3";
+package Ansys.ModelCenter.GRPCModelCenter;
 
 import "element_messages.proto";
 import "variable_value_messages.proto";

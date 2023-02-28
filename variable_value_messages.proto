@@ -299,6 +299,66 @@ message SetVariableValueResponse {
 }
 
 /**
+ * An enumeration of the possible variable value types.
+ */
+enum VariableType {
+   /**
+    * The variable type is unknown.
+    */
+   VARTYPE_UNKNOWN = 0;
+
+   /**
+    * A 64-bit signed integer.
+    */
+   VARTYPE_INTEGER = 1;
+
+   /**
+    * A double-precision floating-point number.
+    */
+   VARTYPE_REAL = 2;
+
+   /**
+    * A boolean value.
+    */
+   VARTYPE_BOOLEAN = 3;
+
+   /**
+    * A string value.
+    */
+   VARTYPE_STRING = 4;
+
+   /**
+    * A file value.
+    */
+   VARTYPE_FILE = 5;
+
+   /**
+    * An array of 64-bit integers.
+    */
+   VARTYPE_INTEGER_ARRAY = 6;
+
+   /**
+    * An array of double-precision floating point numbers.
+    */
+   VARTYPE_REAL_ARRAY = 7;
+
+   /**
+    * An array of boolean values.
+    */
+   VARTYPE_BOOLEAN_ARRAY = 8;
+
+   /**
+    * An array of string values.
+    */
+   VARTYPE_STRING_ARRAY = 9;
+
+   /**
+    * An array of file values.
+    */
+   VARTYPE_FILE_ARRAY = 10;
+}
+
+/**
  * A message representing a variable value which could be of any type.
  */
 message VariableValue {

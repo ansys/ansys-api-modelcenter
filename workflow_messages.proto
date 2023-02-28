@@ -14,33 +14,33 @@ enum WorkflowInstanceState {
    /**
     * The state is unknown.
     */
-   UNKNOWN = 0;
+   WFSTATE_UNKNOWN = 0;
 
    /**
     * Some values in the workflow are not valid.
     * The workflow can be run to attempt to produce valid values for those variables.
     */
-   INVALID = 1;
+   WFSTATE_INVALID = 1;
 
    /**
     * The workflow is currently running.
     */
-   RUNNING = 2;
+   WFSTATE_RUNNING = 2;
 
    /**
     * A workflow run was started and paused.
     */
-   PAUSED = 3;
+   WFSTATE_PAUSED = 3;
 
    /**
     * A workflow run failed.
     */
-   FAILED = 4;
+   WFSTATE_FAILED = 4;
 
    /**
     * A workflow run succeeded.
     */
-   SUCCESS = 5;
+   WFSTATE_SUCCESS = 5;
 }
 
 /**

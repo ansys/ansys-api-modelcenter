@@ -122,6 +122,11 @@ service ModelCenterWorkflowService {
      * Get the data type of a variable.
      */
     rpc VariableGetType(ElementId) returns (VariableTypeResponse);
+
+    /**
+     * Get the state of a variable.
+     */
+    rpc VariableGetState(ElementId) returns (VariableState);
     
     /**
      * Get the value of a double array variable.

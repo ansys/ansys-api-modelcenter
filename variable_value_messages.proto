@@ -671,11 +671,11 @@ message ReferencePropertyGetDescriptionResponse {
 }
 
 /**
- * A response indicating what the type of a reference properyt is.
+ * A response indicating what the type of a reference property is.
  */
 message ReferencePropertyGetTypeResponse {
    /**
     * The type.
     */
-   string type = 1;
+   VariableType type = 1;
 }

@@ -1,61 +1,155 @@
+/*
+ * This file contains messages related to interacting with the MCD workflow engine itself.
+ */
+
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
 import "element_messages.proto";
 
+/**
+ * A request for the process ID of the engine.
+ */
 message EngineProcessIdRequest {}
 
+/**
+ * A response to a request for the process ID of the engine.
+ */
 message EngineProcessIdResponse {
+   /**
+    * The requested process ID.
+    */
    uint64 process_id = 1;
 }
 
+/**
+ * The workflow types available.
+ */
 enum WorkflowType {
+   /**
+    * A data-dependency workflow.
+    */
    DATA = 0;
+
+   /**
+    * A process workflow.
+    */
    PROCESS = 1;
 }
 
+/**
+ * A request to create a new workflow.
+ */
 message NewWorkflowRequest {
+   /**
+    * The path at which the new workflow will be saved.
+    */
    string path = 1;
+
+   /**
+    * The type of the new workflow.
+    */
    WorkflowType workflow_type = 2;
 }
 
+/**
+ * A response to a request to create a new workflow.
+ */
 message NewWorkflowResponse {
+   /**
+    * The root element of the new workflow.
+    */
    ElementId root_element = 1;
 }
 
+/**
+ * An enumeration describing potential responses to a failure
+ * to connect to a remote component when loading a workflow.
+ */
 enum OnConnectionErrorMode {
+   /**
+    * Raise an error in response.
+    */
    ERROR = 0;
+   
+   /**
+    * Ignore the connection failure and continue loading.
+    */
    IGNORE = 1;
 }
 
+/**
+ * A request to load a workflow.
+ */
 message LoadWorkflowRequest {
+   /**
+    * The path to the workflow file.
+    */
    string path = 1;
+
+   /**
+    * How to handle connection failures for remote components.
+    */
    OnConnectionErrorMode connect_err_mode = 2;
 }
 
+/**
+ * A response to a request to load a workflow.
+ */
 message LoadWorkflowResponse {
+   /**
+    * The root element of the loaded workflow.
+    */
    ElementId root_element = 1;
+
+   /**
+    * The type of the loaded workflow.
+    */
    WorkflowType workflow_type = 2;
 }
 
+/**
+ * A request to set the username ModelCenter Desktop uses when authenticating with ModelCenter Remote Execution.
+ */
 message SetUserNameRequest {
    string user_name = 1;
 }
 
+/**
+ * A response to an attempt to set the username ModelCenter Desktop uses for ModelCenter Remote Execution.
+ */
 message SetUserNameResponse {}
 
+/**
+ * A request to set the password ModelCenter Desktop uses when authenticating with ModelCenter Remote Execution.
+ */
 message SetPasswordRequest {
    string password = 1;
 }
 
+/**
+ * A response to an attempt to set the password ModelCenter Desktop uses for ModelCenter Remote Execution.
+ */
 message SetPasswordResponse {
 }
 
+/**
+ * A request to get a preference value.
+ */
 message GetPreferenceRequest {
+   /**
+    * The name of the preference.
+    */
    string preference_name = 1;
 }
 
+/**
+ * A response to a request to get a preference value.
+ */
 message GetPreferenceResponse {
+   /**
+    * The requested preference value.
+    */
    oneof value{
       bool bool_value = 1;
       int64 int_value = 2;
@@ -64,45 +158,117 @@ message GetPreferenceResponse {
       }
 }
 
+/**
+ * A request to get unit categories.
+ */
 message GetUnitCategoriesRequest {}
 
+/**
+ * A response to a request to get unit categories.
+ */
 message GetUnitCategoriesResponse {
+   /**
+    * The unit categories available in the engine.
+    */
    repeated string names = 1;
 }
 
+/**
+ * A request to get the units available in a category.
+ */
 message GetUnitNamesRequest {
+   /**
+    * The category of interest.
+    */
    string category = 1;
 }
 
+/**
+ * A response to a request to get the units available in a category.
+ */
 message GetUnitNamesResponse {
+   /**
+    * The requested units.
+    */
    repeated string names = 1;
 }
 
+/**
+ * A request to get whether or not ModelCenter is in run-only mode.
+ */
 message GetRunOnlyModeRequest {}
 
+/**
+ * A response indicating whether ModelCenter is in run-only mode.
+ */
 message GetRunOnlyModeResponse {
+   /**
+    * True if ModelCenter is in run-only mode.
+    */
    bool is_run_only = 1;
 }
 
+/**
+ * A request attempting to set whether ModelCenter is in run-only mode.
+ */
 message SetRunOnlyModeRequest {
+   /**
+    * True if ModelCenter should be in run-only mode.
+    */
    bool set_run_only = 1;
 }
 
+/**
+ * A response to an attempt to set ModelCenter's run-only mode.
+ */
 message SetRunOnlyModeResponse {}
 
+/**
+ * A request for information about the ModelCenter workflow engine.
+ */
 message GetServerInfoRequest {}
 
+/**
+ * A response with information about the ModelCenter workflow engine.
+ */
 message GetServerInfoResponse {
+   /**
+    * A message with version information.
+    */
    message Version {
       int32 major = 1;
       int32 minor = 2;
       int32 patch = 3;
       int32 revision = 4;
    }
+   
+   /**
+    * The version number.
+    */
    Version version = 1;
+
+   /**
+    * True if the build is a release build, false for other typ.es
+    */
    bool is_release = 2;
+
+   /**
+    * A snippet indicating the build type (for example, beta, release-branch, release, etc.
+    */
    string build_type = 3;
+
+   /**
+    * The server type.
+    */
    string server_type = 4;
+
+   /**
+    * The installation directory.
+    */
    string directory_path = 5;
+
+   /**
+    * The path to the ModelCenter executable.
+    */
    string executable_path = 6;
 }

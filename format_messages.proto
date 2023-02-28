@@ -1,29 +1,80 @@
+/*
+ * This file contains messages related to ModelCenter Desktop string formatting.
+ */
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
+/**
+ * A request to format a value from a string to another string or a different form.
+ */
 message FormatFromStringRequest {
+   /**
+    * The format to use.
+    */
    string format = 1;
+
+   /**
+    * The original value.
+    */
    string original = 2;
 }
 
+/**
+ * A request to format a value from an integer to another form.
+ */
 message FormatFromIntegerRequest {
+   /**
+    * The format to use.
+    */
    string format = 1;
+
+   /**
+    * The original value.
+    */
    int64 original = 2;
 }
 
+/**
+ * A request to format a value from a double to another form.
+ */
 message FormatFromDoubleRequest {
+   /**
+    * The format to use.
+    */
    string format = 1;
+
+   /**
+    * The original value.
+    */
    double original = 2;
 }
 
+/**
+ * A response to a request to format a value to a string.
+ */
 message FormatToStringResponse {
+   /**
+    * The result of the formatting operation.
+    */
    string result = 1;
 }
 
+/**
+ * A response to a request to format a value to an integer.
+ */
 message FormatToIntegerResponse {
+   /**
+    * The result of the formatting operation.
+    */
    int64 result = 1;
 }
 
+/**
+ * A response to a request to format a value to a double.
+ */
 message FormatToDoubleResponse {
+   /**
+    * The result of the formatting operation.
+    */
    double result = 1;
 }

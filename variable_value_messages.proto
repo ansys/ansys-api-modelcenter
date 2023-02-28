@@ -3,110 +3,308 @@ package Ansys.ModelCenter.GRPCModelCenter;
 
 import "element_messages.proto";
 
+/**
+ * A message representing the value of a file variable.
+ */
 message FileValue {
+   /**
+    * The actual content path for the file variable.
+    */
    string content_path = 1;
 }
 
+/**
+ * A request to set the value of a file variable.
+ */
 message SetFileValueRequest {
+   /**
+    * The target variable.
+    */
    ElementId target = 1;
+
+   /**
+    * The new value.
+    */
    FileValue new_value = 2;
 }
 
+/**
+ * A message representing the dimensions of an array.
+ */
 message ArrayDimensions {
+   /**
+    * The length of each dimension of the array.
+    */
    repeated uint64 dims = 1;
 }
 
+/**
+ * A message representing a file array value.
+ */
 message FileArrayValue {
+   /**
+    * All the values in the array, linearized.
+    */
    repeated FileValue values = 1;
+
+   /**
+    * The actual dimensions of the array.
+    */
    ArrayDimensions dims = 2;
 }
 
+/**
+ * A request to set the value of a file array.
+ */
 message SetFileArrayValueRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new value.
+    */
    FileArrayValue new_value = 2;
 }
 
+/**
+ * A message reprsenting the value of a double variable.
+ */
 message DoubleValue {
+   /**
+    * The value.
+    */
    double value = 1;
 }
 
+/**
+ * A request to set the value of a double value.
+ */
 message SetDoubleValueRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new value.
+    */
    double new_value = 2;
 }
 
+/**
+ * A message representing a double array value.
+ */
 message DoubleArrayValue {
+   /**
+    * All the values in the array, linearized.
+    */
    repeated double values = 1;
+
+   /**
+    * The actual dimensions of the array.
+    */
    ArrayDimensions dims = 2;
 }
 
+/**
+ * A request to set the value of a double array.
+ */
 message SetDoubleArrayValueRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new value.
+    */
    DoubleArrayValue new_value = 2;
 }
 
+/**
+ * A message representing an integer value.
+ */
 message IntegerValue {
+   /**
+    * The integer value.
+    */
    int64 value = 1;
 }
 
+/**
+ * A request to set the value of an integer variable.
+ */
 message SetIntegerValueRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new value.
+    */
    int64 new_value = 2;
 }
 
+/**
+ * A message representing a integer array value.
+ */
 message IntegerArrayValue {
+   /**
+    * All the values in the array, linearized.
+    */
    repeated int64 values = 1;
+
+   /**
+    * The actual dimensions of the array.
+    */
    ArrayDimensions dims = 2;
 }
 
+/**
+ * A request to set the value of an integer array.
+ */
 message SetIntegerArrayValueRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new value.
+    */
    IntegerArrayValue new_value = 2;
 }
 
+/**
+ * A message representing a double array value.
+ */
 message BooleanArrayValue {
+   /**
+    * All the values in the array, linearized.
+    */
    repeated bool values = 1;
+
+   /**
+    * The actual dimensions of the array.
+    */
    ArrayDimensions dims = 2;
 }
 
+/**
+ * A request to set the value of a boolean array.
+ */
 message SetBooleanArrayValueRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new value.
+    */
    BooleanArrayValue new_value = 2;
 }
 
+/**
+ * A message representing a boolean value.
+ */
 message BooleanValue {
+   /**
+    * The boolean value.
+    */
    bool value = 1;
 }
 
+/**
+ * A request to set a boolean value.
+ */
 message SetBooleanValueRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new value.
+    */
    bool new_value = 2;
 }
 
+/**
+ * A message representing a string array value.
+ */
 message StringArrayValue {
+   /**
+    * All the values in the array, linearized.
+    */
    repeated string values = 1;
+
+   /**
+    * The actual dimensions of the array.
+    */
    ArrayDimensions dims = 2;
 }
 
+/**
+ * A request to set the value of a string array.
+ */
 message SetStringArrayValueRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new value.
+    */
    StringArrayValue new_value = 2;
 }
 
+/**
+ * A message representing a string value.
+ */
 message StringValue {
+   /**
+    * The string value.
+    */
    string value = 1;
 }
 
+/**
+ * A request to set the value of a string variable.
+ */
 message SetStringValueRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new value.
+    */
    string new_value = 2;
 }
 
+/**
+ * A response to a request to set a variable value.
+ */
 message SetVariableValueResponse {
+   /**
+    * True if the value of the variable was changed.
+    */
    bool was_changed = 1;
 }
 
+/**
+ * A message representing a variable value which could be of any type.
+ */
 message VariableValue {
+   /**
+    * The value of the variable.
+    */
    oneof value {
       int64 int_value = 1;
       double double_value = 2;
@@ -120,104 +318,304 @@ message VariableValue {
    }
 }
 
+/**
+ * A message combining a variable value and validity flag.
+ */
 message VariableState {
    VariableValue value = 1;
    bool is_valid = 2;
 }
 
+/**
+ * A response to a request to set a variable value.
+ */
 message SetMetadataResponse {}
 
+/**
+ * The metadata for a double or double array variable.
+ */
 message DoubleVariableMetadata {
+   /**
+    * The lower bound.
+    */
    double lower_bound = 1;
+
+   /**
+    * The upper bound.
+    */
    double upper_bound = 2;
+
+   /**
+    * A list of enumerated allowed values for the variable.
+    * If this list is empty or unset any value may be used.
+    */
    repeated double enum_values = 3;
+
+   /**
+    * A list of string aliases for the enumerated values.
+    * This list may either be empty or unset (even if there are enumerated values),
+    * indicating that there are no aliases,
+    * or it should have one entry for each enumerated value.
+    */
    repeated string enum_aliases = 4;
 }
 
+/**
+ * A request to set the metadata for a double variable.
+ */
 message SetDoubleVariableMetadataRequest {
+   /**
+    * The target variable.
+    */
    ElementId target = 1;
+   
+   /**
+    * The new metadata to use.
+    */
    DoubleVariableMetadata new_metadata = 2;
 }
 
+/**
+ * The metadata for a integer or integer array variable.
+ */
 message IntegerVariableMetadata {
+   /**
+    * The lower bound.
+    */
    int64 lower_bound = 1;
+
+   /**
+    * The upper bound.
+    */
    int64 upper_bound = 2;
+
+   /**
+    * A list of enumerated allowed values for the variable.
+    * If this list is empty or unset any value may be used.
+    */
    repeated int64 enum_values = 3;
+
+   /**
+    * A list of string aliases for the enumerated values.
+    * This list may either be empty or unset (even if there are enumerated values),
+    * indicating that there are no aliases,
+    * or it should have one entry for each enumerated value.
+    */
    repeated string enum_aliases = 4;
 }
 
+/**
+ * A request to set the metadata of an integer or integer array.
+ */
 message SetIntegerVariableMetadataRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new metadata to use.
+    */
    IntegerVariableMetadata new_metadata = 2;
 }
 
+/**
+ * Metadata for a string or string array variable.
+ */
 message StringVariableMetadata {
+   /**
+    * A list of enumerated allowed values for the variable.
+    * If this list is empty or unset any value may be used.
+    */
    repeated string enum_values = 1;
+
+   /**
+    * A list of string aliases for the enumerated values.
+    * This list may either be empty or unset (even if there are enumerated values),
+    * indicating that there are no aliases,
+    * or it should have one entry for each enumerated value.
+    */
    repeated string enum_aliases = 2;
 }
 
+/**
+ * A request to set the metadata of a string or string array variable.
+ */
 message SetStringVariableMetadataRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The new metadata to use.
+    */
    StringVariableMetadata new_metadata = 2;
 }
 
+/**
+ * A response to a request for the reference of a reference variable.
+ */
 message ReferenceResponse {
+   /**
+    * The requested reference.
+    */
    string reference = 1;
 }
 
+/**
+ * A response to a request for the variables referenced by a reference variable.
+ */
 message ReferencedVariablesResponse {
+   /**
+    * The requested reference.
+    */
    repeated ElementId referenced_variables = 1;
 }
 
+/**
+ * A way to identify a reference property.
+ */
 message ReferencePropertyIdentifier {
+   /**
+    * The reference variable the property exists on.
+    */
    ElementId reference_var = 1;
+
+   /**
+    * The property name.
+    */
    string prop_name = 2;
 }
 
+/**
+ * A response to a request to set a reference value.
+ */
 message ReferencePropertyCreateResponse {}
 
+/**
+ * A request to set a reference value.
+ */
 message ReferencePropertySetValueRequest {}
 
+/**
+ * A response to a request to set a reference value.
+ */
 message ReferencePropertySetValueResponse {
+   /**
+    * The previously set value.
+    */
    VariableValue old_value = 1;
 }
 
+/**
+ * A request to set whether a reference property is an input.
+ */
 message ReferencePropertySetIsInputRequest {
+   /**
+    * The target property.
+    */
    ReferencePropertyIdentifier target = 1;
+
+   /**
+    * True if the property should be an input.
+    */
    bool new_value = 2;
 }
 
+/**
+ * A response indicating whether a reference property is an input.
+ */
 message ReferencePropertyGetIsInputResponse {
+   /**
+    * True if the property is an input.
+    */
    bool is_input = 1;
 }
 
+/**
+ * A request to set the title of a reference property.
+ */
 message ReferencePropertySetTitleRequest {
+   /**
+    * The target property.
+    */
    ReferencePropertyIdentifier target = 1;
+
+   /**
+    * The new value for the title.
+    */
    string new_value = 2;
 }
 
+/**
+ * A response indicating what the title of a reference property is.
+ */
 message ReferencePropertyGetTitleResponse {
+   /**
+    * The title.
+    */
    string title = 1;
 }
 
+/**
+ * A request to set the allowed values for a reference property.
+ */
 message ReferencePropertySetEnumValuesRequest {
+   /**
+    * The target property.
+    */
    ReferencePropertyIdentifier target = 1;
+
+   /**
+    * The allowed values.
+    * An empty or unset list indicates that any value may be used.
+    */
    repeated VariableValue values = 2;
 }
 
+/**
+ * A response indicating what the allowed values for a reference property are.
+ */
 message ReferencePropertyGetEnumValuesResponse {
+   /**
+    * The allowed values.
+    * An empty or unset list indicates that any value may be used.
+    */
    repeated VariableValue values = 1;
 }
 
+/**
+ * A request to set the description of a reference property.
+ */
 message ReferencePropertySetDescriptionRequest {
+   /**
+    * The target property.
+    */
    ReferencePropertyIdentifier target = 1;
+
+   /**
+    * The new value for the description.
+    */
    string new_value = 2;
 }
 
+/**
+ * A response indicating what the description of a reference property is.
+ */
 message ReferencePropertyGetDescriptionResponse {
+   /**
+    * The description.
+    */
    string description = 1;
 }
 
+/**
+ * A response indicating what the type of a reference properyt is.
+ */
 message ReferencePropertyGetTypeResponse {
+   /**
+    * The type.
+    */
    string type = 1;
 }

@@ -98,9 +98,9 @@ service ModelCenterWorkflowService {
     */
    rpc ComponentRun(ElementId) returns (ComponentRunResponse);
    
-   /**
-    * Invoke a method on the specified component.
-    */
+    /**
+     * Invoke a method on the specified component.
+     */
     rpc ComponentInvokeMethod(ComponentInvokeMethodRequest) returns (ComponentInvokeMethodResponse);
     
     /**
@@ -118,137 +118,368 @@ service ModelCenterWorkflowService {
      */
     rpc ComponentDownloadValues(ElementId) returns (ComponentDownloadValuesResponse);
     
+    /**
+     * Get the value of a double array variable.
+     */
     rpc DoubleArrayGetValue(ElementId) returns (DoubleArrayValue);
     
+    /**
+     * Set the value of a double array variable.
+     */
     rpc DoubleArraySetValue(SetDoubleArrayValueRequest) returns (SetVariableValueResponse);
     
+    /**
+     * Get the value of a file array variable.
+     * If necessary, the workflow will be run such that the variable value is valid
+     * before the value is returned.
+     */
     rpc FileArrayGetValue(ElementId) returns (FileArrayValue);
     
+    /**
+     * Get the value of a file array variable.
+     * No attempt is made to ensure that the workflow is run to validate the value.
+     */
     rpc FileArrayGetValueAbsolute(ElementId) returns (FileArrayValue);
     
+    /**
+     * Set the value of a file array variable.
+     */
     rpc FileArraySetValue(SetFileArrayValueRequest) returns (SetVariableValueResponse);
     
+    /**
+     * Get the value of a integer array variable.
+     * If necessary, the workflow will be run such that the variable value is valid
+     * before the value is returned.
+     */
     rpc IntegerArrayGetValue(ElementId) returns (IntegerArrayValue);
     
+    /**
+     * Get the value of a integer array variable.
+     * No attempt is made to ensure that the workflow is run to validate the value.
+     */
     rpc IntegerArrayGetValueAbsolute(ElementId) returns (IntegerArrayValue);
     
+    /**
+     * Set the value of a integer array variable.
+     */
     rpc IntegerArraySetValue(SetIntegerArrayValueRequest) returns (SetVariableValueResponse);
     
+    /**
+     * Get the value of a boolean array variable.
+     * If necessary, the workflow will be run such that the variable value is valid
+     * before the value is returned.
+     */
     rpc BooleanArrayGetValue(ElementId) returns (BooleanArrayValue);
     
+    /**
+     * Get the value of a boolean array variable.
+     * No attempt is made to ensure that the workflow is run to validate the value.
+     */
     rpc BooleanArrayGetValueAbsolute(ElementId) returns (BooleanArrayValue);
     
+    /**
+     * Set the value of a boolean array variable.
+     */
     rpc BooleanArraySetValue(SetBooleanArrayValueRequest) returns (SetVariableValueResponse);
     
+    /**
+     * Get the value of a string array variable.
+     * If necessary, the workflow will be run such that the variable value is valid
+     * before the value is returned.
+     */
     rpc StringArrayGetValue(ElementId) returns (StringArrayValue);
    
+    /**
+     * Get the value of a string array variable.
+     * No attempt is made to ensure that the workflow is run to validate the value.
+     */
     rpc StringArrayGetValueAbsolute(ElementId) returns (StringArrayValue);
    
+    /**
+     * Set the value of a string array variable.
+     */
     rpc StringArraySetValue(SetStringArrayValueRequest) returns (SetVariableValueResponse);
     
+    /**
+     * Get the value of a double variable.
+     * If necessary, the workflow will be run such that the variable value is valid
+     * before the value is returned.
+     */
     rpc DoubleVariableGetValue(ElementId) returns (DoubleValue);
     
+    /**
+     * Get the value of a double variable.
+     * No attempt is made to ensure that the workflow is run to validate the value.
+     */
     rpc DoubleVariableGetValueAbsolute(ElementId) returns (DoubleValue);
     
+    /**
+     * Set the value of a double array variable.
+     */
     rpc DoubleVariableSetValue(SetDoubleValueRequest) returns (SetVariableValueResponse);
     
+    /**
+     * Get the value of a integer variable.
+     * If necessary, the workflow will be run such that the variable value is valid
+     * before the value is returned.
+     */
     rpc IntegerVariableGetValue(ElementId) returns (IntegerValue);
     
+    /**
+     * Get the value of a integer variable.
+     * No attempt is made to ensure that the workflow is run to validate the value.
+     */
     rpc IntegerVariableGetValueAbsolute(ElementId) returns (IntegerValue);
     
+    /**
+     * Set the value of a integer array variable.
+     */
     rpc IntegerVariableSetValue(SetIntegerValueRequest) returns (SetVariableValueResponse);
     
+    /**
+     * Get the value of a boolean variable.
+     * If necessary, the workflow will be run such that the variable value is valid
+     * before the value is returned.
+     */
     rpc BooleanVariableGetValue(ElementId) returns (BooleanValue);
     
+    /**
+     * Get the value of a boolean variable.
+     * No attempt is made to ensure that the workflow is run to validate the value.
+     */
     rpc BooleanVariableGetValueAbsolute(ElementId) returns (BooleanValue);
     
+    /**
+     * Set the value of a boolean array variable.
+     */
     rpc BooleanVariableSetValue(SetBooleanValueRequest) returns (SetVariableValueResponse);
     
+    /**
+     * Get the value of a string variable.
+     * If necessary, the workflow will be run such that the variable value is valid
+     * before the value is returned.
+     */
     rpc StringVariableGetValue(ElementId) returns (StringValue);
     
+    /**
+     * Get the value of a string variable.
+     * No attempt is made to ensure that the workflow is run to validate the value.
+     */
     rpc StringVariableGetValueAbsolute(ElementId) returns (StringValue);
     
+    /**
+     * Set the value of a string array variable.
+     */
     rpc StringVariableSetValue(SetStringValueRequest) returns (SetVariableValueResponse);
     
+    /**
+     * Get the value of a file variable.
+     * If necessary, the workflow will be run such that the variable value is valid
+     * before the value is returned.
+     */
     rpc FileVariableGetValue(ElementId) returns (FileValue);
     
+    /**
+     * Get the value of a file variable.
+     * No attempt is made to ensure that the workflow is run to validate the value.
+     */
     rpc FileVariableGetValueAbsolute(ElementId) returns (FileValue);
     
+    /**
+     * Set the value of a file array variable.
+     */
     rpc FileVariableSetValue(SetFileValueRequest) returns (SetVariableValueResponse);
     
+    /**
+     * Get the metadata for a double or double array variable.
+     */
     rpc DoubleVariableGetMetadata(ElementId) returns (DoubleVariableMetadata);
     
+    /**
+     * Get the metadata for an integer or integer array variable.
+     */
     rpc IntegerVariableGetMetadata(ElementId) returns (IntegerVariableMetadata);
     
+    /**
+     * Get the metadata for a string or string array variable.
+     */
     rpc StringVariableGetMetadata(ElementId) returns (StringVariableMetadata);
     
+    /**
+     * Set the metadata for a double or double array variable.
+     */
     rpc DoubleVariableSetMetadata(SetDoubleVariableMetadataRequest) returns (SetMetadataResponse);
     
+    /**
+     * Set the metadata for an integer or integer array variable.
+     */
     rpc IntegerVariableSetMetadata(SetIntegerVariableMetadataRequest) returns (SetMetadataResponse);
     
+    /**
+     * Set the metadata for a string or string array variable.
+     */
     rpc StringVariableSetMetadtata(SetStringVariableMetadataRequest) returns (SetMetadataResponse);
     
+    /**
+     * Get the state of the workflow's execution.
+     */
     rpc WorkflowGetState(GetWorkflowStateRequest) returns (GetWorkflowStateResponse);
     
+    /**
+     * Execute the workflow.
+     */
     rpc WorkflowRun(WorkflowRunRequest) returns (WorkflowRunResponse);
     
+    /**
+     * Start executing the workflow, and allow it to run asynchronously.
+     */
     rpc WorkflowStartRun(WorkflowRunRequest) returns (WorkflowStartRunResponse);
     
+    /**
+     * Get the root element of the workflow.
+     */
     rpc WorkflowGetRoot(WorkflowId) returns (WorkflowGetRootResponse);
     
+    /**
+     * Get the directory for a workflow.
+     */
     rpc WorkflowGetDirectory(WorkflowId) returns (WorkflowGetDirectoryResponse);
     
+    /**
+     * Create a component within the workflow.
+     */
     rpc WorkflowCreateComponent(WorkflowCreateComponentRequest) returns (WorkflowCreateComponentResponse);
     
+    /**
+     * Create a link within the workflow.
+     */
     rpc WorkflowCreateLink(WorkflowCreateLinkRequest) returns (WorkflowCreateLinkResponse);
     
+    /**
+     * Save the workflow to its current location.
+     */
     rpc WorkflowSave(WorkflowId) returns (WorkflowSaveResponse);
     
+    /**
+     * Save the workflow to a new location.
+     */
     rpc WorkflowSaveAs(WorkflowSaveAsRequest) returns (WorkflowSaveResponse);
     
+    /**
+     * Close the workflow.
+     */
     rpc WorkflowClose(WorkflowId) returns (WorkflowCloseResponse);
     
+    /**
+     * Remove a component from the workflow.
+     */
     rpc WorkflowRemoveComponent(WorkflowRemoveComponentRequest) returns (WorkflowRemoveComponentResponse);
     
+    /**
+     * Break a link within the workflow.
+     */
     rpc WorkflowBreakLink(WorkflowBreakLinkRequest) returns (WorkflowBreakLinkResponse);
     
+    /**
+     * Auto-link two components within the workflow.
+     * The created links are returned.
+     */
     rpc WorkflowAutoLink(WorkflowAutoLinkRequest) returns (WorkflowAutoLinkResponse);
     
+    /**
+     * Get a list of all the links in the workflow.
+     */
     rpc WorkflowGetLinksRequest(WorkflowId) returns (WorkflowGetLinksResponse);
     
+    /**
+     * Get a component or assembly's ID by name.
+     */
     rpc WorkflowGetComponentOrAssemblyByName(ElementName) returns (ElementId);
     
+    /**
+     * Get a variable by its name.
+     */
     rpc WorkflowGetVariableByName(ElementName) returns (ElementId);
     
+    /**
+     * Get a group in the workflow by its name.
+     */
     rpc WorkflowGetGroupByName(ElementName) returns (ElementId);
     
+    /**
+     * Get the reference of a referenced variable.
+     */
     rpc ReferenceVariableGetReference(ElementId) returns (ReferenceResponse);
     
+    /**
+     * Get the variables referenced by a reference variable.
+     */
     rpc ReferenceVariableGetReferencedVariables(ElementId) returns (ReferencedVariablesResponse);
     
+    /**
+     * Create a real-type reference property.
+     */
     rpc RealReferencePropertyCreate(ReferencePropertyIdentifier) returns (ReferencePropertyCreateResponse);
     
+    /**
+     * Get the value of a reference property.
+     * If necessary, the workflow is executed to ensure the value is valid.
+     */
     rpc ReferencePropertyGetValue(ReferencePropertyIdentifier) returns (VariableValue);
     
+    /**
+     * Get the value of a reference property.
+     * No attempt is made to execute the workflow to ensure the value's validity.
+     */
     rpc ReferencePropertyGetValueAbsolute(ReferencePropertyIdentifier) returns (VariableValue);
     
+    /**
+     * Set the value of a reference property.
+     */
     rpc ReferencePropertySetValue(ReferencePropertySetValueRequest) returns (ReferencePropertySetValueResponse);
     
+    /**
+     * Get whether a reference property is an input.
+     */
     rpc ReferencePropertyGetIsInput(ReferencePropertyIdentifier) returns (ReferencePropertyGetIsInputResponse);
     
+    /**
+     * Set whether a reference property should be an input.
+     */
     rpc ReferencePropertySetIsInput(ReferencePropertySetIsInputRequest) returns (ReferencePropertyGetIsInputResponse);
     
+    /**
+     * Get the allowed enumerated values for a reference property.
+     */
     rpc ReferencePropertyGetEnumValues(ReferencePropertyIdentifier) returns (ReferencePropertyGetEnumValuesResponse);
     
+    /**
+     * Set the allowed enumerated values for a reference property.
+     */
     rpc ReferencePropertySetEnumValues(ReferencePropertySetEnumValuesRequest) returns (ReferencePropertyGetEnumValuesResponse);
     
+    /**
+     * Get the title of a reference property.
+     */
     rpc ReferencePropertyGetTitle(ReferencePropertyIdentifier) returns (ReferencePropertyGetTitleResponse);
     
+    /**
+     * Set the title of a reference property.
+     */
     rpc ReferencePropertySetTitle(ReferencePropertySetTitleRequest) returns (ReferencePropertyGetTitleResponse);
     
+    /**
+     * Get the description of a reference property.
+     */
     rpc ReferencePropertyGetDescription(ReferencePropertyIdentifier) returns (ReferencePropertyGetDescriptionResponse);
     
+    /**
+     * Set the description of a reference property.
+     */
     rpc ReferencePropertySetDescription(ReferencePropertySetDescriptionRequest) returns (ReferencePropertyGetDescriptionResponse);
     
+    /**
+     * Get the type of a reference property.
+     */
     rpc ReferencePropertyGetType(ReferencePropertyIdentifier) returns (ReferencePropertyGetTypeResponse);
 }

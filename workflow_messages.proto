@@ -1,111 +1,309 @@
+/*
+ * This file contains messages related to manipulating or examining a workflow.
+ */
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
 import "element_messages.proto";
 import "variable_value_messages.proto";
 
+/**
+ * The workflow's execution state.
+ */
 enum WorkflowInstanceState {
+   /**
+    * The state is unknown.
+    */
    UNKNOWN = 0;
+
+   /**
+    * Some values in the workflow are not valid.
+    * The workflow can be run to attempt to produce valid values for those variables.
+    */
    INVALID = 1;
+
+   /**
+    * The workflow is currently running.
+    */
    RUNNING = 2;
+
+   /**
+    * A workflow run was started and paused.
+    */
    PAUSED = 3;
+
+   /**
+    * A workflow run failed.
+    */
    FAILED = 4;
+
+   /**
+    * A workflow run succeeded.
+    */
    SUCCESS = 5;
 }
 
+/**
+ * A request to get the state of the workflow.
+ */
 message GetWorkflowStateRequest {}
 
+/**
+ * A response indicating what the state of the workflow is.
+ */
 message GetWorkflowStateResponse {
    WorkflowInstanceState state = 1;
 }
 
+/**
+ * An identifier for an individual workflow instance.
+ */
 message WorkflowId {
+   /**
+    * The identifying string for the workflow instance.
+    */
    string id = 1;
 }
 
+/**
+ * A request to run a workflow.
+ */
 message WorkflowRunRequest {
+   /**
+    * The target workflow.
+    */
    WorkflowId target = 1;
+
+   /**
+    * Input values to be set before the run.
+    */
    map<string, VariableState> inputs = 2;
+
+   /**
+    * TODO: Document
+    */
    bool reset = 3;
+
+   /**
+    * The workflow elements to validate.
+    */
    repeated string validation_ids = 4;
 }
 
+/**
+ * A response to a request to run a workflow.
+ */
 message WorkflowRunResponse {
+   /**
+    * The requested variables.
+    */
    map<string, VariableState> results= 1;
 }
 
+/**
+ * A response to a requst to run a workflow asynchronously.
+ */
 message WorkflowStartRunResponse {
    string return = 1;
 }
 
+/**
+ * A response indicating the root element of a workflow.
+ */
 message WorkflowGetRootResponse {
+   /**
+    * The root element.
+    */
    ElementId id = 1;
 }
 
+/**
+ * A response indicating the directory in which the workflow is stored.
+ */
 message WorkflowGetDirectoryResponse {
+   /**
+    * The directory storing the workflow.
+    */
    string workflow_dir = 1;
 }
 
+/**
+ * A request to create a component within a workflow.
+ */
 message WorkflowCreateComponentRequest {
+   /**
+    * The source of the component.
+    */
    string source_path = 1;
+
+   /**
+    * The component's short name.
+    */
    string name = 2;
+
+   /**
+    * The parent element.
+    */
    ElementId parent = 3;
+
+   /**
+    * The position of the component.
+    */
    oneof position {
+      /**
+       * Coordinates at which to place the new component.
+       */
       AnalysisViewPosition coords = 4;
+
+      /**
+       * A component after which the new component should be placed.
+       */
       ElementId after_comp = 5;
    }
 }
 
+/**
+ * A response to a request to create a component.
+ */
 message WorkflowCreateComponentResponse {
+   /**
+    * The ID for the newly created component.
+    */
    ElementId created = 1;
 }
 
+/**
+ * A request to create a link in the workflow.
+ */
 message WorkflowCreateLinkRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
+
+   /**
+    * The expression that will drive the value of the target element
+    */
    string equation = 2;
 }
 
+/**
+ * A response to a request to create a link in the workflow.
+ */
 message WorkflowCreateLinkResponse {}
 
+/**
+ * A response to a request to save the workflow.
+ */
 message WorkflowSaveResponse {}
 
+/**
+ * A request to save the workflow to a new location.
+ */
 message WorkflowSaveAsRequest {
+   /**
+    * The target of the request.
+    */
    WorkflowId target = 1;
+
+   /**
+    * The new path for saving the workflow.
+    */
    string new_target_path = 2;
 }
 
+/**
+ * A response to a request to close the workflow.
+ */
 message WorkflowCloseResponse {}
 
+/**
+ * A request to remove a component from the workflow.
+ */
 message WorkflowRemoveComponentRequest {
+   /**
+    * The target element.
+    */
    ElementId target = 1;
 }
 
+/**
+ * A response to a request to remove the component from the workflow.
+ */
 message WorkflowRemoveComponentResponse {
+   /**
+    * True if the component existed.
+    */
    bool existed = 1;
 }
 
+/**
+ * A request to break a link within the workflow.
+ */
 message WorkflowBreakLinkRequest {
+   /**
+    * The variable that is the "target"
+    * end of the link to break.
+    */
    ElementId target_var = 1;
 }
 
+/**
+ * A response to a request to break a link.
+ */
 message WorkflowBreakLinkResponse {
+   /**
+    * True if a link existed to the specified variable.
+    */
    bool existed = 1;
 }
 
+/**
+ * A message containing information about a link.
+ */
 message WorkflowLinkInfo {
+   /**
+    * The target of the link.
+    */
    ElementId lhs = 1;
+
+   /**
+    * The expression that drives the value of the left-hand side of the link.
+    */
    string rhs = 2;
 }
 
+/**
+ * A request to automatically link two components.
+ */
 message WorkflowAutoLinkRequest {
+   /**
+    * The source component.
+    */
    ElementId source_comp = 1;
+
+   /**
+    * The target component.
+    */
    ElementId target_comp = 2;
 }
 
+/**
+ * A response to a request to auto-link two components.
+ */
 message WorkflowAutoLinkResponse {
+   /**
+    * The links created by the auto-link process.
+    */
    repeated WorkflowLinkInfo created_links = 1;
 }
 
+/**
+ * A response to a request for the links in the workflow.
+ */
 message WorkflowGetLinksResponse {
+   /**
+    * The links in the workflow.
+    */
    repeated WorkflowLinkInfo links = 1;
 }

@@ -60,6 +60,11 @@ message NewWorkflowResponse {
     * The root element of the new workflow.
     */
    ElementId root_element = 1;
+
+   /**
+    * The created workflow's ID. Use this ID in future requests to refer to this workflow.
+    */
+   string workflow_id = 2;
 }
 
 /**
@@ -106,6 +111,11 @@ message LoadWorkflowResponse {
     * The type of the loaded workflow.
     */
    WorkflowType workflow_type = 2;
+
+   /**
+    * The loaded workflow's ID. Use this ID in future requests to refer to this workflow.
+    */
+   string workflow_id = 3;
 }
 
 /**

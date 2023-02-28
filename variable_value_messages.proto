@@ -379,6 +379,13 @@ message VariableValue {
 }
 
 /**
+ * A response indicating the requested variable's type.
+ */
+message VariableTypeResponse {
+   VariableType var_type = 1;
+}
+
+/**
  * A message combining a variable value and validity flag.
  */
 message VariableState {

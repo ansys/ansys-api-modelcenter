@@ -117,6 +117,11 @@ service ModelCenterWorkflowService {
      * Download the component's variable values if it is a ModelCenter Remote Execution component.
      */
     rpc ComponentDownloadValues(ElementId) returns (ComponentDownloadValuesResponse);
+
+    /**
+     * Get the data type of a variable.
+     */
+    rpc VariableGetType(ElementId) returns (VariableTypeResponse);
     
     /**
      * Get the value of a double array variable.

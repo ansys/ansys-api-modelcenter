@@ -573,7 +573,17 @@ message ReferencePropertyCreateResponse {}
 /**
  * A request to set a reference value.
  */
-message ReferencePropertySetValueRequest {}
+message ReferencePropertySetValueRequest {
+   /**
+    * The reference property to set.
+    */
+   ReferencePropertyIdentifier target_prop = 1;
+
+   /**
+    * The value to set.
+    */
+   VariableValue new_value = 2;
+}
 
 /**
  * A response to a request to set a reference value.

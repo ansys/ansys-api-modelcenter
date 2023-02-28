@@ -382,7 +382,17 @@ message VariableValue {
  * A response indicating the requested variable's type.
  */
 message VariableTypeResponse {
+   /**
+    * The data type.
+    */
    VariableType var_type = 1;
+
+   /**
+    * The ModelCenter type string.
+    * ModelCenter has separate types for some geometry formats;
+    * those formats are string data but the variable type may be different.
+    */
+   string mc_type = 2;
 }
 
 /**

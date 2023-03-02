@@ -282,3 +282,7 @@ message GetServerInfoResponse {
     */
    string executable_path = 6;
 }
+
+message ShutdownRequest{}
+
+message ShutdownResponse{}

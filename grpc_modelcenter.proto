@@ -10,6 +10,18 @@ import "engine_messages.proto";
  */
 service GRPCModelCenterService {
    /**
+    * Get information about the service.
+    */
+   rpc GetEngineInfo(GetServerInfoRequest) returns (GetServerInfoResponse);
+   
+   /**
+    * Shut down a local instance of the service.
+    * Naturally, this request does not block until the process has actually exited.
+    * The caller must monitor this separately.
+    */
+   rpc Shutdown(ShutdownRequest) returns (ShutdownResponse);
+
+   /**
     * Get the process ID of the ModelCenter engine.
     */
     rpc EngineGetProcessId(EngineProcessIdRequest) returns (EngineProcessIdResponse);

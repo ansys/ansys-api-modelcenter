@@ -204,36 +204,6 @@ message GetUnitNamesResponse {
 }
 
 /**
- * A request to get whether or not ModelCenter is in run-only mode.
- */
-message GetRunOnlyModeRequest {}
-
-/**
- * A response indicating whether ModelCenter is in run-only mode.
- */
-message GetRunOnlyModeResponse {
-   /**
-    * True if ModelCenter is in run-only mode.
-    */
-   bool is_run_only = 1;
-}
-
-/**
- * A request attempting to set whether ModelCenter is in run-only mode.
- */
-message SetRunOnlyModeRequest {
-   /**
-    * True if ModelCenter should be in run-only mode.
-    */
-   bool set_run_only = 1;
-}
-
-/**
- * A response to an attempt to set ModelCenter's run-only mode.
- */
-message SetRunOnlyModeResponse {}
-
-/**
  * A request for information about the ModelCenter workflow engine.
  */
 message GetServerInfoRequest {}

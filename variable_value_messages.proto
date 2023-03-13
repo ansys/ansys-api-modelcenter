@@ -459,18 +459,18 @@ message IntegerVariableMetadata {
    /**
     * The lower bound.
     */
-   int64 lower_bound = 1;
+   int32 lower_bound = 1;
 
    /**
     * The upper bound.
     */
-   int64 upper_bound = 2;
+   int32 upper_bound = 2;
 
    /**
     * A list of enumerated allowed values for the variable.
     * If this list is empty or unset any value may be used.
     */
-   repeated int64 enum_values = 3;
+   repeated int32 enum_values = 3;
 
    /**
     * A list of string aliases for the enumerated values.

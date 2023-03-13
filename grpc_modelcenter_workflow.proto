@@ -328,7 +328,7 @@ service ModelCenterWorkflowService {
     /**
      * Set the metadata for a string or string array variable.
      */
-    rpc StringVariableSetMetadtata(SetStringVariableMetadataRequest) returns (SetMetadataResponse);
+    rpc StringVariableSetMetadata(SetStringVariableMetadataRequest) returns (SetMetadataResponse);
     
     /**
      * Get the state of the workflow's execution.

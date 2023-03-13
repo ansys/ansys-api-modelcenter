@@ -415,12 +415,12 @@ message DoubleVariableMetadata {
    /**
     * The lower bound.
     */
-   double lower_bound = 1;
+   optional double lower_bound = 1;
 
    /**
     * The upper bound.
     */
-   double upper_bound = 2;
+   optional double upper_bound = 2;
 
    /**
     * A list of enumerated allowed values for the variable.
@@ -459,12 +459,12 @@ message IntegerVariableMetadata {
    /**
     * The lower bound.
     */
-   int32 lower_bound = 1;
+   optional int32 lower_bound = 1;
 
    /**
     * The upper bound.
     */
-   int32 upper_bound = 2;
+   optional int32 upper_bound = 2;
 
    /**
     * A list of enumerated allowed values for the variable.

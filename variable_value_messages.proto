@@ -130,7 +130,7 @@ message IntegerValue {
    /**
     * The integer value.
     */
-   int64 value = 1;
+   int32 value = 1;
 }
 
 /**
@@ -145,7 +145,7 @@ message SetIntegerValueRequest {
    /**
     * The new value.
     */
-   int64 new_value = 2;
+   int32 new_value = 2;
 }
 
 /**

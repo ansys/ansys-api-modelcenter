@@ -155,7 +155,7 @@ message IntegerArrayValue {
    /**
     * All the values in the array, linearized.
     */
-   repeated int64 values = 1;
+   repeated int32 values = 1;
 
    /**
     * The actual dimensions of the array.

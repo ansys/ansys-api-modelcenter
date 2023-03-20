@@ -80,6 +80,16 @@ message AssemblyIconResponse {
 }
 
 /**
+ * Represents an assembly's index in its parent.
+ */
+message ElementIndexInParentResponse {
+	/**
+	 * The index.
+	 */
+	int64 index = 1;
+}
+
+/**
  * Represents a position on the analysis view.
  */
 message AnalysisViewPosition {
@@ -128,7 +138,7 @@ message AddAssemblyResponse{
  */
 message AddAssemblyVariableRequest {
    ElementName name = 1;
-   ElementId target_assembly = 2;
+   ElementId target_assembly = 2;	
    string variable_type = 3;
 }
 

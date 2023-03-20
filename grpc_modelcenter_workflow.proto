@@ -84,6 +84,21 @@ service ModelCenterWorkflowService {
    rpc AssemblyRename(RenameRequest) returns (RenameResponse);
    
    /**
+    * Set an assembly's icon.
+	*/
+   rpc AssemblySetIcon(AssemblyIconSetRequest) returns (AssemblyIconSetResponse);
+   
+   /**
+    * Get an assembly's icon.
+	*/
+    rpc AssemblyGetIcon(ElementId) returns (AssemblyIconResponse);
+
+   /**
+    * Get an element's index in its parent.
+	*/
+    rpc ElementGetIndexInParent(ElementId) returns (ElementIndexInParentResponse);
+   
+   /**
     * Get an assembly's position on the analysis view.
     */
    rpc AssemblyGetAnalysisViewPosition(ElementId) returns (AnalysisViewPosition);

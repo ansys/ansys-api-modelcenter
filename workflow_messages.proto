@@ -147,18 +147,23 @@ message WorkflowCreateComponentRequest {
    ElementId parent = 3;
 
    /**
+    * An optional string used by the component to initialize itself.
+    */
+   optional string init_str = 4;
+
+   /**
     * The position of the component.
     */
    oneof position {
       /**
        * Coordinates at which to place the new component.
        */
-      AnalysisViewPosition coords = 4;
+      AnalysisViewPosition coords = 5;
 
       /**
        * A component after which the new component should be placed.
        */
-      ElementId after_comp = 5;
+      ElementId after_comp = 6;
    }
 }
 

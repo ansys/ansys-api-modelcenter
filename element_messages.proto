@@ -61,7 +61,7 @@ message AssemblyIconSetRequest {
    /**
     * The new icon to use.
     */
-   int64 new_icon_id = 2;
+   optional int32 new_icon_id = 2;
 }
 
 /**
@@ -76,7 +76,7 @@ message AssemblyIconResponse {
    /**
     * The icon in use.
     */
-   int64 id = 1;
+   optional int32 id = 1;
 }
 
 /**

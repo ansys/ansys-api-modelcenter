@@ -191,7 +191,7 @@ message ComponentRunResponse {}
 /**
  * A request to invoke a particular method on a component.
  */
-message ComponentInvokeMethodRequest{
+message ComponentInvokeMethodRequest {
    /**
     * The target component.
     */
@@ -222,3 +222,177 @@ message ComponentReconnectResponse {}
  * A response to a request to download values for a component from MCRE.
  */
 message ComponentDownloadValuesResponse {}
+
+/**
+ * A response to a request to get if an if-component's branching condition is exclusive.
+ */
+message IfComponentGetExclusiveResponse {
+   /**
+    * Is the branching condition exclusive?
+    */
+   bool is_exclusive = 1;
+}
+
+/**
+ * A request to set if an if-component's branching condition is exclusive.
+ */
+message IfComponentSetExclusiveRequest {
+   /**
+    * The target component.
+    */
+   ElementId target = 1;
+
+   /**
+    * Is the branching condition exclusive?
+    */
+   bool is_exclusive = 2;
+}
+
+/**
+ * A response to a request to set if an if-component's branching condition is exclusive.
+ */
+message IfComponentSetExclusiveResponse {}
+
+/**
+ * A response to a request to get if an if-component has an else branch that is run if no conditions are met.
+ */
+message IfComponentGetRunLastBranchByDefaultResponse {
+   /**
+    * Is there a default branch?
+    */
+   bool has_default = 1;
+}
+
+/**
+ * A request to set if an if-component has an else branch that is run if no conditions are met.
+ */
+message IfComponentSetRunLastBranchByDefaultRequest {
+   /**
+    * The target component.
+    */
+   ElementId target = 1;
+
+
+   /**
+    * Is there a default branch?
+    */
+   bool has_default = 2;
+}
+
+/**
+ * A response to a request to set if an if-component has an else branch that is run if no conditions are met.
+ */
+message IfComponentSetRunLastBranchByDefaultResponse {}
+
+/**
+ * A response to a request to get the number of branches in an if-component.
+ */
+message IfComponentGetNumberOfBranchesResponse {
+   /**
+    * The number of branches in the component.
+    */
+   int64 num_branches = 1;
+}
+
+/**
+ * A request to get the branch condition of a branch in an if-component.
+ */
+message IfComponentGetBranchConditionRequest {
+   /**
+    * The target component.
+    */
+   ElementId target = 1;
+
+   /**
+    * The index of the branch.
+    */
+   int64 index = 2;
+}
+
+/**
+ * A response to a request to get the branch condition of a branch in an if-component.
+ */
+message IfComponentGetBranchConditionResponse {
+   /**
+    * The condition of the branch.
+    */
+   string condition = 1;
+}
+
+
+/**
+ * A request to set the branch condition of a branch in an if-component.
+ */
+message IfComponentSetBranchConditionRequest {
+   /**
+    * The target component.
+    */
+   ElementId target = 1;
+
+   /**
+    * The index of the branch.
+    */
+   int64 index = 2;
+
+   /**
+    * The condition of the branch.
+    */
+   string condition = 3;
+}
+
+/**
+ * A response to a request to set the branch condition of a branch in an if-component.
+ */
+message IfComponentSetBranchConditionResponse {}
+
+/**
+ * A request to get the branch name of a branch in an if-component.
+ */
+message IfComponentGetBranchNameRequest {
+   /**
+    * The target component.
+    */
+   ElementId target = 1;
+
+   /**
+    * The index of the branch.
+    */
+   int64 index = 2;
+}
+
+/**
+ * A response to a request to get the branch name of a branch in an if-component.
+ */
+message IfComponentGetBranchNameResponse {
+   /**
+    * The name of the branch.
+    */
+   string name = 1;
+}
+
+
+/**
+ * A request to set the branch name of a branch in an if-component.
+ */
+message IfComponentSetBranchNameRequest {
+   /**
+    * The target component.
+    */
+   ElementId target = 1;
+
+   /**
+    * The index of the branch.
+    */
+   int64 index = 2;
+
+   /**
+    * The name of the branch.
+    */
+   string name = 3;
+}
+
+/**
+ * A response to a request to set the branch name of a branch in an if-component.
+ */
+message IfComponentSetBranchNameResponse {}
+

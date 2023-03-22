@@ -502,7 +502,7 @@ service ModelCenterWorkflowService {
      * Get the value of a reference property.
      * No attempt is made to execute the workflow to ensure the value's validity.
      */
-    rpc ReferencePropertyGetValueAbsolute(ReferencePropertyIdentifier) returns (VariableValue);
+    rpc ReferencePropertyGetValueAbsolute(ReferencePropertyIdentifier) returns (VariableState);
     
     /**
      * Set the value of a reference property.

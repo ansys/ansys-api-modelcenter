@@ -360,7 +360,12 @@ service ModelCenterWorkflowService {
      * Set the value of a file array variable.
      */
     rpc FileVariableSetValue(SetFileValueRequest) returns (SetVariableValueResponse);
-    
+
+   /**
+    * Get the metadata for a boolean or boolean array variable.
+    */
+   rpc BooleanVariableGetMetadata(ElementId) returns (BooleanVariableMetadata);
+
     /**
      * Get the metadata for a double or double array variable.
      */
@@ -377,6 +382,16 @@ service ModelCenterWorkflowService {
     rpc StringVariableGetMetadata(ElementId) returns (StringVariableMetadata);
     
     /**
+     * Get the metadata for a file or file array variable.
+     */
+    rpc FileVariableGetMetadata(ElementId) returns (FileVariableMetadata);
+
+    /**
+     * Set the metadata for a boolean or boolean array variable.
+     */
+    rpc BooleanVariableSetMetadata(SetBooleanVariableMetadataRequest) returns (SetMetadataResponse);
+
+    /**
      * Set the metadata for a double or double array variable.
      */
     rpc DoubleVariableSetMetadata(SetDoubleVariableMetadataRequest) returns (SetMetadataResponse);
@@ -391,6 +406,11 @@ service ModelCenterWorkflowService {
      */
     rpc StringVariableSetMetadata(SetStringVariableMetadataRequest) returns (SetMetadataResponse);
     
+    /**
+     * Set the metadata for a file or file array variable.
+     */
+    rpc FileVariableSetMetadata(SetFileVariableMetadataRequest) returns (SetMetadataResponse);
+
     /**
      * Get the state of the workflow's execution.
      */

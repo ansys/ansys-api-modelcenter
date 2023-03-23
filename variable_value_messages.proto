@@ -399,7 +399,14 @@ message VariableTypeResponse {
  * A message combining a variable value and validity flag.
  */
 message VariableState {
+   /**
+    * The value of the variable.
+    */
    VariableValue value = 1;
+
+   /**
+    * The validity of the variable.
+    */
    bool is_valid = 2;
 }
 
@@ -409,24 +416,89 @@ message VariableState {
 message SetMetadataResponse {}
 
 /**
+ * The base metadata shared by all metadata types.
+ */
+message BaseVariableMetadata {
+   /**
+    * A description of the variable.
+    */
+   optional string description = 1;
+
+   /**
+    * Additional user-defined metadata.
+    */
+   map<string, VariableValue> custom_metadata = 2;
+}
+
+/**
+ * Metadata shared by all numeric types.
+ */
+message NumericVariableMetadata {
+   /**
+    * The units of the variable.
+    */
+   optional string units = 1;
+
+   /**
+    * The display format of the variable.
+    */
+   optional string display_format = 2;
+}
+
+/**
+ * The metadata for boolean or boolean array variable.
+ */
+message BooleanVariableMetadata {
+   /**
+    * The base metadata.
+    */
+   BaseVariableMetadata base_metadata = 1;
+}
+
+/**
+ * A request to set the metadata for a boolean variable.
+ */
+message SetBooleanVariableMetadataRequest {
+   /**
+    * The target variable.
+    */
+   ElementId target = 1;
+
+   /**
+    * The new metadata to use.
+    */
+   BooleanVariableMetadata new_metadata = 2;
+}
+
+/**
  * The metadata for a double or double array variable.
  */
 message DoubleVariableMetadata {
    /**
+    * The base metadata.
+    */
+   BaseVariableMetadata base_metadata = 1;
+
+   /**
+    * The numeric metadata.
+    */
+   NumericVariableMetadata numeric_metadata = 2;
+
+   /**
     * The lower bound.
     */
-   optional double lower_bound = 1;
+   optional double lower_bound = 3;
 
    /**
     * The upper bound.
     */
-   optional double upper_bound = 2;
+   optional double upper_bound = 4;
 
    /**
     * A list of enumerated allowed values for the variable.
     * If this list is empty or unset any value may be used.
     */
-   repeated double enum_values = 3;
+   repeated double enum_values = 5;
 
    /**
     * A list of string aliases for the enumerated values.
@@ -434,7 +506,7 @@ message DoubleVariableMetadata {
     * indicating that there are no aliases,
     * or it should have one entry for each enumerated value.
     */
-   repeated string enum_aliases = 4;
+   repeated string enum_aliases = 6;
 }
 
 /**
@@ -457,20 +529,30 @@ message SetDoubleVariableMetadataRequest {
  */
 message IntegerVariableMetadata {
    /**
+    * The base metadata.
+    */
+   BaseVariableMetadata base_metadata = 1;
+
+   /**
+    * The numeric metadata.
+    */
+   NumericVariableMetadata numeric_metadata = 2;
+
+   /**
     * The lower bound.
     */
-   optional int32 lower_bound = 1;
+   optional int32 lower_bound = 3;
 
    /**
     * The upper bound.
     */
-   optional int32 upper_bound = 2;
+   optional int32 upper_bound = 4;
 
    /**
     * A list of enumerated allowed values for the variable.
     * If this list is empty or unset any value may be used.
     */
-   repeated int32 enum_values = 3;
+   repeated int32 enum_values = 5;
 
    /**
     * A list of string aliases for the enumerated values.
@@ -478,7 +560,7 @@ message IntegerVariableMetadata {
     * indicating that there are no aliases,
     * or it should have one entry for each enumerated value.
     */
-   repeated string enum_aliases = 4;
+   repeated string enum_aliases = 6;
 }
 
 /**
@@ -501,10 +583,15 @@ message SetIntegerVariableMetadataRequest {
  */
 message StringVariableMetadata {
    /**
+    * The base metadata.
+    */
+   BaseVariableMetadata base_metadata = 1;
+
+   /**
     * A list of enumerated allowed values for the variable.
     * If this list is empty or unset any value may be used.
     */
-   repeated string enum_values = 1;
+   repeated string enum_values = 2;
 
    /**
     * A list of string aliases for the enumerated values.
@@ -512,7 +599,7 @@ message StringVariableMetadata {
     * indicating that there are no aliases,
     * or it should have one entry for each enumerated value.
     */
-   repeated string enum_aliases = 2;
+   repeated string enum_aliases = 3;
 }
 
 /**
@@ -528,6 +615,31 @@ message SetStringVariableMetadataRequest {
     * The new metadata to use.
     */
    StringVariableMetadata new_metadata = 2;
+}
+
+/**
+ * Metadata for a file or file array variable.
+ */
+message FileVariableMetadata {
+   /**
+    * The base metadata.
+    */
+   BaseVariableMetadata base_metadata = 1;
+}
+
+/**
+ * A request to set the metadata for a file variable.
+ */
+message SetFileVariableMetadataRequest {
+   /**
+    * The target variable.
+    */
+   ElementId target = 1;
+
+   /**
+    * The new metadata to use.
+    */
+   FileVariableMetadata new_metadata = 2;
 }
 
 /**

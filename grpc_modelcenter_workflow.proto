@@ -360,6 +360,11 @@ service ModelCenterWorkflowService {
      * Set the value of a file array variable.
      */
     rpc FileVariableSetValue(SetFileValueRequest) returns (SetVariableValueResponse);
+	
+	/**
+	 * Get whether or not a variable is an input to its component and in the workflow.
+	 */
+	rpc VariableGetIsInput(ElementId) returns (VariableIsInputResponse);
 
    /**
     * Get the metadata for a boolean or boolean array variable.

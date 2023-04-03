@@ -396,3 +396,11 @@ message IfComponentSetBranchNameRequest {
  */
 message IfComponentSetBranchNameResponse {}
 
+/**
+ * Get whether the variable is an input on its component and in its workflow overall.
+ */
+message VariableIsInputResponse
+{
+	bool is_input_in_component = 1;
+	bool is_input_in_workflow = 2;
+}

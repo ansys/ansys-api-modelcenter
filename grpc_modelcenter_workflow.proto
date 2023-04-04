@@ -430,6 +430,11 @@ service ModelCenterWorkflowService {
      * Start executing the workflow, and allow it to run asynchronously.
      */
     rpc WorkflowStartRun(WorkflowRunRequest) returns (WorkflowStartRunResponse);
+
+    /**
+     * Stop executing the workflow.
+     */
+    rpc WorkflowHalt(WorkflowHaltRequest) returns (WorkflowHaltResponse);
     
     /**
      * Get the root element of the workflow.

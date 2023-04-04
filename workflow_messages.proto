@@ -101,7 +101,17 @@ message WorkflowRunResponse {
 }
 
 /**
- * A response to a requst to run a workflow asynchronously.
+ * A request to halt the workflow.
+ */
+message WorkflowHaltRequest {}
+
+/**
+ * A response to a request to halt the workflow.
+ */
+message WorkflowHaltResponse {}
+
+/**
+ * A response to a request to run a workflow asynchronously.
  */
 message WorkflowStartRunResponse {
    string return = 1;

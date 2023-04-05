@@ -21,11 +21,6 @@ message ElementId {
    /**
     * An identifying string for this element.
     */
-   // TODO: For now, we're using the ModelCenter path, but this has a couple of issues:
-   // ARIA namespaces some things separately, such as assemblies and variables,
-   // so you can make an assembly with the same full MC name as a variable,
-   // and the API allows for renames.
-   // We'll need to revisit this sooner than later.
    string id_string = 1;
 }
 
@@ -37,6 +32,43 @@ message ElementIdCollection {
     * The IDs of interest.
     */
    repeated ElementId ids = 1;
+}
+
+/*
+ * The types of elements that an ElementId can reference.
+ */
+enum ElementType {
+   /*
+    * The element type is unknown.
+    * Typically only used when the element does not exist.
+    */
+   ELEMTYPE_UNKNOWN = 0;
+
+   /*
+    * The element is an assembly.
+    */
+   ELEMTYPE_ASSEMBLY = 1;
+
+   /*
+    * The element is a component.
+    * Note there are special component types that have their own ElementType entry.
+    */
+   ELEMTYPE_COMPONENT = 2;
+
+   /*
+    * The element is a group.
+    */
+   ELEMTYPE_GROUP = 3;
+
+   /*
+    * The element is a variable.
+    */
+   ELEMTYPE_VARIABLE = 4;
+
+   /*
+    * The element is an if component.
+    */
+   ELEMTYPE_IFCOMPONENT = 5;
 }
 
 /**

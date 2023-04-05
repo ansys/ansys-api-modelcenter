@@ -493,19 +493,9 @@ service ModelCenterWorkflowService {
     rpc WorkflowGetLinksRequest(WorkflowId) returns (WorkflowGetLinksResponse);
     
     /**
-     * Get a component or assembly's ID by name.
+     * Get a component or assembly's ID and type by name.
      */
-    rpc WorkflowGetComponentOrAssemblyByName(ElementName) returns (ElementId);
-    
-    /**
-     * Get a variable by its name.
-     */
-    rpc WorkflowGetVariableByName(ElementName) returns (ElementId);
-    
-    /**
-     * Get a group in the workflow by its name.
-     */
-    rpc WorkflowGetGroupByName(ElementName) returns (ElementId);
+    rpc WorkflowGetElementByName(ElementName) returns (WorkflowGetElementByNameResponse);
     
     /**
      * Get the reference of a referenced variable.

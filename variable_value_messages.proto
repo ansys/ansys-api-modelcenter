@@ -818,3 +818,28 @@ message ReferencePropertyGetTypeResponse {
     */
    VariableType type = 1;
 }
+
+/**
+ * An identifier and a type for a variable.
+ */
+message VariableInfo {
+	/**
+	 * The identifier of the variable.
+	 */
+	ElementId id = 1;
+	
+	/**
+	 * The value type the variable stores.
+	 */
+	VariableType value_type = 2;
+}
+
+/**
+ * A collection of variable information.
+ */
+message VariableInfoCollection {
+	/**
+	 * Information on the requested variables.
+	 */
+	repeated VariableInfo variables = 1;
+}

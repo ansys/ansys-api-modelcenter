@@ -41,7 +41,7 @@ service ModelCenterWorkflowService {
    /**
     * Get the variables available on an assembly.
     */
-   rpc RegistryGetVariables(ElementId) returns (ElementIdCollection);
+   rpc RegistryGetVariables(ElementId) returns (VariableInfoCollection);
    
    /**
     * Get the groups available on an assembly.

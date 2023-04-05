@@ -133,6 +133,12 @@ service ModelCenterWorkflowService {
      */
     rpc ComponentDownloadValues(ElementId) returns (ComponentDownloadValuesResponse);
 
+    /*
+     * Get if a component is connected to its source.
+     * A component may be disconnected from its source if it fails to connect on load, and 
+     * OnConnectionModeError is set to IGNORE.
+     */
+    rpc ComponentIsConnected(ElementId) returns (ComponentIsConnectedResponse);
 
     /**
      * Get whether the branching condition is exclusive.

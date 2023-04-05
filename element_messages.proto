@@ -255,6 +255,16 @@ message ComponentReconnectResponse {}
  */
 message ComponentDownloadValuesResponse {}
 
+/*
+ * A response to a request to get if a component is connected to its source.
+ */
+message ComponentIsConnectedResponse {
+   /*
+    * Is the component connected to its source?
+    */
+   bool is_connected = 1;
+}
+
 /**
  * A response to a request to get if an if-component's branching condition is exclusive.
  */

@@ -52,6 +52,11 @@ service GRPCModelCenterService {
     rpc EngineGetPreference(GetPreferenceRequest) returns (GetPreferenceResponse);
     
     /**
+     * Set the value of a preference.
+     */
+    rpc EngineSetPreference(SetPreferenceRequest) returns (SetPreferenceResponse);
+
+    /**
      * Get the unit categories available.
      */
     rpc EngineGetUnitCategories(GetUnitCategoriesRequest) returns (GetUnitCategoriesResponse);

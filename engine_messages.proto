@@ -160,13 +160,38 @@ message GetPreferenceResponse {
    /**
     * The requested preference value.
     */
-   oneof value{
+   oneof value {
       bool bool_value = 1;
       int64 int_value = 2;
       double double_value = 3;
       string str_value = 4;
-      }
+   }
 }
+
+/*
+ * A request to set a preference value.
+ */
+message SetPreferenceRequest {
+   /**
+    * The name of the preference.
+    */
+   string preference_name = 1;
+
+   /**
+    * The preference value.
+    */
+   oneof value {
+      bool bool_value = 2;
+      int64 int_value = 3;
+      double double_value = 4;
+      string str_value = 5;
+   }
+}
+
+/*
+ * A response to a request to set a preference value.
+ */
+message SetPreferenceResponse {}
 
 /**
  * A request to get unit categories.

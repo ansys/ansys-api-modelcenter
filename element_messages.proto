@@ -24,6 +24,16 @@ message ElementId {
    string id_string = 1;
 }
 
+/*
+ * Represents either an ElementName or ElementId, for calls that can handle both.
+ */
+message ElementIdOrName {
+   oneof target {
+      ElementId target_id = 1;
+      ElementName target_name = 2;
+   }
+}
+
 /**
  * Represents a collection of element IDs.
  */
@@ -198,7 +208,7 @@ message RenameResponse {}
  * Represents a request to delete an assembly variable.
  */
 message DeleteAssemblyVariableRequest {
-   ElementId target =1;
+   ElementIdOrName target = 1;
 }
 
 /**

@@ -193,7 +193,7 @@ service ModelCenterWorkflowService {
     /**
      * Get the state of a variable.
      */
-    rpc VariableGetState(ElementId) returns (VariableState);
+    rpc VariableGetState(ElementIdOrName) returns (VariableState);
     
     /**
      * Get the value of a double array variable.

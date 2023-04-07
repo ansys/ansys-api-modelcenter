@@ -832,6 +832,11 @@ message VariableInfo {
 	 * The value type the variable stores.
 	 */
 	VariableType value_type = 2;
+	
+	/**
+	 * The variable's short name.
+	 */
+	string short_name = 3;
 }
 
 /**

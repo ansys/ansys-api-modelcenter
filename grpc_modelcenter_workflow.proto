@@ -21,7 +21,7 @@ service ModelCenterWorkflowService {
    /**
     * Get the parent element of an element.
     */
-   rpc ElementGetParentElement(ElementId) returns (ElementId);
+   rpc ElementGetParentElement(ElementId) returns (ElementInfo);
    
    /**
     * Get the custom metadata properties available for an element.
@@ -54,14 +54,9 @@ service ModelCenterWorkflowService {
    rpc RegistryGetControlType(ElementId) returns (AssemblyType);
    
    /**
-    * Get the components of an assembly.
-    */
-   rpc AssemblyGetComponents(ElementId) returns (ElementIdCollection);
-   
-   /**
-    * Get the child assemblies of an assembly.
-    */
-   rpc RegistryGetAssemblies(ElementId) returns (ElementIdCollection);
+    * Get the child assemblies and components of an assembly.
+	*/
+   rpc AssemblyGetAssembliesAndComponents(ElementId) returns (ElementInfoCollection);
    
    /**
     * Add a child assembly.
@@ -501,7 +496,7 @@ service ModelCenterWorkflowService {
     /**
      * Get a component or assembly's ID and type by name.
      */
-    rpc WorkflowGetElementByName(ElementName) returns (WorkflowGetElementByNameResponse);
+    rpc WorkflowGetElementByName(ElementName) returns (ElementInfo);
     
     /**
      * Get the reference of a referenced variable.

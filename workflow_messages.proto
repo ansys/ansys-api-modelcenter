@@ -323,7 +323,10 @@ message WorkflowGetLinksResponse {
    repeated WorkflowLinkInfo links = 1;
 }
 
-message WorkflowGetElementByNameResponse {
+/**
+ * Information on an element.
+ */
+message ElementInfo {
    /*
     * The ID of the element.
     */
@@ -338,5 +341,12 @@ message WorkflowGetElementByNameResponse {
     * If the element is a variable, it's variable type.
     */
    optional VariableType var_type = 3;
+}
+
+/**
+ * Information about a collection of elements.
+ */
+message ElementInfoCollection {
+	repeated ElementInfo elements = 1;
 }
 

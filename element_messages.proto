@@ -226,6 +226,13 @@ message ComponentSourceResponse {
 }
 
 /**
+ * A response to a request for a component PACZ url.
+ */
+message ComponentPaczUrlResponse {
+	optional string pacz_url = 1;
+}
+
+/**
  * A response to a request to run an individual, specific component.
  */
 message ComponentRunResponse {}

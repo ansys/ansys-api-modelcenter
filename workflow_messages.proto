@@ -76,6 +76,7 @@ message WorkflowRunRequest {
 
    /**
     * Input values to be set before the run.
+	* The keys in the map are variable names.
     */
    map<string, VariableState> inputs = 2;
 
@@ -87,7 +88,12 @@ message WorkflowRunRequest {
    /**
     * The workflow elements to validate.
     */
-   repeated string validation_ids = 4;
+   repeated string validation_names = 4;
+
+   /**
+    * The names of the workflow elements to return when the run is complete.
+	*/
+   repeated string collection_names = 5;
 }
 
 /**

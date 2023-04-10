@@ -104,6 +104,11 @@ service ModelCenterWorkflowService {
    rpc ComponentGetSource(ElementId) returns (ComponentSourceResponse);
    
    /**
+    * Get a component's pacz URL.
+    */
+   rpc ComponentGetPaczUrl(ElementId) returns (ComponentPaczUrlResponse);
+
+   /**
     * Run the specified component.
     */
    rpc ComponentRun(ElementId) returns (ComponentRunResponse);

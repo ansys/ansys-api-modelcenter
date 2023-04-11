@@ -15,11 +15,13 @@ service ModelCenterWorkflowService {
    
    /**
     * Get an element's full name.
+
     */
    rpc ElementGetFullName(ElementId) returns (ElementName);
    
    /**
     * Get the parent element of an element.
+
     */
    rpc ElementGetParentElement(ElementId) returns (ElementInfo);
    
@@ -30,11 +32,17 @@ service ModelCenterWorkflowService {
    
    /**
     * Set the value of a custom metadata property.
+	*
+	* NOT_FOUND if the specified element does not exist.
+	* INVALID_ARGUMENT if the property value is missing.
     */
    rpc PropertyOwnerSetPropertyValue(MetadataSetValueRequest) returns (MetadataSetValueResponse);
    
    /**
     * Get the value of a custom metadata property.
+	*
+	* NOT_FOUND if the specified element does not exist.
+	* INVALID_ARGUMENT if the specified property doesn't exist
     */
    rpc PropertyOwnerGetPropertyValue(MetadataGetValueRequest) returns (VariableValue);
    
@@ -60,21 +68,36 @@ service ModelCenterWorkflowService {
    
    /**
     * Add a child assembly.
+	*
+	* NOT_FOUND if the specified parent assembly can't be found.
+	* INVALID_ARGUMENT if the name / position / type are invalid.
+	* ALREADY_EXISTS if there is a name collision
     */
    rpc AssemblyAddAssembly(AddAssemblyRequest) returns (AddAssemblyResponse);
    
    /**
     * Add a variable to an assembly.
+	*
+	* NOT_FOUND if the specified parent assembly can't be found.
+	* INVALID_ARGUMENT if the name / position / type are invalid.
+	* ALREADY_EXISTS if theere is a name collision
     */
    rpc AssemblyAddVariable(AddAssemblyVariableRequest) returns (AddAssemblyVariableResponse);
    
    /**
     * Delete a variable on an assembly.
+	*
+	* NOT_FOUND if the specified parent assembly can't be found.
+	* No error should be raised if the specified variable is already nonexistent (see response).
     */
    rpc AssemblyDeleteVariable(DeleteAssemblyVariableRequest) returns (DeleteAssemblyVariableResponse);
    
    /**
     * Rename an assembly.
+	*
+	* NOT_FOUND if the specified parent assembly can't be found.
+	* INVALID_ARGUMENT if the new name is invalid.
+	* ALREADY_EXISTS if there is a name collision.
     */
    rpc AssemblyRename(RenameRequest) returns (RenameResponse);
    
@@ -115,6 +138,10 @@ service ModelCenterWorkflowService {
    
     /**
      * Invoke a method on the specified component.
+	 *
+	 * NOT_FOUND if the target component doesn't exist
+	 * INVALID_ARGUMENT if the target method can't be found
+	 * FAILED_PRECONDITION if the method run fails
      */
     rpc ComponentInvokeMethod(ComponentInvokeMethodRequest) returns (ComponentInvokeMethodResponse);
     
@@ -125,11 +152,15 @@ service ModelCenterWorkflowService {
     
     /**
      * Reconnect or reload the specified component.
+	 *
+	 * FAILED_PRECONDITION if the reconnect fails
      */
     rpc ComponentReconnect(ElementId) returns (ComponentReconnectResponse);
     
     /**
      * Download the component's variable values if it is a ModelCenter Remote Execution component.
+	 *
+	 * FAILED_PRECONDITION if the download fails
      */
     rpc ComponentDownloadValues(ElementId) returns (ComponentDownloadValuesResponse);
 
@@ -195,6 +226,7 @@ service ModelCenterWorkflowService {
      */
     rpc VariableGetState(ElementIdOrName) returns (VariableState);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a double array variable.
      */
@@ -202,9 +234,14 @@ service ModelCenterWorkflowService {
     
     /**
      * Set the value of a double array variable.
+	 *
+	 * NOT_FOUND if target variable cannot be located
+	 * INVALID_ARGUMENT if target variable is not a double array
+	 * OUT_OF_RANGE if bounds or enum constraints are violated
      */
     rpc DoubleArraySetValue(SetDoubleArrayValueRequest) returns (SetVariableValueResponse);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a file array variable.
      * If necessary, the workflow will be run such that the variable value is valid
@@ -212,6 +249,7 @@ service ModelCenterWorkflowService {
      */
     rpc FileArrayGetValue(ElementId) returns (FileArrayValue);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a file array variable.
      * No attempt is made to ensure that the workflow is run to validate the value.
@@ -223,6 +261,7 @@ service ModelCenterWorkflowService {
      */
     rpc FileArraySetValue(SetFileArrayValueRequest) returns (SetVariableValueResponse);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a integer array variable.
      * If necessary, the workflow will be run such that the variable value is valid
@@ -230,17 +269,25 @@ service ModelCenterWorkflowService {
      */
     rpc IntegerArrayGetValue(ElementId) returns (IntegerArrayValue);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a integer array variable.
      * No attempt is made to ensure that the workflow is run to validate the value.
+	 *
+	 * NOT_FOUND if target variable cannot be located
      */
     rpc IntegerArrayGetValueAbsolute(ElementId) returns (IntegerArrayValue);
-    
+	
     /**
      * Set the value of a integer array variable.
+	 *
+	 * NOT_FOUND if the target variable cannot be located
+	 * INVALID_ARGUEMNT if target variable is not the right type
+	 * OUT_OF_RANGE if bounds or enum constraints are violated
      */
     rpc IntegerArraySetValue(SetIntegerArrayValueRequest) returns (SetVariableValueResponse);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a boolean array variable.
      * If necessary, the workflow will be run such that the variable value is valid
@@ -248,6 +295,7 @@ service ModelCenterWorkflowService {
      */
     rpc BooleanArrayGetValue(ElementId) returns (BooleanArrayValue);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a boolean array variable.
      * No attempt is made to ensure that the workflow is run to validate the value.
@@ -256,9 +304,14 @@ service ModelCenterWorkflowService {
     
     /**
      * Set the value of a boolean array variable.
+	 *
+	 * NOT_FOUND if the target variable cannot be located
+	 * INVALID_ARGUEMNT if target variable is not the right type
+	 * OUT_OF_RANGE if bounds or enum constraints are violated
      */
     rpc BooleanArraySetValue(SetBooleanArrayValueRequest) returns (SetVariableValueResponse);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a string array variable.
      * If necessary, the workflow will be run such that the variable value is valid
@@ -266,6 +319,7 @@ service ModelCenterWorkflowService {
      */
     rpc StringArrayGetValue(ElementId) returns (StringArrayValue);
    
+    // TODO: May be able to delete
     /**
      * Get the value of a string array variable.
      * No attempt is made to ensure that the workflow is run to validate the value.
@@ -274,9 +328,14 @@ service ModelCenterWorkflowService {
    
     /**
      * Set the value of a string array variable.
+	 *
+	 * NOT_FOUND if the target variable cannot be located
+	 * INVALID_ARGUEMNT if target variable is not the right type
+	 * OUT_OF_RANGE if bounds or enum constraints are violated
      */
     rpc StringArraySetValue(SetStringArrayValueRequest) returns (SetVariableValueResponse);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a double variable.
      * If necessary, the workflow will be run such that the variable value is valid
@@ -284,6 +343,7 @@ service ModelCenterWorkflowService {
      */
     rpc DoubleVariableGetValue(ElementId) returns (DoubleValue);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a double variable.
      * No attempt is made to ensure that the workflow is run to validate the value.
@@ -292,9 +352,14 @@ service ModelCenterWorkflowService {
     
     /**
      * Set the value of a double array variable.
+	 *
+	 * NOT_FOUND if the target variable cannot be located
+	 * INVALID_ARGUEMNT if target variable is not the right type
+	 * OUT_OF_RANGE if bounds or enum constraints are violated
      */
     rpc DoubleVariableSetValue(SetDoubleValueRequest) returns (SetVariableValueResponse);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a integer variable.
      * If necessary, the workflow will be run such that the variable value is valid
@@ -302,6 +367,7 @@ service ModelCenterWorkflowService {
      */
     rpc IntegerVariableGetValue(ElementId) returns (IntegerValue);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a integer variable.
      * No attempt is made to ensure that the workflow is run to validate the value.
@@ -310,9 +376,14 @@ service ModelCenterWorkflowService {
     
     /**
      * Set the value of a integer array variable.
+	 *
+	 * NOT_FOUND if the target variable cannot be located
+	 * INVALID_ARGUEMNT if target variable is not the right type
+	 * OUT_OF_RANGE if bounds or enum constraints are violated
      */
     rpc IntegerVariableSetValue(SetIntegerValueRequest) returns (SetVariableValueResponse);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a boolean variable.
      * If necessary, the workflow will be run such that the variable value is valid
@@ -320,6 +391,7 @@ service ModelCenterWorkflowService {
      */
     rpc BooleanVariableGetValue(ElementId) returns (BooleanValue);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a boolean variable.
      * No attempt is made to ensure that the workflow is run to validate the value.
@@ -328,9 +400,14 @@ service ModelCenterWorkflowService {
     
     /**
      * Set the value of a boolean array variable.
+	 *
+	 * NOT_FOUND if the target variable cannot be located
+	 * INVALID_ARGUEMNT if target variable is not the right type
+	 * OUT_OF_RANGE if bounds or enum constraints are violated
      */
     rpc BooleanVariableSetValue(SetBooleanValueRequest) returns (SetVariableValueResponse);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a string variable.
      * If necessary, the workflow will be run such that the variable value is valid
@@ -338,6 +415,7 @@ service ModelCenterWorkflowService {
      */
     rpc StringVariableGetValue(ElementId) returns (StringValue);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a string variable.
      * No attempt is made to ensure that the workflow is run to validate the value.
@@ -346,9 +424,14 @@ service ModelCenterWorkflowService {
     
     /**
      * Set the value of a string array variable.
+	 *
+	 * NOT_FOUND if the target variable cannot be located
+	 * INVALID_ARGUEMNT if target variable is not the right type
+	 * OUT_OF_RANGE if bounds or enum constraints are violated
      */
     rpc StringVariableSetValue(SetStringValueRequest) returns (SetVariableValueResponse);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a file variable.
      * If necessary, the workflow will be run such that the variable value is valid
@@ -356,6 +439,7 @@ service ModelCenterWorkflowService {
      */
     rpc FileVariableGetValue(ElementId) returns (FileValue);
     
+	// TODO: May be able to delete
     /**
      * Get the value of a file variable.
      * No attempt is made to ensure that the workflow is run to validate the value.
@@ -364,6 +448,10 @@ service ModelCenterWorkflowService {
     
     /**
      * Set the value of a file array variable.
+	 * 
+	 * NOT_FOUND if the target variable cannot be located
+	 * INVALID_ARGUMENT if target variable is not the right type
+	 * OUT_OF_RANGE if bounds or enum constraints are violated
      */
     rpc FileVariableSetValue(SetFileValueRequest) returns (SetVariableValueResponse);
 	
@@ -372,10 +460,10 @@ service ModelCenterWorkflowService {
 	 */
 	rpc VariableGetIsInput(ElementId) returns (VariableIsInputResponse);
 
-   /**
-    * Get the metadata for a boolean or boolean array variable.
-    */
-   rpc BooleanVariableGetMetadata(ElementId) returns (BooleanVariableMetadata);
+    /**
+     * Get the metadata for a boolean or boolean array variable.
+     */
+    rpc BooleanVariableGetMetadata(ElementId) returns (BooleanVariableMetadata);
 
     /**
      * Get the metadata for a double or double array variable.
@@ -399,26 +487,41 @@ service ModelCenterWorkflowService {
 
     /**
      * Set the metadata for a boolean or boolean array variable.
+	 *
+	 * NOT_FOUND if the target element can't be found
+	 * INVALID_ARGUMENT if the target element is not a boolean or boolean array
      */
     rpc BooleanVariableSetMetadata(SetBooleanVariableMetadataRequest) returns (SetMetadataResponse);
 
     /**
      * Set the metadata for a double or double array variable.
+	 *
+	 * NOT_FOUND if the target element can't be found
+	 * INVALID_ARGUMENT if the target element is not a double or double array
      */
     rpc DoubleVariableSetMetadata(SetDoubleVariableMetadataRequest) returns (SetMetadataResponse);
     
     /**
      * Set the metadata for an integer or integer array variable.
+	 *
+	 * NOT_FOUND if the target element can't be found
+	 * INVALID_ARGUMENT if the target element is not an integer or integer array
      */
     rpc IntegerVariableSetMetadata(SetIntegerVariableMetadataRequest) returns (SetMetadataResponse);
     
     /**
      * Set the metadata for a string or string array variable.
+	 *
+	 * NOT_FOUND if the target element can't be found
+	 * INVALID_ARGUMENT if the target element is not a string or string array
      */
     rpc StringVariableSetMetadata(SetStringVariableMetadataRequest) returns (SetMetadataResponse);
     
     /**
      * Set the metadata for a file or file array variable.
+	 *
+	 * NOT_FOUND if the target element can't be found
+	 * INVALID_ARGUMENT if the target element is not a file or file array
      */
     rpc FileVariableSetMetadata(SetFileVariableMetadataRequest) returns (SetMetadataResponse);
 
@@ -429,11 +532,23 @@ service ModelCenterWorkflowService {
     
     /**
      * Execute the workflow.
+	 *
+	 * NOT_FOUND if the target workflow doesn't exist
+	 * INVALID_ARGUMENT if there are:
+	 *      invalid names in the request
+	 *      mismatched types for values in the request
+	 * OUT_OF_RANGE if input values violate enum, bounds
      */
     rpc WorkflowRun(WorkflowRunRequest) returns (WorkflowRunResponse);
     
     /**
      * Start executing the workflow, and allow it to run asynchronously.
+	 *
+	* NOT_FOUND if the target workflow doesn't exist
+	 * INVALID_ARGUMENT if there are:
+	 *      invalid names in the request
+	 *      mismatched types for values in the request
+	 * OUT_OF_RANGE if input values violate enum, bounds
      */
     rpc WorkflowStartRun(WorkflowRunRequest) returns (WorkflowStartRunResponse);
 
@@ -454,11 +569,19 @@ service ModelCenterWorkflowService {
     
     /**
      * Create a component within the workflow.
+	 * 
+	 * NOT_FOUND if the parent assembly isn't found
+	 * INVALID_ARGUMENT if:
+	 *     connection fails, name is invalid
+	 * ALREADY_EXISTS if:
+	 *      name is invalid
      */
     rpc WorkflowCreateComponent(WorkflowCreateComponentRequest) returns (WorkflowCreateComponentResponse);
     
     /**
      * Create a link within the workflow.
+	 *
+	 * INVALID_ARGUMENT if: LHS or RHS are not valid
      */
     rpc WorkflowCreateLink(WorkflowCreateLinkRequest) returns (WorkflowCreateLinkResponse);
     
@@ -469,27 +592,37 @@ service ModelCenterWorkflowService {
     
     /**
      * Save the workflow to a new location.
+	 *
+	 * INVALID_ARGUMENT if: new path is not valid
      */
     rpc WorkflowSaveAs(WorkflowSaveAsRequest) returns (WorkflowSaveResponse);
     
     /**
      * Close the workflow.
+	 * 
+	 * NOT_FOUND if specified workflow does not exist
      */
     rpc WorkflowClose(WorkflowId) returns (WorkflowCloseResponse);
     
     /**
      * Remove a component from the workflow.
+	 *
+	 * Does not error if the specified component has already been removed.
      */
     rpc WorkflowRemoveComponent(WorkflowRemoveComponentRequest) returns (WorkflowRemoveComponentResponse);
     
     /**
      * Break a link within the workflow.
+	 *
+	 * NOT_FOUND if the lhs isn't valid
      */
     rpc WorkflowBreakLink(WorkflowBreakLinkRequest) returns (WorkflowBreakLinkResponse);
     
     /**
      * Auto-link two components within the workflow.
      * The created links are returned.
+	 *
+	 * INVALID_ARGUMENT if either component can't be located.
      */
     rpc WorkflowAutoLink(WorkflowAutoLinkRequest) returns (WorkflowAutoLinkResponse);
     

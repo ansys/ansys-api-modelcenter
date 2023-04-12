@@ -371,3 +371,21 @@ message ElementInfoCollection {
 	repeated ElementInfo elements = 1;
 }
 
+
+/*
+ * Represents either an ElementName or ElementId, for calls that can handle both.
+ */
+message ElementIdOrName {
+   oneof target {
+      ElementId target_id = 1;
+      NamedElementInWorkflow target_name = 2;
+   }
+}
+
+
+/**
+ * Represents a request to delete an assembly variable.
+ */
+message DeleteAssemblyVariableRequest {
+   ElementIdOrName target = 1;
+}

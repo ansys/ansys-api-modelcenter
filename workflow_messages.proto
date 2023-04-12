@@ -66,6 +66,21 @@ message WorkflowId {
 }
 
 /**
+ * An element ID combined with a name.
+ */
+message NamedElementInWorkflow {
+	/**
+	 * The workflow's ID.
+	 */
+	WorkflowId workflow = 1;
+	
+	/**
+	 * The name of the element.
+	 */
+	ElementName element_full_name = 2;
+}
+
+/**
  * A request to run a workflow.
  */
 message WorkflowRunRequest {

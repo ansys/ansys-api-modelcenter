@@ -634,7 +634,7 @@ service ModelCenterWorkflowService {
     /**
      * Get a component or assembly's ID and type by name.
      */
-    rpc WorkflowGetElementByName(ElementName) returns (ElementInfo);
+    rpc WorkflowGetElementByName(NamedElementInWorkflow) returns (ElementInfo);
     
     /**
      * Get the reference of a referenced variable.

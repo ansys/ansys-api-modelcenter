@@ -712,4 +712,9 @@ service ModelCenterWorkflowService {
      * Get the type of a reference property.
      */
     rpc ReferencePropertyGetType(ReferencePropertyIdentifier) returns (ReferencePropertyGetTypeResponse);
+	
+	/**
+	 * Move a component or assembly under a new parent.
+	 */
+	rpc WorkflowMoveComponent(MoveComponentRequest) returns (ElementIndexInParentResponse);
 }

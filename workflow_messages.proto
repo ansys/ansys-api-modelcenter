@@ -389,3 +389,25 @@ message ElementIdOrName {
 message DeleteAssemblyVariableRequest {
    ElementIdOrName target = 1;
 }
+
+/**
+ * Represents a request to move a component.
+ */
+message MoveComponentRequest {
+	/**
+	 * The component to move.
+	 */
+	ElementId target = 1;
+	
+	/**
+	 * The new parent for the component. This should be an assembly.
+	 */
+	ElementId new_parent = 2;
+	
+	/**
+	 * The new index in the parent. Pass -1 to add the component at the end.
+	 * If the index is larger than the number of components in the element, 
+	 * it will be placed at the end.
+	 */
+	int32 index_in_parent = 3;
+}

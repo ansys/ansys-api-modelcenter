@@ -253,7 +253,7 @@ message GetServerInfoResponse {
    Version version = 1;
 
    /**
-    * True if the build is a release build, false for other typ.es
+    * True if the build is a release build, false for other types.
     */
    bool is_release = 2;
 

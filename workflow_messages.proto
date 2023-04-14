@@ -96,7 +96,7 @@ message WorkflowRunRequest {
    map<string, VariableState> inputs = 2;
 
    /**
-    * TODO: Document
+    * If true, reset the validity of all elements in the workflow before running.
     */
    bool reset = 3;
 

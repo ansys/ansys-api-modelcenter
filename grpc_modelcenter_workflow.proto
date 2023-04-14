@@ -249,13 +249,6 @@ service ModelCenterWorkflowService {
      */
     rpc FileArrayGetValue(ElementId) returns (FileArrayValue);
     
-	// TODO: May be able to delete
-    /**
-     * Get the value of a file array variable.
-     * No attempt is made to ensure that the workflow is run to validate the value.
-     */
-    rpc FileArrayGetValueAbsolute(ElementId) returns (FileArrayValue);
-    
     /**
      * Set the value of a file array variable.
      */
@@ -268,15 +261,6 @@ service ModelCenterWorkflowService {
      * before the value is returned.
      */
     rpc IntegerArrayGetValue(ElementId) returns (IntegerArrayValue);
-    
-	// TODO: May be able to delete
-    /**
-     * Get the value of a integer array variable.
-     * No attempt is made to ensure that the workflow is run to validate the value.
-	 *
-	 * NOT_FOUND if target variable cannot be located
-     */
-    rpc IntegerArrayGetValueAbsolute(ElementId) returns (IntegerArrayValue);
 	
     /**
      * Set the value of a integer array variable.
@@ -295,13 +279,6 @@ service ModelCenterWorkflowService {
      */
     rpc BooleanArrayGetValue(ElementId) returns (BooleanArrayValue);
     
-	// TODO: May be able to delete
-    /**
-     * Get the value of a boolean array variable.
-     * No attempt is made to ensure that the workflow is run to validate the value.
-     */
-    rpc BooleanArrayGetValueAbsolute(ElementId) returns (BooleanArrayValue);
-    
     /**
      * Set the value of a boolean array variable.
 	 *
@@ -318,13 +295,6 @@ service ModelCenterWorkflowService {
      * before the value is returned.
      */
     rpc StringArrayGetValue(ElementId) returns (StringArrayValue);
-   
-    // TODO: May be able to delete
-    /**
-     * Get the value of a string array variable.
-     * No attempt is made to ensure that the workflow is run to validate the value.
-     */
-    rpc StringArrayGetValueAbsolute(ElementId) returns (StringArrayValue);
    
     /**
      * Set the value of a string array variable.
@@ -343,13 +313,6 @@ service ModelCenterWorkflowService {
      */
     rpc DoubleVariableGetValue(ElementId) returns (DoubleValue);
     
-	// TODO: May be able to delete
-    /**
-     * Get the value of a double variable.
-     * No attempt is made to ensure that the workflow is run to validate the value.
-     */
-    rpc DoubleVariableGetValueAbsolute(ElementId) returns (DoubleValue);
-    
     /**
      * Set the value of a double array variable.
 	 *
@@ -366,13 +329,6 @@ service ModelCenterWorkflowService {
      * before the value is returned.
      */
     rpc IntegerVariableGetValue(ElementId) returns (IntegerValue);
-    
-	// TODO: May be able to delete
-    /**
-     * Get the value of a integer variable.
-     * No attempt is made to ensure that the workflow is run to validate the value.
-     */
-    rpc IntegerVariableGetValueAbsolute(ElementId) returns (IntegerValue);
     
     /**
      * Set the value of a integer array variable.
@@ -391,13 +347,6 @@ service ModelCenterWorkflowService {
      */
     rpc BooleanVariableGetValue(ElementId) returns (BooleanValue);
     
-	// TODO: May be able to delete
-    /**
-     * Get the value of a boolean variable.
-     * No attempt is made to ensure that the workflow is run to validate the value.
-     */
-    rpc BooleanVariableGetValueAbsolute(ElementId) returns (BooleanValue);
-    
     /**
      * Set the value of a boolean array variable.
 	 *
@@ -415,13 +364,6 @@ service ModelCenterWorkflowService {
      */
     rpc StringVariableGetValue(ElementId) returns (StringValue);
     
-	// TODO: May be able to delete
-    /**
-     * Get the value of a string variable.
-     * No attempt is made to ensure that the workflow is run to validate the value.
-     */
-    rpc StringVariableGetValueAbsolute(ElementId) returns (StringValue);
-    
     /**
      * Set the value of a string array variable.
 	 *
@@ -438,13 +380,6 @@ service ModelCenterWorkflowService {
      * before the value is returned.
      */
     rpc FileVariableGetValue(ElementId) returns (FileValue);
-    
-	// TODO: May be able to delete
-    /**
-     * Get the value of a file variable.
-     * No attempt is made to ensure that the workflow is run to validate the value.
-     */
-    rpc FileVariableGetValueAbsolute(ElementId) returns (FileValue);
     
     /**
      * Set the value of a file array variable.
@@ -656,12 +591,6 @@ service ModelCenterWorkflowService {
      * If necessary, the workflow is executed to ensure the value is valid.
      */
     rpc ReferencePropertyGetValue(ReferencePropertyIdentifier) returns (VariableValue);
-    
-    /**
-     * Get the value of a reference property.
-     * No attempt is made to execute the workflow to ensure the value's validity.
-     */
-    rpc ReferencePropertyGetValueAbsolute(ReferencePropertyIdentifier) returns (VariableState);
     
     /**
      * Set the value of a reference property.

@@ -1,0 +1,69 @@
+syntax = "proto3";
+package Ansys.ModelCenter.GRPCModelCenter;
+
+import "engine_messages.proto";
+
+/**
+ * The main ModelCenter service.
+ * This service is used to interact with the ModelCenter workflow engine itself;
+ * workflows and their contents are manipulated by the Workflow service.
+ */
+service GRPCModelCenterService {
+   /**
+    * Get information about the service.
+    */
+   rpc GetEngineInfo(GetServerInfoRequest) returns (GetServerInfoResponse);
+   
+   /**
+    * Shut down a local instance of the service.
+    * Naturally, this request does not block until the process has actually exited.
+    * The caller must monitor this separately.
+    */
+   rpc Shutdown(ShutdownRequest) returns (ShutdownResponse);
+
+   /**
+    * Get the process ID of the ModelCenter engine.
+    */
+    rpc EngineGetProcessId(EngineProcessIdRequest) returns (EngineProcessIdResponse);
+    
+    /**
+     * Load a workflow.
+     */
+    rpc EngineLoadWorkflow(LoadWorkflowRequest) returns (LoadWorkflowResponse);
+    
+    /**
+     * Create a new workflow.
+     */
+    rpc EngineCreateWorkflow(NewWorkflowRequest) returns (NewWorkflowResponse);
+    
+    /**
+     * Set a username for ModelCenter to use while authenticating to ModelCenter Remote Execution.
+     */
+    rpc EngineSetUserName(SetUserNameRequest) returns (SetUserNameResponse);
+    
+    /**
+     * Set a password for ModelCenter to use while authenticating to ModelCenter Remote Execution.
+     */
+    rpc EngineSetPassword(SetPasswordRequest) returns (SetPasswordResponse);
+    
+    /**
+     * Get the value of a preference.
+     */
+    rpc EngineGetPreference(GetPreferenceRequest) returns (GetPreferenceResponse);
+    
+    /**
+     * Set the value of a preference.
+     */
+    rpc EngineSetPreference(SetPreferenceRequest) returns (SetPreferenceResponse);
+
+    /**
+     * Get the unit categories available.
+     */
+    rpc EngineGetUnitCategories(GetUnitCategoriesRequest) returns (GetUnitCategoriesResponse);
+    
+    /** 
+     * Get the names of the units available in a particular category.
+     */
+    rpc EngineGetUnitNames(GetUnitNamesRequest) returns (GetUnitNamesResponse);
+
+}

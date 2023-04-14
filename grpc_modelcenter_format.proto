@@ -1,0 +1,51 @@
+/*
+ * This file contains a service definition for formatting variables
+ * with ModelCenter Desktop.
+ */
+
+syntax = "proto3";
+package Ansys.ModelCenter.GRPCModelCenter;
+
+import "format_messages.proto";
+
+/**
+ * A service for formatting variables according to ModelCenter Desktop formatting rules.
+ */
+service ModelCenterFormatService{
+    /**
+     * Format a string to an integer.
+     */
+    rpc FormatStringToInteger(FormatFromStringRequest) returns (FormatToIntegerResponse);
+    
+    /**
+     * Format a string to a double.
+     */
+    rpc FormatStringToDouble(FormatFromStringRequest) returns (FormatToDoubleResponse);
+    
+    /**
+     * Format an integer to a string for display.
+     */
+    rpc FormatIntegerToString(FormatFromIntegerRequest) returns (FormatToStringResponse);
+    
+    /**
+     * Format a double to string for display.
+     */
+    rpc FormatDoubleToString(FormatFromDoubleRequest) returns (FormatToStringResponse);
+    
+    /**
+     * Format a string to a formatted string for display.
+     */
+    rpc FormatStringToString(FormatFromStringRequest) returns (FormatToStringResponse);
+    
+    /**
+     * Format an integer to a string to use in an editing field
+     * (i.e. with full precision).
+     */
+    rpc FormatIntegerToEditString(FormatFromIntegerRequest) returns (FormatToStringResponse);
+    
+    /**
+     * Format a double to a string to use in an editing field
+     * (i.e. with full precision).
+     */
+    rpc FormatDoubleToEditString(FormatFromDoubleRequest) returns (FormatToStringResponse);
+}

@@ -284,6 +284,33 @@ message WorkflowBreakLinkRequest {
 }
 
 /**
+ * A request to suspend or resume a link.
+ */
+message WorkflowSuspendOrResumeLinkRequest {
+	/**
+	 * The variable that is the lef-hand side (target) of the link.
+	 */
+	ElementId target_link_lhs = 1;
+	
+	/**
+	 * True to suspend the link, false to resume it.
+	 */
+	bool suspend = 2;
+}
+
+/**
+ * A message indicating the suspension state of a link, either currently
+ * or just before it was changed.
+ */
+message WorkflowLinkSuspension {
+	/**
+	 * True if the link is (or was) suspended,
+	 * false if it is active.
+	 */
+	bool is_suspended = 1;
+}
+
+/**
  * A response to a request to break a link.
  */
 message WorkflowBreakLinkResponse {

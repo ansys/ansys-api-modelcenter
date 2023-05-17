@@ -848,3 +848,29 @@ message VariableInfoCollection {
     */
    repeated VariableInfo variables = 1;
 }
+
+/**
+ * A request to fetch precedent (input) or dependent (output) variables.
+ */
+message GetVariableDependenciesRequest {
+   /**
+    * The identifier of the variable.
+    */
+   ElementId id = 1;
+
+   /**
+    * Flag for if only dependencies directly linked to the variable should be fetched, or if all
+    * dependencies should be returned recursively.
+    */
+   bool onlyFetchDirectDependencies = 2;
+
+   /**
+    * Flag for if dependencies with suspended links should be followed.
+    */
+   bool followSuspended = 3;
+
+   /**
+    * Flag for if dependencies that are references should be followed.
+    */
+   bool followReferences = 4;
+}

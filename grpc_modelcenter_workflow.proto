@@ -226,6 +226,18 @@ service ModelCenterWorkflowService {
     */
    rpc VariableGetState(ElementIdOrName) returns (VariableState);
 
+   /**
+    * Finds any variables linked as an output to this variable, either returning only direct dependent variables 
+    * or recursively fetching all dependent variables.
+    */
+   rpc VariableGetDependents(GetVariableDependenciesRequest) returns (VariableInfoCollection);
+
+   /**
+    * Finds any variables linked as an input to this variable, either returning only direct precedent variables 
+    * or recursively fetching all precedent variables.
+    */
+   rpc VariableGetPrecedents(GetVariableDependenciesRequest) returns (VariableInfoCollection);
+
    // TODO: May be able to delete
    /**
     * Get the value of a double array variable.

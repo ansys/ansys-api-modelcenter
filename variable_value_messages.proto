@@ -823,28 +823,28 @@ message ReferencePropertyGetTypeResponse {
  * An identifier and a type for a variable.
  */
 message VariableInfo {
-	/**
-	 * The identifier of the variable.
-	 */
-	ElementId id = 1;
-	
-	/**
-	 * The value type the variable stores.
-	 */
-	VariableType value_type = 2;
-	
-	/**
-	 * The variable's short name.
-	 */
-	string short_name = 3;
+   /**
+    * The identifier of the variable.
+    */
+   ElementId id = 1;
+      
+   /**
+    * The value type the variable stores.
+    */
+   VariableType value_type = 2;
+      
+   /**
+    * The variable's short name.
+    */
+   string short_name = 3;
 }
 
 /**
  * A collection of variable information.
  */
 message VariableInfoCollection {
-	/**
-	 * Information on the requested variables.
-	 */
-	repeated VariableInfo variables = 1;
+   /**
+    * Information on the requested variables.
+    */
+   repeated VariableInfo variables = 1;
 }

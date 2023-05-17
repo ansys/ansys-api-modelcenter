@@ -115,10 +115,10 @@ message AssemblyIconResponse {
  * Represents an assembly's index in its parent.
  */
 message ElementIndexInParentResponse {
-	/**
-	 * The index.
-	 */
-	int64 index = 1;
+   /**
+    * The index.
+    */
+   int64 index = 1;
 }
 
 /**
@@ -170,7 +170,7 @@ message AddAssemblyResponse{
  */
 message AddAssemblyVariableRequest {
    ElementName name = 1;
-   ElementId target_assembly = 2;	
+   ElementId target_assembly = 2;   
    string variable_type = 3;
 }
 
@@ -212,7 +212,7 @@ message ComponentSourceResponse {
  * A response to a request for a component PACZ url.
  */
 message ComponentPaczUrlResponse {
-	optional string pacz_url = 1;
+   optional string pacz_url = 1;
 }
 
 /**
@@ -443,6 +443,6 @@ message IfComponentSetBranchNameResponse {}
  */
 message VariableIsInputResponse
 {
-	bool is_input_in_component = 1;
-	bool is_input_in_workflow = 2;
+   bool is_input_in_component = 1;
+   bool is_input_in_workflow = 2;
 }

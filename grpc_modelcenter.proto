@@ -13,7 +13,7 @@ service GRPCModelCenterService {
     * Get information about the service.
     */
    rpc GetEngineInfo(GetServerInfoRequest) returns (GetServerInfoResponse);
-   
+
    /**
     * Shut down a local instance of the service.
     * Naturally, this request does not block until the process has actually exited.
@@ -24,46 +24,46 @@ service GRPCModelCenterService {
    /**
     * Get the process ID of the ModelCenter engine.
     */
-    rpc EngineGetProcessId(EngineProcessIdRequest) returns (EngineProcessIdResponse);
-    
-    /**
-     * Load a workflow.
-     */
-    rpc EngineLoadWorkflow(LoadWorkflowRequest) returns (LoadWorkflowResponse);
-    
-    /**
-     * Create a new workflow.
-     */
-    rpc EngineCreateWorkflow(NewWorkflowRequest) returns (NewWorkflowResponse);
-    
-    /**
-     * Set a username for ModelCenter to use while authenticating to ModelCenter Remote Execution.
-     */
-    rpc EngineSetUserName(SetUserNameRequest) returns (SetUserNameResponse);
-    
-    /**
-     * Set a password for ModelCenter to use while authenticating to ModelCenter Remote Execution.
-     */
-    rpc EngineSetPassword(SetPasswordRequest) returns (SetPasswordResponse);
-    
-    /**
-     * Get the value of a preference.
-     */
-    rpc EngineGetPreference(GetPreferenceRequest) returns (GetPreferenceResponse);
-    
-    /**
-     * Set the value of a preference.
-     */
-    rpc EngineSetPreference(SetPreferenceRequest) returns (SetPreferenceResponse);
+   rpc EngineGetProcessId(EngineProcessIdRequest) returns (EngineProcessIdResponse);
 
-    /**
-     * Get the unit categories available.
-     */
-    rpc EngineGetUnitCategories(GetUnitCategoriesRequest) returns (GetUnitCategoriesResponse);
-    
-    /** 
-     * Get the names of the units available in a particular category.
-     */
-    rpc EngineGetUnitNames(GetUnitNamesRequest) returns (GetUnitNamesResponse);
+   /**
+    * Load a workflow.
+    */
+   rpc EngineLoadWorkflow(LoadWorkflowRequest) returns (LoadWorkflowResponse);
+
+   /**
+    * Create a new workflow.
+   */
+   rpc EngineCreateWorkflow(NewWorkflowRequest) returns (NewWorkflowResponse);
+
+   /**
+    * Set a username for ModelCenter to use while authenticating to ModelCenter Remote Execution.
+    */
+   rpc EngineSetUserName(SetUserNameRequest) returns (SetUserNameResponse);
+
+   /**
+    * Set a password for ModelCenter to use while authenticating to ModelCenter Remote Execution.
+    */
+   rpc EngineSetPassword(SetPasswordRequest) returns (SetPasswordResponse);
+
+   /**
+    * Get the value of a preference.
+    */
+   rpc EngineGetPreference(GetPreferenceRequest) returns (GetPreferenceResponse);
+
+   /**
+    * Set the value of a preference.
+    */
+   rpc EngineSetPreference(SetPreferenceRequest) returns (SetPreferenceResponse);
+
+   /**
+    * Get the unit categories available.
+    */
+   rpc EngineGetUnitCategories(GetUnitCategoriesRequest) returns (GetUnitCategoriesResponse);
+
+   /** 
+    * Get the names of the units available in a particular category.
+    */
+   rpc EngineGetUnitNames(GetUnitNamesRequest) returns (GetUnitNamesResponse);
 
 }

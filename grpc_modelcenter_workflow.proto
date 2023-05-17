@@ -577,6 +577,11 @@ service ModelCenterWorkflowService {
    rpc WorkflowSuspendOrResumeLink(WorkflowSuspendOrResumeLinkRequest) returns (WorkflowLinkSuspension);
 
    /**
+    * Get the suspension state of a link.
+    */
+   rpc WorkflowGetLinkSuspensionState(WorkflowBreakLinkRequest) returns (WorkflowLinkSuspension);
+
+   /**
     * Auto-link two components within the workflow.
     * The created links are returned.
     *

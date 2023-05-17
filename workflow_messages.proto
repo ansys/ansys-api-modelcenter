@@ -69,15 +69,15 @@ message WorkflowId {
  * An element ID combined with a name.
  */
 message NamedElementInWorkflow {
-	/**
-	 * The workflow's ID.
-	 */
-	WorkflowId workflow = 1;
-	
-	/**
-	 * The name of the element.
-	 */
-	ElementName element_full_name = 2;
+   /**
+    * The workflow's ID.
+    */
+   WorkflowId workflow = 1;
+
+   /**
+    * The name of the element.
+    */
+   ElementName element_full_name = 2;
 }
 
 /**
@@ -91,7 +91,7 @@ message WorkflowRunRequest {
 
    /**
     * Input values to be set before the run.
-	* The keys in the map are variable names.
+   * The keys in the map are variable names.
     */
    map<string, VariableState> inputs = 2;
 
@@ -107,7 +107,7 @@ message WorkflowRunRequest {
 
    /**
     * The names of the workflow elements to return when the run is complete.
-	*/
+   */
    repeated string collection_names = 5;
 }
 
@@ -287,15 +287,15 @@ message WorkflowBreakLinkRequest {
  * A request to suspend or resume a link.
  */
 message WorkflowSuspendOrResumeLinkRequest {
-	/**
-	 * The variable that is the lef-hand side (target) of the link.
-	 */
-	ElementId target_link_lhs = 1;
-	
-	/**
-	 * True to suspend the link, false to resume it.
-	 */
-	bool suspend = 2;
+   /**
+    * The variable that is the lef-hand side (target) of the link.
+    */
+   ElementId target_link_lhs = 1;
+
+   /**
+    * True to suspend the link, false to resume it.
+    */
+   bool suspend = 2;
 }
 
 /**
@@ -303,11 +303,11 @@ message WorkflowSuspendOrResumeLinkRequest {
  * or just before it was changed.
  */
 message WorkflowLinkSuspension {
-	/**
-	 * True if the link is (or was) suspended,
-	 * false if it is active.
-	 */
-	bool is_suspended = 1;
+   /**
+    * True if the link is (or was) suspended,
+    * false if it is active.
+    */
+   bool is_suspended = 1;
 }
 
 /**
@@ -394,7 +394,7 @@ message ElementInfo {
  * Information about a collection of elements.
  */
 message ElementInfoCollection {
-	repeated ElementInfo elements = 1;
+   repeated ElementInfo elements = 1;
 }
 
 
@@ -420,20 +420,20 @@ message DeleteAssemblyVariableRequest {
  * Represents a request to move a component.
  */
 message MoveComponentRequest {
-	/**
-	 * The component to move.
-	 */
-	ElementId target = 1;
-	
-	/**
-	 * The new parent for the component. This should be an assembly.
-	 */
-	ElementId new_parent = 2;
-	
-	/**
-	 * The new index in the parent. Pass -1 to add the component at the end.
-	 * If the index is larger than the number of components in the element, 
-	 * it will be placed at the end.
-	 */
-	int32 index_in_parent = 3;
+   /**
+    * The component to move.
+    */
+   ElementId target = 1;
+
+   /**
+    * The new parent for the component. This should be an assembly.
+    */
+   ElementId new_parent = 2;
+
+   /**
+    * The new index in the parent. Pass -1 to add the component at the end.
+    * If the index is larger than the number of components in the element, 
+    * it will be placed at the end.
+    */
+   int32 index_in_parent = 3;
 }

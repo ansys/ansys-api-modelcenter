@@ -552,6 +552,17 @@ service ModelCenterWorkflowService {
 	 * NOT_FOUND if the lhs isn't valid
      */
     rpc WorkflowBreakLink(WorkflowBreakLinkRequest) returns (WorkflowBreakLinkResponse);
+	
+	/**
+	 * Suspend a link within the workflow.
+	 *
+	 * The returning message indicates whether the link WAS suspended before this RPC was called.
+	 * A successful return indicates that the state was correctly set; a mismatch in the returned
+	 * state does not mean that there was a failure.
+	 *
+	 * NOT_FOUND if the lhs isn't valid
+	 */
+	rpc WorkflowSuspendOrResumeLink(WorkflowSuspendOrResumeLinkRequest) returns (WorkflowLinkSuspension);
     
     /**
      * Auto-link two components within the workflow.

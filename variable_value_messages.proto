@@ -868,9 +868,4 @@ message GetVariableDependenciesRequest {
     * Flag for if dependencies with suspended links should be followed.
     */
    bool followSuspended = 3;
-
-   /**
-    * Flag for if dependencies that are references should be followed.
-    */
-   bool followReferences = 4;
 }

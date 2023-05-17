@@ -375,6 +375,7 @@ message VariableValue {
       DoubleArrayValue double_array_value = 7;
       BooleanArrayValue bool_array_value = 8;
       StringArrayValue string_array_value = 9;
+      FileArrayValue file_array_value = 10;
    }
 }
 

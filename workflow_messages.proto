@@ -272,6 +272,7 @@ message WorkflowRemoveComponentResponse {
    bool existed = 1;
 }
 
+// TODO: This should be renamed to something more like "DatapinLinkIdentifier".
 /**
  * A request to break a link within the workflow.
  */

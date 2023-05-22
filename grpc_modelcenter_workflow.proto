@@ -600,14 +600,24 @@ service ModelCenterWorkflowService {
    rpc WorkflowGetElementByName(NamedElementInWorkflow) returns (ElementInfo);
 
    /**
-    * Get the reference of a referenced variable.
+    * Get the reference equation of a reference variable.
     */
-   rpc ReferenceVariableGetReference(ElementId) returns (ReferenceResponse);
+   rpc ReferenceVariableGetReferenceEquation(GetReferenceEquationRequest) returns (GetReferenceEquationResponse);
+
+   /**
+    * Set the reference equation of a reference variable.
+    */
+   rpc ReferenceVariableSetReferenceEquation(SetReferenceEquationRequest) returns (SetReferenceEquationResponse);
 
    /**
     * Get the variables referenced by a reference variable.
     */
-   rpc ReferenceVariableGetReferencedVariables(ElementId) returns (ReferencedVariablesResponse);
+   rpc ReferenceVariableGetReferencedVariables(GetReferencedVariablesRequest) returns (GetReferencedVariablesResponse);
+
+   /**
+    * Get whether a reference variable refers directly to a single variable.
+    */
+   rpc ReferenceVariableGetIsDirect(GetReferenceIsDirectRequest) returns (GetReferenceIsDirectResponse);
 
    /**
     * Create a real-type reference property.

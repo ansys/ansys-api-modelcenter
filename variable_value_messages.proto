@@ -644,23 +644,103 @@ message SetFileVariableMetadataRequest {
 }
 
 /**
- * A response to a request for the reference of a reference variable.
+ * A request to get the reference equation of a reference variable.
  */
-message ReferenceResponse {
+message GetReferenceEquationRequest {
    /**
-    * The requested reference.
+    * The id of the variable.
     */
-   string reference = 1;
+   ElementId target = 1;
+   /**
+    * If the target is an array, this indicates the index of the array to target.
+    * Otherwise this parameter is ignored.
+    */
+   optional int64 index = 2;
+}
+
+/**
+ * A response to a request for the reference equation of a reference variable.
+ */
+message GetReferenceEquationResponse {
+   /**
+    * The requested reference equation.
+    */
+   string equation = 1;
+}
+
+/**
+ * A request to set the reference equation of a reference variable.
+ */
+message SetReferenceEquationRequest {
+   /**
+    * The id of the variable.
+    */
+   ElementId target = 1;
+   /**
+    * If the target is an array, this indicates the index of the array to target.
+    * Otherwise this parameter is ignored.
+    */
+   optional int64 index = 2;
+   /**
+    * The new reference equation.
+    */
+   string equation = 3;
+}
+
+/**
+ * A response to a request to set the reference equation of a reference variable.
+ */
+message SetReferenceEquationResponse {};
+
+/**
+ * A request to get the reference equation of a reference variable.
+ */
+message GetReferencedVariablesRequest {
+   /**
+    * The id of the variable.
+    */
+   ElementId target = 1;
+   /**
+    * If the target is an array, this indicates the index of the array to target.
+    * Otherwise this parameter is ignored.
+    */
+   optional int64 index = 2;
 }
 
 /**
  * A response to a request for the variables referenced by a reference variable.
  */
-message ReferencedVariablesResponse {
+message GetReferencedVariablesResponse {
    /**
     * The requested reference.
     */
    repeated ElementId referenced_variables = 1;
+}
+
+/**
+ * A request to get if a reference variable refers directly to a single variable.
+ */
+message GetReferenceIsDirectRequest {
+   /**
+    * The id of the variable.
+    */
+   ElementId target = 1;
+   /**
+    * If the target is an array, this indicates the index of the array to target.
+    * Otherwise this parameter is ignored.
+    */
+   optional int64 index = 2;
+}
+
+/**
+ * A response to a request to get if a reference variable refers directly to a 
+ * single variable.
+ */
+message GetReferenceIsDirectResponse {
+   /**
+    * True if the reference refers directly to a single variable, False otherwise.
+    */
+   bool is_direct = 1;
 }
 
 /**

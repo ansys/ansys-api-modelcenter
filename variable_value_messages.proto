@@ -289,6 +289,41 @@ message SetStringValueRequest {
 }
 
 /**
+ * A request to get the value of a reference variable.
+ */
+message GetReferenceValueRequest {
+   /**
+    * The target element.
+    */
+   ElementId target = 1;
+
+   /**
+    * The index of the variable to modify in a reference array. Omit for scalar variables.
+    */
+   optional int64 index = 2;
+}
+
+/**
+ * A request to set the value of a reference variable.
+ */
+message SetReferenceValueRequest {
+   /**
+    * The target element.
+    */
+   ElementId target = 1;
+
+   /**
+    * The index of the variable to modify in a reference array. Omit for scalar variables.
+    */
+   optional int64 index = 2;
+
+   /**
+    * The new value.
+    */
+   VariableValue new_value = 3;
+}
+
+/**
  * A response to a request to set a variable value.
  */
 message SetVariableValueResponse {

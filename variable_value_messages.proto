@@ -304,6 +304,21 @@ message GetReferenceValueRequest {
 }
 
 /**
+ * A request to set the value of a reference array.
+ */
+message SetReferenceArrayRequest {
+   /**
+    * The target element.
+    */
+   ElementId target = 1;
+
+   /**
+    * The new value.
+    */
+   VariableArrayValue new_value = 2;
+}
+
+/**
  * A request to set the value of a reference variable.
  */
 message SetReferenceValueRequest {
@@ -412,6 +427,21 @@ message VariableValue {
       StringArrayValue string_array_value = 9;
       FileArrayValue file_array_value = 10;
    }
+}
+
+/**
+ * A message representing a variable array value which could be any array of any type.
+ */
+message VariableArrayValue {
+   /**
+    * All the values in the array, linearized.
+    */
+   repeated VariableValue values = 1;
+
+   /**
+    * The actual dimensions of the array.
+    */
+   ArrayDimensions dims = 2;
 }
 
 /**

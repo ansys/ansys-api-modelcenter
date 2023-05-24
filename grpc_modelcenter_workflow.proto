@@ -317,6 +317,20 @@ service ModelCenterWorkflowService {
     */
    rpc StringArraySetValue(SetStringArrayValueRequest) returns (SetVariableValueResponse);
 
+   /**
+    * Get the value of a reference array variable.
+    */
+   rpc ReferenceArrayGetValue(ElementId) returns (VariableArrayValue);
+
+   /**
+    * Set the value of a reference array variable.
+    * 
+    * NOT_FOUND if the target variable cannot be located
+    * INVALID_ARGUMENT if target variable is not the right type
+    * OUT_OF_RANGE if bounds or enum constraints are violated
+    */
+   rpc ReferenceArraySetValue(SetReferenceArrayRequest) returns (SetVariableValueResponse);
+
    // TODO: May be able to delete
    /**
     * Get the value of a double variable.
@@ -420,7 +434,7 @@ service ModelCenterWorkflowService {
     * OUT_OF_RANGE if bounds or enum constraints are violated
     */
    rpc ReferenceVariableSetValue(SetReferenceValueRequest) returns (SetVariableValueResponse);
-     
+
    /**
     * Get whether or not a variable is an input to its component and in the workflow.
     */

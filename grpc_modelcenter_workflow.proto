@@ -320,7 +320,7 @@ service ModelCenterWorkflowService {
    /**
     * Get the value of a reference array variable.
     */
-   rpc ReferenceArrayGetValue(ElementId) returns (VariableArrayValue);
+   rpc ReferenceArrayGetValue(ElementId) returns (ReferenceArrayValue);
 
    /**
     * Set the value of a reference array variable.

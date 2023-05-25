@@ -304,36 +304,6 @@ message GetReferenceValueRequest {
 }
 
 /**
- * A message representing a variable array value which is an array of equations.
- */
-message ReferenceArrayValue {
-   /**
-    * All the values (equations) in the array, linearized.
-    */
-   repeated string values = 1;
-
-   /**
-    * The actual dimensions of the array.
-    */
-   ArrayDimensions dims = 2;
-}
-
-/**
- * A request to set the value of a reference array.
- */
-message SetReferenceArrayRequest {
-   /**
-    * The target element.
-    */
-   ElementId target = 1;
-
-   /**
-    * The new value.
-    */
-   ReferenceArrayValue new_value = 2;
-}
-
-/**
  * A request to set the value of a reference variable.
  */
 message SetReferenceValueRequest {

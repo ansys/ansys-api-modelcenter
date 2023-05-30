@@ -466,13 +466,6 @@ message BaseVariableMetadata {
    map<string, VariableValue> custom_metadata = 2;
 }
 
-message SetReferenceVariableMetadataRequest {
-
-   ElementId target = 1;
-   
-   BaseVariableMetadata new_metadata = 2;
-}
-
 /**
  * Metadata shared by all numeric types.
  */
@@ -684,6 +677,28 @@ message SetFileVariableMetadataRequest {
     */
    FileVariableMetadata new_metadata = 2;
 }
+
+
+/**
+ * Metadata for a reference or reference array variable.
+ */
+message ReferenceVariableMetadata {
+   /**
+    * The base metadata.
+    */
+   BaseVariableMetadata base_metadata = 1;
+}
+
+/**
+ * A request to set the metadata for a reference or reference array variable.
+ */
+message SetReferenceVariableMetadataRequest {
+
+   ElementId target = 1;
+   
+   ReferenceVariableMetadata new_metadata = 2;
+}
+
 
 /**
  * A request to get the reference equation of a reference variable.

@@ -648,7 +648,7 @@ service ModelCenterWorkflowService {
     * Note that reference properties are a distinct concept from variable metadata,
     * and they need to be retrieved separately.
     */
-   rpc ReferenceVariableGetMetadata(ElementId) returns (BaseVariableMetadata);
+   rpc ReferenceVariableGetMetadata(ElementId) returns (ReferenceVariableMetadata);
    
    /**
     * Set variable metadata for a reference or reference array variable.

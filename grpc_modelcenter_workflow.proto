@@ -641,6 +641,22 @@ service ModelCenterWorkflowService {
     * Get the variables referenced by a reference variable.
     */
    rpc ReferenceVariableGetReferencedVariables(GetReferencedVariablesRequest) returns (GetReferencedVariablesResponse);
+   
+   /**
+    * Get variable metadata for a reference or reference array variable.
+    * 
+    * Note that reference properties are a distinct concept from variable metadata,
+    * and they need to be retrieved separately.
+    */
+   rpc ReferenceVariableGetMetadata(ElementId) returns (BaseVariableMetadata);
+   
+   /**
+    * Set variable metadata for a reference or reference array variable.
+    *
+    * Note that refernce properties are a distinct concept from variable metadata,
+    * and they need to be manipulated separately.
+    */
+   rpc ReferenceVariableSetMetadata(SetReferenceVariableMetadataRequest) returns (SetMetadataResponse);
 
    /**
     * Get whether a reference variable refers directly to a single variable.

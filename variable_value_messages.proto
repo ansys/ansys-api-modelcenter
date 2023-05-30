@@ -466,6 +466,13 @@ message BaseVariableMetadata {
    map<string, VariableValue> custom_metadata = 2;
 }
 
+message SetReferenceVariableMetadataRequest {
+
+   ElementId target = 1;
+   
+   BaseVariableMetadata new_metadata = 2;
+}
+
 /**
  * Metadata shared by all numeric types.
  */

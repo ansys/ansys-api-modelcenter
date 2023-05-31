@@ -419,7 +419,7 @@ service ModelCenterWorkflowService {
     * NOT_FOUND if the target variable cannot be located
     * INVALID_ARGUEMNT if target variable is not the right type
     */
-   rpc ReferenceVariableGetValue(GetReferenceValueRequest) returns (VariableValue);
+   rpc ReferenceVariableGetValue(GetReferenceValueRequest) returns (VariableState);
 
    /**
     * Set the value of a reference variable or member of a reference array variable.

@@ -395,7 +395,7 @@ enum VariableType {
    /**
     * A reference to another variable.
     */
-   VARTYPE_REFERENFCE = 11;
+   VARTYPE_REFERENCE = 11;
 
    /**
     * An array of references to other variables.

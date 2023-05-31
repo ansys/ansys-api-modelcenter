@@ -725,6 +725,11 @@ service ModelCenterWorkflowService {
    rpc ReferencePropertyGetType(ReferencePropertyIdentifier) returns (ReferencePropertyGetTypeResponse);
 
    /**
+    * Get the length of a reference array.
+    */
+   rpc ReferenceArrayGetLength(ElementId) returns (IntegerValue);
+
+   /**
     * Move a component or assembly under a new parent.
     */
    rpc WorkflowMoveComponent(MoveComponentRequest) returns (ElementIndexInParentResponse);

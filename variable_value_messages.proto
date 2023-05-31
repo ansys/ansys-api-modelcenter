@@ -391,6 +391,16 @@ enum VariableType {
     * An array of file values.
     */
    VARTYPE_FILE_ARRAY = 10;
+
+   /**
+    * A reference to another variable.
+    */
+   VARTYPE_REFERENCE = 11;
+
+   /**
+    * An array of references to other variables.
+    */
+   VARTYPE_REFERENCE_ARRAY = 12;
 }
 
 /**

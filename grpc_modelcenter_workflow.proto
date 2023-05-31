@@ -317,6 +317,15 @@ service ModelCenterWorkflowService {
     */
    rpc StringArraySetValue(SetStringArrayValueRequest) returns (SetVariableValueResponse);
 
+   /**
+    * Set the values of the referenced variables in a reference array.
+    * 
+    * NOT_FOUND if the target variable cannot be located
+    * INVALID_ARGUMENT if target variable is not the right type
+    * OUT_OF_RANGE if bounds or enum constraints are violated
+    */
+   rpc ReferenceArraySetReferencedValues(SetDoubleArrayValueRequest) returns (SetVariableValueResponse);
+
    // TODO: May be able to delete
    /**
     * Get the value of a double variable.
@@ -326,7 +335,7 @@ service ModelCenterWorkflowService {
    rpc DoubleVariableGetValue(ElementId) returns (DoubleValue);
 
    /**
-    * Set the value of a double array variable.
+    * Set the value of a double variable.
     *
     * NOT_FOUND if the target variable cannot be located
     * INVALID_ARGUEMNT if target variable is not the right type
@@ -343,7 +352,7 @@ service ModelCenterWorkflowService {
    rpc IntegerVariableGetValue(ElementId) returns (IntegerValue);
 
    /**
-    * Set the value of a integer array variable.
+    * Set the value of a integer variable.
     *
     * NOT_FOUND if the target variable cannot be located
     * INVALID_ARGUEMNT if target variable is not the right type
@@ -360,7 +369,7 @@ service ModelCenterWorkflowService {
    rpc BooleanVariableGetValue(ElementId) returns (BooleanValue);
 
    /**
-    * Set the value of a boolean array variable.
+    * Set the value of a boolean variable.
     *
     * NOT_FOUND if the target variable cannot be located
     * INVALID_ARGUEMNT if target variable is not the right type
@@ -377,7 +386,7 @@ service ModelCenterWorkflowService {
    rpc StringVariableGetValue(ElementId) returns (StringValue);
 
    /**
-    * Set the value of a string array variable.
+    * Set the value of a string variable.
     *
     * NOT_FOUND if the target variable cannot be located
     * INVALID_ARGUEMNT if target variable is not the right type
@@ -401,7 +410,26 @@ service ModelCenterWorkflowService {
     * OUT_OF_RANGE if bounds or enum constraints are violated
     */
    rpc FileVariableSetValue(SetFileValueRequest) returns (SetVariableValueResponse);
-     
+
+   /**
+    * Get the value of a reference variable or member of a reference array variable.
+    * If necessary, the workflow will be run such that the variable value is valid
+    * before the value is returned.
+    *
+    * NOT_FOUND if the target variable cannot be located
+    * INVALID_ARGUEMNT if target variable is not the right type
+    */
+   rpc ReferenceVariableGetValue(GetReferenceValueRequest) returns (VariableValue);
+
+   /**
+    * Set the value of a reference variable or member of a reference array variable.
+    *
+    * NOT_FOUND if the target variable cannot be located
+    * INVALID_ARGUEMNT if target variable is not the right type
+    * OUT_OF_RANGE if bounds or enum constraints are violated
+    */
+   rpc ReferenceVariableSetValue(SetReferenceValueRequest) returns (SetVariableValueResponse);
+
    /**
     * Get whether or not a variable is an input to its component and in the workflow.
     */
@@ -600,14 +628,40 @@ service ModelCenterWorkflowService {
    rpc WorkflowGetElementByName(NamedElementInWorkflow) returns (ElementInfo);
 
    /**
-    * Get the reference of a referenced variable.
+    * Get the reference equation of a reference variable.
     */
-   rpc ReferenceVariableGetReference(ElementId) returns (ReferenceResponse);
+   rpc ReferenceVariableGetReferenceEquation(GetReferenceEquationRequest) returns (GetReferenceEquationResponse);
+
+   /**
+    * Set the reference equation of a reference variable.
+    */
+   rpc ReferenceVariableSetReferenceEquation(SetReferenceEquationRequest) returns (SetReferenceEquationResponse);
 
    /**
     * Get the variables referenced by a reference variable.
     */
-   rpc ReferenceVariableGetReferencedVariables(ElementId) returns (ReferencedVariablesResponse);
+   rpc ReferenceVariableGetReferencedVariables(GetReferencedVariablesRequest) returns (GetReferencedVariablesResponse);
+   
+   /**
+    * Get variable metadata for a reference or reference array variable.
+    * 
+    * Note that reference properties are a distinct concept from variable metadata,
+    * and they need to be retrieved separately.
+    */
+   rpc ReferenceVariableGetMetadata(ElementId) returns (ReferenceVariableMetadata);
+   
+   /**
+    * Set variable metadata for a reference or reference array variable.
+    *
+    * Note that refernce properties are a distinct concept from variable metadata,
+    * and they need to be manipulated separately.
+    */
+   rpc ReferenceVariableSetMetadata(SetReferenceVariableMetadataRequest) returns (SetMetadataResponse);
+
+   /**
+    * Get whether a reference variable refers directly to a single variable.
+    */
+   rpc ReferenceVariableGetIsDirect(GetReferenceIsDirectRequest) returns (GetReferenceIsDirectResponse);
 
    /**
     * Create a real-type reference property.

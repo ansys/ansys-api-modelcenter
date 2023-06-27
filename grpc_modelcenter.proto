@@ -22,6 +22,13 @@ service GRPCModelCenterService {
    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse);
 
    /**
+    * Send a signal that the client that started this server is still alive.
+    * When the server is started, it can be configured to expect a heartbeat call within a specified interval, and how many intervals can be missed before the client is assumed to have died.
+    * If enough calls are not recieved in time, the server will shutdown and log an error.
+    */
+   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+
+   /**
     * Get the process ID of the ModelCenter engine.
     */
    rpc EngineGetProcessId(EngineProcessIdRequest) returns (EngineProcessIdResponse);

@@ -862,9 +862,11 @@ message IndexedReferencePropertyIdentifier {
 }
 
 /**
- * A response to a request to set a reference value.
+ * A response indicating the available reference property names.
  */
-message ReferencePropertyCreateResponse {}
+message ReferencePropertyNames {
+   repeated string names = 1;
+}
 
 /**
  * A request to set a reference value.

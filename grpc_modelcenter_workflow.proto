@@ -664,9 +664,9 @@ service ModelCenterWorkflowService {
    rpc ReferenceVariableGetIsDirect(GetReferenceIsDirectRequest) returns (GetReferenceIsDirectResponse);
 
    /**
-    * Create a real-type reference property.
+    * Get the available reference properties of a reference variable
     */
-   rpc RealReferencePropertyCreate(ReferencePropertyIdentifier) returns (ReferencePropertyCreateResponse);
+   rpc ReferenceVariableGetReferenceProperties(ElementId) returns (ReferencePropertyNames);
 
    /**
     * Get the value of a reference property.

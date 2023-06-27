@@ -690,16 +690,6 @@ service ModelCenterWorkflowService {
    rpc ReferencePropertySetIsInput(ReferencePropertySetIsInputRequest) returns (ReferencePropertyGetIsInputResponse);
 
    /**
-    * Get the allowed enumerated values for a reference property.
-    */
-   rpc ReferencePropertyGetEnumValues(ReferencePropertyIdentifier) returns (ReferencePropertyGetEnumValuesResponse);
-
-   /**
-    * Set the allowed enumerated values for a reference property.
-    */
-   rpc ReferencePropertySetEnumValues(ReferencePropertySetEnumValuesRequest) returns (ReferencePropertyGetEnumValuesResponse);
-
-   /**
     * Get the title of a reference property.
     */
    rpc ReferencePropertyGetTitle(ReferencePropertyIdentifier) returns (ReferencePropertyGetTitleResponse);
@@ -708,16 +698,19 @@ service ModelCenterWorkflowService {
     * Set the title of a reference property.
     */
    rpc ReferencePropertySetTitle(ReferencePropertySetTitleRequest) returns (ReferencePropertyGetTitleResponse);
-
+   
    /**
-    * Get the description of a reference property.
+    * Get the metadata items from a reference property.
     */
-   rpc ReferencePropertyGetDescription(ReferencePropertyIdentifier) returns (ReferencePropertyGetDescriptionResponse);
-
+   rpc ReferencePropertyGetMetadata(ReferencePropertyIdentifier) returns (VariableMetadata);
+   
    /**
-    * Set the description of a reference property.
+    * Set the metadata of a reference property.
+    *
+    * Note that this item only works on reference properties which have a numeric type
+    * in which case only the display format is set.
     */
-   rpc ReferencePropertySetDescription(ReferencePropertySetDescriptionRequest) returns (ReferencePropertyGetDescriptionResponse);
+   rpc ReferencePropertySetMetadata(SetReferencePropertyMetadataRequest) returns (SetMetadataResponse);
 
    /**
     * Get the type of a reference property.

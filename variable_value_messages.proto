@@ -848,6 +848,19 @@ message ReferencePropertyIdentifier {
    string prop_name = 2;
 }
 
+message IndexedReferencePropertyIdentifier {
+   /**
+    * The reference property of interest.
+    */
+   ReferencePropertyIdentifier target_prop = 1;
+   
+   /**
+    * An index if the operation targets a particular index in
+    * a property of a reference array.
+    */
+   optional int64 index = 2;
+}
+
 /**
  * A response to a request to set a reference value.
  */
@@ -860,7 +873,7 @@ message ReferencePropertySetValueRequest {
    /**
     * The reference property to set.
     */
-   ReferencePropertyIdentifier target_prop = 1;
+   IndexedReferencePropertyIdentifier target_prop = 1;
 
    /**
     * The value to set.

@@ -278,6 +278,23 @@ message GetServerInfoResponse {
    string executable_path = 6;
 }
 
-message ShutdownRequest{}
+/**
+ * A request to shut down the server.
+ */
+message ShutdownRequest {}
 
-message ShutdownResponse{}
+/**
+ * A response to a request to shut down the server.
+ */
+message ShutdownResponse {}
+
+/**
+ * A request to send a heartbeat signal to the server.
+ */
+message HeartbeatRequest {}
+
+/**
+ * A response to a request to send a heartbeat signal to the server.
+ */
+message HeartbeatResponse {}
+

@@ -676,7 +676,7 @@ service ModelCenterWorkflowService {
     * is a property of a reference array.
     * Otherwise, the index should be blank.
     */
-   rpc ReferencePropertyGetValue(IndexedReferencePropertyIdentifier) returns (VariableValue);
+   rpc ReferencePropertyGetValue(IndexedReferencePropertyIdentifier) returns (VariableState);
 
    /**
     * Set the value of a reference property.

@@ -848,6 +848,11 @@ message ReferencePropertyIdentifier {
    string prop_name = 2;
 }
 
+/**
+ * A way to identify a reference property and optionally an index
+ * within the property for operations that target indexed items
+ * in reference array properties.
+ */
 message IndexedReferencePropertyIdentifier {
    /**
     * The reference property of interest.

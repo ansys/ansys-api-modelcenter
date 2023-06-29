@@ -700,6 +700,19 @@ message ReferenceVariableMetadata {
 }
 
 /**
+ * One of the standard metadata types.
+ */
+message VariableMetadata {
+   oneof value {
+      IntegerVariableMetadata int_metadata = 1;
+      DoubleVariableMetadata double_metadata = 2;
+      BooleanVariableMetadata bool_metadata = 3;
+      StringVariableMetadata string_metadata = 4;
+      FileVariableMetadata file_metadata = 5;
+   }
+}
+
+/**
  * A request to set the metadata for a reference or reference array variable.
  */
 message SetReferenceVariableMetadataRequest {
@@ -707,6 +720,16 @@ message SetReferenceVariableMetadataRequest {
    ElementId target = 1;
    
    ReferenceVariableMetadata new_metadata = 2;
+}
+
+/**
+ * A request to set the metadata for a reference property.
+ */
+message SetReferencePropertyMetadataRequest {
+   ReferencePropertyIdentifier target = 1;
+   
+   VariableMetadata new_metadata = 2;
+
 }
 
 
@@ -826,9 +849,29 @@ message ReferencePropertyIdentifier {
 }
 
 /**
- * A response to a request to set a reference value.
+ * A way to identify a reference property and optionally an index
+ * within the property for operations that target indexed items
+ * in reference array properties.
  */
-message ReferencePropertyCreateResponse {}
+message IndexedReferencePropertyIdentifier {
+   /**
+    * The reference property of interest.
+    */
+   ReferencePropertyIdentifier target_prop = 1;
+   
+   /**
+    * An index if the operation targets a particular index in
+    * a property of a reference array.
+    */
+   optional int64 index = 2;
+}
+
+/**
+ * A response indicating the available reference property names.
+ */
+message ReferencePropertyNames {
+   repeated string names = 1;
+}
 
 /**
  * A request to set a reference value.
@@ -837,7 +880,7 @@ message ReferencePropertySetValueRequest {
    /**
     * The reference property to set.
     */
-   ReferencePropertyIdentifier target_prop = 1;
+   IndexedReferencePropertyIdentifier target_prop = 1;
 
    /**
     * The value to set.

@@ -664,18 +664,26 @@ service ModelCenterWorkflowService {
    rpc ReferenceVariableGetIsDirect(GetReferenceIsDirectRequest) returns (GetReferenceIsDirectResponse);
 
    /**
-    * Create a real-type reference property.
+    * Get the available reference properties of a reference variable
     */
-   rpc RealReferencePropertyCreate(ReferencePropertyIdentifier) returns (ReferencePropertyCreateResponse);
+   rpc ReferenceVariableGetReferenceProperties(ElementId) returns (ReferencePropertyNames);
 
    /**
     * Get the value of a reference property.
-    * If necessary, the workflow is executed to ensure the value is valid.
+    *
+    * The workflow is not executed to attempt to validate the property.
+    * An index is only required in the request if the property in question
+    * is a property of a reference array.
+    * Otherwise, the index should be blank.
     */
-   rpc ReferencePropertyGetValue(ReferencePropertyIdentifier) returns (VariableValue);
+   rpc ReferencePropertyGetValue(IndexedReferencePropertyIdentifier) returns (VariableValue);
 
    /**
     * Set the value of a reference property.
+    *
+    * An index is only required in the request if the property in question
+    * is a property of a reference array.
+    * Otherwise, the index should be blank.
     */
    rpc ReferencePropertySetValue(ReferencePropertySetValueRequest) returns (ReferencePropertySetValueResponse);
 
@@ -690,16 +698,6 @@ service ModelCenterWorkflowService {
    rpc ReferencePropertySetIsInput(ReferencePropertySetIsInputRequest) returns (ReferencePropertyGetIsInputResponse);
 
    /**
-    * Get the allowed enumerated values for a reference property.
-    */
-   rpc ReferencePropertyGetEnumValues(ReferencePropertyIdentifier) returns (ReferencePropertyGetEnumValuesResponse);
-
-   /**
-    * Set the allowed enumerated values for a reference property.
-    */
-   rpc ReferencePropertySetEnumValues(ReferencePropertySetEnumValuesRequest) returns (ReferencePropertyGetEnumValuesResponse);
-
-   /**
     * Get the title of a reference property.
     */
    rpc ReferencePropertyGetTitle(ReferencePropertyIdentifier) returns (ReferencePropertyGetTitleResponse);
@@ -708,16 +706,19 @@ service ModelCenterWorkflowService {
     * Set the title of a reference property.
     */
    rpc ReferencePropertySetTitle(ReferencePropertySetTitleRequest) returns (ReferencePropertyGetTitleResponse);
-
+   
    /**
-    * Get the description of a reference property.
+    * Get the metadata items from a reference property.
     */
-   rpc ReferencePropertyGetDescription(ReferencePropertyIdentifier) returns (ReferencePropertyGetDescriptionResponse);
-
+   rpc ReferencePropertyGetMetadata(ReferencePropertyIdentifier) returns (VariableMetadata);
+   
    /**
-    * Set the description of a reference property.
+    * Set the metadata of a reference property.
+    *
+    * Note that this item only works on reference properties which have a numeric type
+    * in which case only the display format is set.
     */
-   rpc ReferencePropertySetDescription(ReferencePropertySetDescriptionRequest) returns (ReferencePropertyGetDescriptionResponse);
+   rpc ReferencePropertySetMetadata(SetReferencePropertyMetadataRequest) returns (SetMetadataResponse);
 
    /**
     * Get the type of a reference property.

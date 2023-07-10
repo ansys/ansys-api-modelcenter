@@ -723,17 +723,6 @@ message SetReferenceVariableMetadataRequest {
 }
 
 /**
- * A request to set the metadata for a reference property.
- */
-message SetReferencePropertyMetadataRequest {
-   ReferencePropertyIdentifier target = 1;
-   
-   VariableMetadata new_metadata = 2;
-
-}
-
-
-/**
  * A request to get the reference equation of a reference variable.
  */
 message GetReferenceEquationRequest {
@@ -899,21 +888,6 @@ message ReferencePropertySetValueResponse {
 }
 
 /**
- * A request to set whether a reference property is an input.
- */
-message ReferencePropertySetIsInputRequest {
-   /**
-    * The target property.
-    */
-   ReferencePropertyIdentifier target = 1;
-
-   /**
-    * True if the property should be an input.
-    */
-   bool new_value = 2;
-}
-
-/**
  * A response indicating whether a reference property is an input.
  */
 message ReferencePropertyGetIsInputResponse {
@@ -923,20 +897,6 @@ message ReferencePropertyGetIsInputResponse {
    bool is_input = 1;
 }
 
-/**
- * A request to set the title of a reference property.
- */
-message ReferencePropertySetTitleRequest {
-   /**
-    * The target property.
-    */
-   ReferencePropertyIdentifier target = 1;
-
-   /**
-    * The new value for the title.
-    */
-   string new_value = 2;
-}
 
 /**
  * A response indicating what the title of a reference property is.

@@ -693,32 +693,14 @@ service ModelCenterWorkflowService {
    rpc ReferencePropertyGetIsInput(ReferencePropertyIdentifier) returns (ReferencePropertyGetIsInputResponse);
 
    /**
-    * Set whether a reference property should be an input.
-    */
-   rpc ReferencePropertySetIsInput(ReferencePropertySetIsInputRequest) returns (ReferencePropertyGetIsInputResponse);
-
-   /**
     * Get the title of a reference property.
     */
    rpc ReferencePropertyGetTitle(ReferencePropertyIdentifier) returns (ReferencePropertyGetTitleResponse);
-
-   /**
-    * Set the title of a reference property.
-    */
-   rpc ReferencePropertySetTitle(ReferencePropertySetTitleRequest) returns (ReferencePropertyGetTitleResponse);
    
    /**
     * Get the metadata items from a reference property.
     */
    rpc ReferencePropertyGetMetadata(ReferencePropertyIdentifier) returns (VariableMetadata);
-   
-   /**
-    * Set the metadata of a reference property.
-    *
-    * Note that this item only works on reference properties which have a numeric type
-    * in which case only the display format is set.
-    */
-   rpc ReferencePropertySetMetadata(SetReferencePropertyMetadataRequest) returns (SetMetadataResponse);
 
    /**
     * Get the type of a reference property.

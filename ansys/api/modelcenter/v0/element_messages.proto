@@ -99,7 +99,9 @@ message AssemblyIconSetRequest {
 /**
  * The response from setting an icon.
  */
-message AssemblyIconSetResponse {}
+message AssemblyIconSetResponse {
+
+}
 
 /**
  * Represents a response to a query about an icon.
@@ -192,7 +194,9 @@ message RenameRequest {
 /**
  * Represents a response to the request to rename an element.
  */
-message RenameResponse {}
+message RenameResponse {
+
+}
 
 /**
  * Represents a response to an attempt to delete an assembly variable.
@@ -218,7 +222,9 @@ message ComponentPaczUrlResponse {
 /**
  * A response to a request to run an individual, specific component.
  */
-message ComponentRunResponse {}
+message ComponentRunResponse {
+   
+}
 
 /**
  * A request to invoke a particular method on a component.
@@ -238,22 +244,30 @@ message ComponentInvokeMethodRequest {
 /**
  * A response to a request to invoke a component method.
  */
-message ComponentInvokeMethodResponse {}
+message ComponentInvokeMethodResponse {
+
+}
 
 /**
  * A response to a request to invalidate a component.
  */
-message ComponentInvalidateResponse {}
+message ComponentInvalidateResponse {
+
+}
 
 /**
  * A response to a request to reconnect a component.
  */
-message ComponentReconnectResponse {}
+message ComponentReconnectResponse {
+
+}
 
 /**
  * A response to a request to download values for a component from MCRE.
  */
-message ComponentDownloadValuesResponse {}
+message ComponentDownloadValuesResponse {
+
+}
 
 /*
  * A response to a request to get if a component is connected to its source.
@@ -293,7 +307,9 @@ message IfComponentSetExclusiveRequest {
 /**
  * A response to a request to set if an if-component's branching condition is exclusive.
  */
-message IfComponentSetExclusiveResponse {}
+message IfComponentSetExclusiveResponse {
+
+}
 
 /**
  * A response to a request to get if an if-component has an else branch that is run if no conditions are met.
@@ -324,7 +340,9 @@ message IfComponentSetRunLastBranchByDefaultRequest {
 /**
  * A response to a request to set if an if-component has an else branch that is run if no conditions are met.
  */
-message IfComponentSetRunLastBranchByDefaultResponse {}
+message IfComponentSetRunLastBranchByDefaultResponse {
+
+}
 
 /**
  * A response to a request to get the number of branches in an if-component.
@@ -385,7 +403,9 @@ message IfComponentSetBranchConditionRequest {
 /**
  * A response to a request to set the branch condition of a branch in an if-component.
  */
-message IfComponentSetBranchConditionResponse {}
+message IfComponentSetBranchConditionResponse {
+
+}
 
 /**
  * A request to get the branch name of a branch in an if-component.
@@ -436,7 +456,9 @@ message IfComponentSetBranchNameRequest {
 /**
  * A response to a request to set the branch name of a branch in an if-component.
  */
-message IfComponentSetBranchNameResponse {}
+message IfComponentSetBranchNameResponse {
+   
+}
 
 /**
  * Get whether the variable is an input on its component and in its workflow overall.

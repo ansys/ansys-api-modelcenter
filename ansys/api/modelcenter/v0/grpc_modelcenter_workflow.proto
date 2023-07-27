@@ -1,3 +1,7 @@
+/*
+ * This file contains the gRPC ModelCenter workflow.
+ */
+
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 

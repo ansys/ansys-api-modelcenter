@@ -46,7 +46,9 @@ enum WorkflowInstanceState {
 /**
  * A request to get the state of the workflow.
  */
-message GetWorkflowStateRequest {}
+message GetWorkflowStateRequest {
+   
+}
 
 /**
  * A response indicating what the state of the workflow is.
@@ -124,12 +126,16 @@ message WorkflowRunResponse {
 /**
  * A request to halt the workflow.
  */
-message WorkflowHaltRequest {}
+message WorkflowHaltRequest {
+
+}
 
 /**
  * A response to a request to halt the workflow.
  */
-message WorkflowHaltResponse {}
+message WorkflowHaltResponse {
+
+}
 
 /**
  * A response to a request to run a workflow asynchronously.
@@ -225,12 +231,16 @@ message WorkflowCreateLinkRequest {
 /**
  * A response to a request to create a link in the workflow.
  */
-message WorkflowCreateLinkResponse {}
+message WorkflowCreateLinkResponse {
+
+}
 
 /**
  * A response to a request to save the workflow.
  */
-message WorkflowSaveResponse {}
+message WorkflowSaveResponse {
+
+}
 
 /**
  * A request to save the workflow to a new location.
@@ -250,7 +260,9 @@ message WorkflowSaveAsRequest {
 /**
  * A response to a request to close the workflow.
  */
-message WorkflowCloseResponse {}
+message WorkflowCloseResponse {
+   
+}
 
 /**
  * A request to remove a component from the workflow.

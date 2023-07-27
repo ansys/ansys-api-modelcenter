@@ -10,7 +10,9 @@ import "element_messages.proto";
 /**
  * A request for the process ID of the engine.
  */
-message EngineProcessIdRequest {}
+message EngineProcessIdRequest {
+
+}
 
 /**
  * A response to a request for the process ID of the engine.
@@ -128,7 +130,9 @@ message SetUserNameRequest {
 /**
  * A response to an attempt to set the username ModelCenter Desktop uses for ModelCenter Remote Execution.
  */
-message SetUserNameResponse {}
+message SetUserNameResponse {
+
+}
 
 /**
  * A request to set the password ModelCenter Desktop uses when authenticating with ModelCenter Remote Execution.
@@ -191,12 +195,16 @@ message SetPreferenceRequest {
 /*
  * A response to a request to set a preference value.
  */
-message SetPreferenceResponse {}
+message SetPreferenceResponse {
+
+}
 
 /**
  * A request to get unit categories.
  */
-message GetUnitCategoriesRequest {}
+message GetUnitCategoriesRequest {
+
+}
 
 /**
  * A response to a request to get unit categories.
@@ -231,7 +239,9 @@ message GetUnitNamesResponse {
 /**
  * A request for information about the ModelCenter workflow engine.
  */
-message GetServerInfoRequest {}
+message GetServerInfoRequest {
+
+}
 
 /**
  * A response with information about the ModelCenter workflow engine.
@@ -281,20 +291,28 @@ message GetServerInfoResponse {
 /**
  * A request to shut down the server.
  */
-message ShutdownRequest {}
+message ShutdownRequest {
+
+}
 
 /**
  * A response to a request to shut down the server.
  */
-message ShutdownResponse {}
+message ShutdownResponse {
+
+}
 
 /**
  * A request to send a heartbeat signal to the server.
  */
-message HeartbeatRequest {}
+message HeartbeatRequest {
+
+}
 
 /**
  * A response to a request to send a heartbeat signal to the server.
  */
-message HeartbeatResponse {}
+message HeartbeatResponse {
+   
+}
 

@@ -459,7 +459,9 @@ message VariableState {
 /**
  * A response to a request to set a variable value.
  */
-message SetMetadataResponse {}
+message SetMetadataResponse {
+
+}
 
 /**
  * The base metadata shared by all metadata types.
@@ -780,7 +782,9 @@ message SetReferenceEquationRequest {
 /**
  * A response to a request to set the reference equation of a reference variable.
  */
-message SetReferenceEquationResponse {};
+message SetReferenceEquationResponse {
+   
+};
 
 /**
  * A request to get the reference equation of a reference variable.

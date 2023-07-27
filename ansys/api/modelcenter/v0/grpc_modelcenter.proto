@@ -1,10 +1,13 @@
+/*
+ * This file contains the main ModelCenter service.
+ */
+
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
 import "ansys/api/modelcenter/v0/engine_messages.proto";
 
 /**
- * The main ModelCenter service.
  * This service is used to interact with the ModelCenter workflow engine itself;
  * workflows and their contents are manipulated by the Workflow service.
  */
@@ -23,7 +26,8 @@ service GRPCModelCenterService {
 
   /**
    * Send a signal that the client that started this server is still alive.
-   * When the server is started, it can be configured to expect a heartbeat call within a specified interval, and how many intervals can be missed before the client is assumed to have died.
+   * When the server is started, it can be configured to expect a heartbeat call within a
+   * specified interval, and how many intervals can be missed before the client is assumed to have died.
    * If enough calls are not recieved in time, the server will shutdown and log an error.
    */
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);

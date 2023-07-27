@@ -1,7 +1,7 @@
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
-import "engine_messages.proto";
+import "ansys/api/modelcenter/v0/engine_messages.proto";
 
 /**
  * The main ModelCenter service.

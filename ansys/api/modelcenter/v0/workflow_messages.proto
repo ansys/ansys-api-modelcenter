@@ -4,8 +4,8 @@
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
-import "element_messages.proto";
-import "variable_value_messages.proto";
+import "ansys/api/modelcenter/v0/element_messages.proto";
+import "ansys/api/modelcenter/v0/variable_value_messages.proto";
 
 /**
  * The workflow's execution state.

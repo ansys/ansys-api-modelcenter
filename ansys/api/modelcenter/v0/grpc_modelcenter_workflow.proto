@@ -1,10 +1,10 @@
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
-import "element_messages.proto";
-import "custom_metadata_messages.proto";
-import "variable_value_messages.proto";
-import "workflow_messages.proto";
+import "ansys/api/modelcenter/v0/element_messages.proto";
+import "ansys/api/modelcenter/v0/custom_metadata_messages.proto";
+import "ansys/api/modelcenter/v0/variable_value_messages.proto";
+import "ansys/api/modelcenter/v0/workflow_messages.proto";
 
 service ModelCenterWorkflowService {
 

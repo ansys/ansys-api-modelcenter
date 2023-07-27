@@ -6,7 +6,7 @@
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
-import "format_messages.proto";
+import "ansys/api/modelcenter/v0/format_messages.proto";
 
 /**
  * A service for formatting variables according to ModelCenter Desktop formatting rules.

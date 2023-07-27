@@ -5,52 +5,52 @@
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
-import "ansys/api/modelcenter/v0/element_messages.proto";
-import "ansys/api/modelcenter/v0/variable_value_messages.proto";
+import "element_messages.proto";
+import "variable_value_messages.proto";
 
 /**
  * A list of metadata property names.
  */
 message MetadataPropertyNamesResponse {
-   /**
-    * The requested names.
-    */
-   repeated string names = 1;
+  /**
+   * The requested names.
+   */
+  repeated string names = 1;
 }
 
 /**
  * A request for a value of a custom metadata property.
  */
 message MetadataGetValueRequest {
-   /**
-    * The element on which the metadata property exists.
-    */
-   ElementId id = 1;
+  /**
+   * The element on which the metadata property exists.
+   */
+  ElementId id = 1;
 
-   /**
-    * The name of the property of interest.
-    */
-   string property_name = 2;
+  /**
+   * The name of the property of interest.
+   */
+  string property_name = 2;
 }
 
 /**
  * A request to set the value of a custom metadata property.
  */
 message MetadataSetValueRequest {
-   /**
-    * The element on which the metadata property exists.
-    */
-   ElementId id = 1;
-   
-   /**
-    * The name of the property of interest.
-    */
-   string property_name = 2;
+  /**
+   * The element on which the metadata property exists.
+   */
+  ElementId id = 1;
+  
+  /**
+   * The name of the property of interest.
+   */
+  string property_name = 2;
 
-   /**
-    * The new value for the property.
-    */
-   VariableValue value = 3;
+  /**
+   * The new value for the property.
+   */
+  VariableValue value = 3;
 }
 
 /**

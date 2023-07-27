@@ -5,7 +5,7 @@
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
-import "element_messages.proto";
+import "ansys/api/modelcenter/v0/element_messages.proto";
 
 /**
  * A request for the process ID of the engine.

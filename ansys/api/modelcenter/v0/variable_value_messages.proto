@@ -1,3 +1,7 @@
+/*
+ * This file contains messages related to the variable values.
+ */
+
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
@@ -69,7 +73,7 @@ message SetFileArrayValueRequest {
 }
 
 /**
- * A message reprsenting the value of a double variable.
+ * A message representing the value of a double variable.
  */
 message DoubleValue {
   /**
@@ -1057,10 +1061,10 @@ message GetVariableDependenciesRequest {
    * Flag for if only dependencies directly linked to the variable should be fetched, or if all
    * dependencies should be returned recursively.
    */
-  bool onlyFetchDirectDependencies = 2;
+  bool only_fetch_direct_dependencies = 2;
 
   /**
    * Flag for if dependencies with suspended links should be followed.
    */
-  bool followSuspended = 3;
+  bool follow_suspended = 3;
 }

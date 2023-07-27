@@ -1,6 +1,7 @@
 /*
  * This file contains messages related to management of workflow elements.
  */
+
 syntax = "proto3";
 package Ansys.ModelCenter.GRPCModelCenter;
 
@@ -457,7 +458,7 @@ message IfComponentSetBranchNameRequest {
  * A response to a request to set the branch name of a branch in an if-component.
  */
 message IfComponentSetBranchNameResponse {
-   
+
 }
 
 /**

@@ -193,7 +193,8 @@ service ModelCenterWorkflowService {
   /**
    * Set if there is an else branch that is run if no conditions are met.
    */
-  rpc IfComponentSetRunLastBranchByDefault(IfComponentSetRunLastBranchByDefaultRequest) returns (IfComponentSetRunLastBranchByDefaultResponse);
+  rpc IfComponentSetRunLastBranchByDefault(IfComponentSetRunLastBranchByDefaultRequest)
+  returns (IfComponentSetRunLastBranchByDefaultResponse);
 
   /**
    * Get the number of branches.
@@ -203,12 +204,14 @@ service ModelCenterWorkflowService {
   /**
    * Get the branch condition for a branch.
    */
-  rpc IfComponentGetBranchCondition(IfComponentGetBranchConditionRequest) returns (IfComponentGetBranchConditionResponse);
+  rpc IfComponentGetBranchCondition(IfComponentGetBranchConditionRequest)
+  returns (IfComponentGetBranchConditionResponse);
 
   /**
    * Set the branch condition for a branch.
    */
-  rpc IfComponentSetBranchCondition(IfComponentSetBranchConditionRequest) returns (IfComponentSetBranchConditionResponse);
+  rpc IfComponentSetBranchCondition(IfComponentSetBranchConditionRequest)
+  returns (IfComponentSetBranchConditionResponse);
 
   /**
    * Get the name of a branch.

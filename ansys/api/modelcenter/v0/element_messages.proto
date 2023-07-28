@@ -5,8 +5,6 @@
 syntax = "proto3";
 package ansys.api.modelcenter.v0.element_messages;
 
-option csharp_namespace = "Ansys.Api.ModelCenter.V0.ElementMessages";
-
 /**
  * Represents an element name.
  */

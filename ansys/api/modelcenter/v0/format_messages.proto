@@ -4,8 +4,6 @@
 syntax = "proto3";
 package ansys.api.modelcenter.v0.format_messages;
 
-option csharp_namespace = "Ansys.Api.ModelCenter.V0.FormatMessages";
-
 /**
  * A request to format a value from a string to another string or a different form.
  */

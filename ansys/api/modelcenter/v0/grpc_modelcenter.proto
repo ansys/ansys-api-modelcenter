@@ -7,8 +7,6 @@ package ansys.api.modelcenter.v0.grpc_modelcenter;
 
 import "ansys/api/modelcenter/v0/engine_messages.proto";
 
-option csharp_namespace = "Ansys.Api.ModelCenter.V0.GRPCModelCenter";
-
 /**
  * This service is used to interact with the ModelCenter workflow engine itself;
  * workflows and their contents are manipulated by the Workflow service.
@@ -17,14 +15,14 @@ service GRPCModelCenterService {
   /**
    * Get information about the service.
    */
-  rpc GetEngineInfo(GetServerInfoRequest) returns (GetServerInfoResponse);
+  rpc GetEngineInfo(ansys.api.modelcenter.v0.engine_messages.GetServerInfoRequest) returns (ansys.api.modelcenter.v0.engine_messages.GetServerInfoResponse);
 
   /**
    * Shut down a local instance of the service.
    * Naturally, this request does not block until the process has actually exited.
    * The caller must monitor this separately.
    */
-  rpc Shutdown(ShutdownRequest) returns (ShutdownResponse);
+  rpc Shutdown(ansys.api.modelcenter.v0.engine_messages.ShutdownRequest) returns (ansys.api.modelcenter.v0.engine_messages.ShutdownResponse);
 
   /**
    * Send a signal that the client that started this server is still alive.
@@ -33,51 +31,51 @@ service GRPCModelCenterService {
    * to have died.
    * If enough calls are not received in time, the server will shutdown and log an error.
    */
-  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+  rpc Heartbeat(ansys.api.modelcenter.v0.engine_messages.HeartbeatRequest) returns (ansys.api.modelcenter.v0.engine_messages.HeartbeatResponse);
 
   /**
    * Get the process ID of the ModelCenter engine.
    */
-  rpc EngineGetProcessId(EngineProcessIdRequest) returns (EngineProcessIdResponse);
+  rpc EngineGetProcessId(ansys.api.modelcenter.v0.engine_messages.EngineProcessIdRequest) returns (ansys.api.modelcenter.v0.engine_messages.EngineProcessIdResponse);
 
   /**
    * Load a workflow.
    */
-  rpc EngineLoadWorkflow(LoadWorkflowRequest) returns (LoadWorkflowResponse);
+  rpc EngineLoadWorkflow(ansys.api.modelcenter.v0.engine_messages.LoadWorkflowRequest) returns (ansys.api.modelcenter.v0.engine_messages.LoadWorkflowResponse);
 
   /**
    * Create a new workflow.
   */
-  rpc EngineCreateWorkflow(NewWorkflowRequest) returns (NewWorkflowResponse);
+  rpc EngineCreateWorkflow(ansys.api.modelcenter.v0.engine_messages.NewWorkflowRequest) returns (ansys.api.modelcenter.v0.engine_messages.NewWorkflowResponse);
 
   /**
    * Set a username for ModelCenter to use while authenticating to ModelCenter Remote Execution.
    */
-  rpc EngineSetUserName(SetUserNameRequest) returns (SetUserNameResponse);
+  rpc EngineSetUserName(ansys.api.modelcenter.v0.engine_messages.SetUserNameRequest) returns (ansys.api.modelcenter.v0.engine_messages.SetUserNameResponse);
 
   /**
    * Set a password for ModelCenter to use while authenticating to ModelCenter Remote Execution.
    */
-  rpc EngineSetPassword(SetPasswordRequest) returns (SetPasswordResponse);
+  rpc EngineSetPassword(ansys.api.modelcenter.v0.engine_messages.SetPasswordRequest) returns (ansys.api.modelcenter.v0.engine_messages.SetPasswordResponse);
 
   /**
    * Get the value of a preference.
    */
-  rpc EngineGetPreference(GetPreferenceRequest) returns (GetPreferenceResponse);
+  rpc EngineGetPreference(ansys.api.modelcenter.v0.engine_messages.GetPreferenceRequest) returns (ansys.api.modelcenter.v0.engine_messages.GetPreferenceResponse);
 
   /**
    * Set the value of a preference.
    */
-  rpc EngineSetPreference(SetPreferenceRequest) returns (SetPreferenceResponse);
+  rpc EngineSetPreference(ansys.api.modelcenter.v0.engine_messages.SetPreferenceRequest) returns (ansys.api.modelcenter.v0.engine_messages.SetPreferenceResponse);
 
   /**
    * Get the unit categories available.
    */
-  rpc EngineGetUnitCategories(GetUnitCategoriesRequest) returns (GetUnitCategoriesResponse);
+  rpc EngineGetUnitCategories(ansys.api.modelcenter.v0.engine_messages.GetUnitCategoriesRequest) returns (ansys.api.modelcenter.v0.engine_messages.GetUnitCategoriesResponse);
 
   /**
    * Get the names of the units available in a particular category.
    */
-  rpc EngineGetUnitNames(GetUnitNamesRequest) returns (GetUnitNamesResponse);
+  rpc EngineGetUnitNames(ansys.api.modelcenter.v0.engine_messages.GetUnitNamesRequest) returns (ansys.api.modelcenter.v0.engine_messages.GetUnitNamesResponse);
 
 }

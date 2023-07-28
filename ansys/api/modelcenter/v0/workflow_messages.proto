@@ -8,8 +8,6 @@ package ansys.api.modelcenter.v0.workflow_messages;
 import "ansys/api/modelcenter/v0/element_messages.proto";
 import "ansys/api/modelcenter/v0/variable_value_messages.proto";
 
-option csharp_namespace = "Ansys.Api.ModelCenter.V0.WorkflowMessages";
-
 /**
  * The workflow's execution state.
  */
@@ -153,7 +151,7 @@ message WorkflowGetRootResponse {
   /**
    * The root element.
    */
-  ElementId id = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId id = 1;
 }
 
 /**
@@ -183,7 +181,7 @@ message WorkflowCreateComponentRequest {
   /**
    * The parent element.
    */
-  ElementId parent = 3;
+  ansys.api.modelcenter.v0.element_messages.ElementId parent = 3;
 
   /**
    * An optional string used by the component to initialize itself.
@@ -202,7 +200,7 @@ message WorkflowCreateComponentRequest {
     /**
      * A component after which the new component should be placed.
      */
-    ElementId after_comp = 6;
+    ansys.api.modelcenter.v0.element_messages.ElementId after_comp = 6;
   }
 }
 
@@ -213,7 +211,7 @@ message WorkflowCreateComponentResponse {
   /**
    * The ID for the newly created component.
    */
-  ElementId created = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId created = 1;
 }
 
 /**
@@ -223,7 +221,7 @@ message WorkflowCreateLinkRequest {
   /**
    * The target element.
    */
-  ElementId target = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId target = 1;
 
   /**
    * The expression that will drive the value of the target element
@@ -274,7 +272,7 @@ message WorkflowRemoveComponentRequest {
   /**
    * The target element.
    */
-  ElementId target = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId target = 1;
 }
 
 /**
@@ -296,7 +294,7 @@ message WorkflowBreakLinkRequest {
    * The variable that is the "target"
    * end of the link to break.
    */
-  ElementId target_var = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId target_var = 1;
 }
 
 /**
@@ -306,7 +304,7 @@ message WorkflowSuspendOrResumeLinkRequest {
   /**
    * The variable that is the lef-hand side (target) of the link.
    */
-  ElementId target_link_lhs = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId target_link_lhs = 1;
 
   /**
    * True to suspend the link, false to resume it.
@@ -343,7 +341,7 @@ message WorkflowLinkInfo {
   /**
    * The target of the link.
    */
-  ElementId lhs = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId lhs = 1;
 
   /**
    * The expression that drives the value of the left-hand side of the link.
@@ -358,12 +356,12 @@ message WorkflowAutoLinkRequest {
   /**
    * The source component.
    */
-  ElementId source_comp = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId source_comp = 1;
 
   /**
    * The target component.
    */
-  ElementId target_comp = 2;
+  ansys.api.modelcenter.v0.element_messages.ElementId target_comp = 2;
 }
 
 /**
@@ -393,7 +391,7 @@ message ElementInfo {
   /*
    * The ID of the element.
    */
-  ElementId id = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId id = 1;
 
   /*
    * The type of the element.
@@ -419,7 +417,7 @@ message ElementInfoCollection {
  */
 message ElementIdOrName {
   oneof target {
-    ElementId target_id = 1;
+    ansys.api.modelcenter.v0.element_messages.ElementId target_id = 1;
     NamedElementInWorkflow target_name = 2;
   }
 }
@@ -439,12 +437,12 @@ message MoveComponentRequest {
   /**
    * The component to move.
    */
-  ElementId target = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId target = 1;
 
   /**
    * The new parent for the component. This should be an assembly.
    */
-  ElementId new_parent = 2;
+  ansys.api.modelcenter.v0.element_messages.ElementId new_parent = 2;
 
   /**
    * The new index in the parent. Pass -1 to add the component at the end.

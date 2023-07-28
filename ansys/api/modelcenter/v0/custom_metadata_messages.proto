@@ -8,8 +8,6 @@ package ansys.api.modelcenter.v0.custom_metadata_messages;
 import "ansys/api/modelcenter/v0/element_messages.proto";
 import "ansys/api/modelcenter/v0/variable_value_messages.proto";
 
-option csharp_namespace = "Ansys.Api.ModelCenter.V0.CustomMetadataMessages";
-
 /**
  * A list of metadata property names.
  */
@@ -27,7 +25,7 @@ message MetadataGetValueRequest {
   /**
    * The element on which the metadata property exists.
    */
-  ElementId id = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId id = 1;
 
   /**
    * The name of the property of interest.
@@ -42,7 +40,7 @@ message MetadataSetValueRequest {
   /**
    * The element on which the metadata property exists.
    */
-  ElementId id = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId id = 1;
 
   /**
    * The name of the property of interest.
@@ -52,7 +50,7 @@ message MetadataSetValueRequest {
   /**
    * The new value for the property.
    */
-  VariableValue value = 3;
+  ansys.api.modelcenter.v0.variable_value_messages.VariableValue value = 3;
 }
 
 /**

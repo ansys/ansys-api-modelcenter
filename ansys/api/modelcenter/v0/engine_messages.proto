@@ -7,8 +7,6 @@ package ansys.api.modelcenter.v0.engine_messages;
 
 import "ansys/api/modelcenter/v0/element_messages.proto";
 
-option csharp_namespace = "Ansys.Api.ModelCenter.V0.EngineMessages";
-
 /**
  * A request for the process ID of the engine.
  */
@@ -63,7 +61,7 @@ message NewWorkflowResponse {
   /**
    * The root element of the new workflow.
    */
-  ElementId root_element = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId root_element = 1;
 
   /**
    * The created workflow's ID. Use this ID in future requests to refer to this workflow.
@@ -109,7 +107,7 @@ message LoadWorkflowResponse {
   /**
    * The root element of the loaded workflow.
    */
-  ElementId root_element = 1;
+  ansys.api.modelcenter.v0.element_messages.ElementId root_element = 1;
 
   /**
    * The type of the loaded workflow.

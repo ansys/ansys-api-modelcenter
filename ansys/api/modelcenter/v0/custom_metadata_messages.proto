@@ -3,7 +3,7 @@
  */
 
 syntax = "proto3";
-package Ansys.ModelCenter.GRPCModelCenter;
+package ansys.api.modelcenter.v0.custom_metadata_messages;
 
 import "ansys/api/modelcenter/v0/element_messages.proto";
 import "ansys/api/modelcenter/v0/variable_value_messages.proto";
@@ -41,7 +41,7 @@ message MetadataSetValueRequest {
    * The element on which the metadata property exists.
    */
   ElementId id = 1;
-  
+
   /**
    * The name of the property of interest.
    */

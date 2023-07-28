@@ -3,7 +3,7 @@
  */
 
 syntax = "proto3";
-package Ansys.ModelCenter.GRPCModelCenter;
+package ansys.api.modelcenter.v0.workflow_messages;
 
 import "ansys/api/modelcenter/v0/element_messages.proto";
 import "ansys/api/modelcenter/v0/variable_value_messages.proto";
@@ -48,7 +48,7 @@ enum WorkflowInstanceState {
  * A request to get the state of the workflow.
  */
 message GetWorkflowStateRequest {
-   
+
 }
 
 /**
@@ -446,7 +446,7 @@ message MoveComponentRequest {
 
   /**
    * The new index in the parent. Pass -1 to add the component at the end.
-   * If the index is larger than the number of components in the element, 
+   * If the index is larger than the number of components in the element,
    * it will be placed at the end.
    */
   int32 index_in_parent = 3;

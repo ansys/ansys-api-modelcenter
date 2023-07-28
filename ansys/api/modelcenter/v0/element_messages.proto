@@ -3,9 +3,9 @@
  */
 
 syntax = "proto3";
-package Ansys.ModelCenter.GRPCModelCenter;
+package ansys.api.modelcenter.v0.element_messages;
 
-/** 
+/**
  * Represents an element name.
  */
 message ElementName {
@@ -40,36 +40,36 @@ message ElementIdCollection {
  */
 enum ElementType {
   /*
-   * The element type is unknown.
+   * The element type is unspecified.
    * Typically only used when the element does not exist.
    */
-  ELEMTYPE_UNKNOWN = 0;
+  ELEMENT_TYPE_UNSPECIFIED = 0;
 
   /*
    * The element is an assembly.
    */
-  ELEMTYPE_ASSEMBLY = 1;
+  ELEMENT_TYPE_ASSEMBLY = 1;
 
   /*
    * The element is a component.
    * Note there are special component types that have their own ElementType entry.
    */
-  ELEMTYPE_COMPONENT = 2;
+  ELEMENT_TYPE_COMPONENT = 2;
 
   /*
    * The element is a group.
    */
-  ELEMTYPE_GROUP = 3;
+  ELEMENT_TYPE_GROUP = 3;
 
   /*
    * The element is a variable.
    */
-  ELEMTYPE_VARIABLE = 4;
+  ELEMENT_TYPE_VARIABLE = 4;
 
   /*
    * The element is an if component.
    */
-  ELEMTYPE_IFCOMPONENT = 5;
+  ELEMENT_TYPE_IFCOMPONENT = 5;
 }
 
 /**
@@ -117,7 +117,7 @@ message AssemblyIconResponse {
 /**
  * Represents an assembly's index in its parent.
  */
-message ElementIndexInParentResponse {
+message ElementIndexParentResponse {
   /**
    * The index.
    */
@@ -140,7 +140,7 @@ message AddAssemblyRequest {
    * The short name for the new assembly.
    */
   ElementName name = 1;
-  
+
   /**
    * The parent for the new assembly.
    */
@@ -173,7 +173,7 @@ message AddAssemblyResponse{
  */
 message AddAssemblyVariableRequest {
   ElementName name = 1;
-  ElementId target_assembly = 2;  
+  ElementId target_assembly = 2;
   string variable_type = 3;
 }
 
@@ -224,7 +224,7 @@ message ComponentPaczUrlResponse {
  * A response to a request to run an individual, specific component.
  */
 message ComponentRunResponse {
-   
+
 }
 
 /**
@@ -315,7 +315,7 @@ message IfComponentSetExclusiveResponse {
 /**
  * A response to a request to get if an if-component has an else branch that is run if no conditions are met.
  */
-message IfComponentGetRunLastBranchByDefaultResponse {
+message IfComponentGetRunLastBranchDefaultResponse {
   /**
    * Is there a default branch?
    */
@@ -325,7 +325,7 @@ message IfComponentGetRunLastBranchByDefaultResponse {
 /**
  * A request to set if an if-component has an else branch that is run if no conditions are met.
  */
-message IfComponentSetRunLastBranchByDefaultRequest {
+message IfComponentSetRunLastBranchDefaultRequest {
   /**
    * The target component.
    */
@@ -341,14 +341,14 @@ message IfComponentSetRunLastBranchByDefaultRequest {
 /**
  * A response to a request to set if an if-component has an else branch that is run if no conditions are met.
  */
-message IfComponentSetRunLastBranchByDefaultResponse {
+message IfComponentSetRunLastBranchDefaultResponse {
 
 }
 
 /**
  * A response to a request to get the number of branches in an if-component.
  */
-message IfComponentGetNumberOfBranchesResponse {
+message IfComponentGetNumberBranchesResponse {
   /**
    * The number of branches in the component.
    */
@@ -466,6 +466,6 @@ message IfComponentSetBranchNameResponse {
  */
 message VariableIsInputResponse
 {
-  bool is_input_in_component = 1;
-  bool is_input_in_workflow = 2;
+  bool is_input_component = 1;
+  bool is_input_workflow = 2;
 }

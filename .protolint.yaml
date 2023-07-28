@@ -11,7 +11,10 @@ lint:
   rules:
     # Use default rules
     all_default: true
- 
+
+    # - Proto files are not fully documented.
+    remove:
+      - FIELDS_HAVE_COMMENT
 
   # Linter rules option.
   rules_option:

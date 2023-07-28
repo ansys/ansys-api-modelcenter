@@ -3,7 +3,7 @@
  */
 
 syntax = "proto3";
-package Ansys.ModelCenter.GRPCModelCenter;
+package ansys.api.modelcenter.v0.grpc_modelcenter_workflow;
 
 import "ansys/api/modelcenter/v0/custom_metadata_messages.proto";
 import "ansys/api/modelcenter/v0/element_messages.proto";
@@ -16,24 +16,24 @@ service ModelCenterWorkflowService {
   * Get an element name.
   */
   rpc ElementGetName(ElementId) returns (ElementName);
-  
+
   /**
   * Get an element's full name.
 
   */
   rpc ElementGetFullName(ElementId) returns (ElementName);
-  
+
   /**
   * Get the parent element of an element.
 
   */
   rpc ElementGetParentElement(ElementId) returns (ElementInfo);
-  
+
   /**
   * Get the custom metadata properties available for an element.
   */
   rpc PropertyOwnerGetProperties(ElementId) returns (MetadataPropertyNamesResponse);
-  
+
   /**
   * Set the value of a custom metadata property.
   *
@@ -41,7 +41,7 @@ service ModelCenterWorkflowService {
   * INVALID_ARGUMENT if the property value is missing.
   */
   rpc PropertyOwnerSetPropertyValue(MetadataSetValueRequest) returns (MetadataSetValueResponse);
-  
+
   /**
   * Get the value of a custom metadata property.
   *
@@ -49,27 +49,27 @@ service ModelCenterWorkflowService {
   * INVALID_ARGUMENT if the specified property doesn't exist
   */
   rpc PropertyOwnerGetPropertyValue(MetadataGetValueRequest) returns (VariableValue);
-  
+
   /**
   * Get the variables available on an assembly.
   */
   rpc RegistryGetVariables(ElementId) returns (VariableInfoCollection);
-  
+
   /**
   * Get the groups available on an assembly.
   */
   rpc RegistryGetGroups(ElementId) returns (ElementIdCollection);
-  
+
   /**
   * Get the type of an assembly.
   */
   rpc RegistryGetControlType(ElementId) returns (AssemblyType);
-  
+
   /**
   * Get the child assemblies and components of an assembly.
   */
   rpc AssemblyGetAssembliesAndComponents(ElementId) returns (ElementInfoCollection);
-  
+
   /**
   * Add a child assembly.
   *
@@ -78,7 +78,7 @@ service ModelCenterWorkflowService {
   * ALREADY_EXISTS if there is a name collision
   */
   rpc AssemblyAddAssembly(AddAssemblyRequest) returns (AddAssemblyResponse);
-  
+
   /**
   * Add a variable to an assembly.
   *
@@ -87,7 +87,7 @@ service ModelCenterWorkflowService {
   * ALREADY_EXISTS if theere is a name collision
   */
   rpc AssemblyAddVariable(AddAssemblyVariableRequest) returns (AddAssemblyVariableResponse);
-  
+
   /**
   * Delete a variable on an assembly.
   *
@@ -95,7 +95,7 @@ service ModelCenterWorkflowService {
   * No error should be raised if the specified variable is already nonexistent (see response).
   */
   rpc AssemblyDeleteVariable(DeleteAssemblyVariableRequest) returns (DeleteAssemblyVariableResponse);
-  
+
   /**
   * Rename an assembly.
   *
@@ -104,12 +104,12 @@ service ModelCenterWorkflowService {
   * ALREADY_EXISTS if there is a name collision.
   */
   rpc AssemblyRename(RenameRequest) returns (RenameResponse);
-  
+
   /**
   * Set an assembly's icon.
   */
   rpc AssemblySetIcon(AssemblyIconSetRequest) returns (AssemblyIconSetResponse);
-  
+
   /**
   * Get an assembly's icon.
   */
@@ -119,17 +119,17 @@ service ModelCenterWorkflowService {
   * Get an element's index in its parent.
   */
   rpc ElementGetIndexInParent(ElementId) returns (ElementIndexInParentResponse);
-  
+
   /**
   * Get an assembly's position on the analysis view.
   */
   rpc AssemblyGetAnalysisViewPosition(ElementId) returns (AnalysisViewPosition);
-  
+
   /**
   * Get an assembly's source.
   */
   rpc ComponentGetSource(ElementId) returns (ComponentSourceResponse);
-  
+
   /**
   * Get a component's pacz URL.
   */
@@ -139,7 +139,7 @@ service ModelCenterWorkflowService {
   * Run the specified component.
   */
   rpc ComponentRun(ElementId) returns (ComponentRunResponse);
-  
+
   /**
    * Invoke a method on the specified component.
    *
@@ -170,7 +170,7 @@ service ModelCenterWorkflowService {
 
   /*
    * Get if a component is connected to its source.
-   * A component may be disconnected from its source if it fails to connect on load, and 
+   * A component may be disconnected from its source if it fails to connect on load, and
    * OnConnectionModeError is set to IGNORE.
    */
   rpc ComponentIsConnected(ElementId) returns (ComponentIsConnectedResponse);
@@ -193,8 +193,7 @@ service ModelCenterWorkflowService {
   /**
    * Set if there is an else branch that is run if no conditions are met.
    */
-  rpc IfComponentSetRunLastBranchByDefault(IfComponentSetRunLastBranchByDefaultRequest)
-  returns (IfComponentSetRunLastBranchByDefaultResponse);
+  rpc IfComponentSetRunLastBranchByDefault(IfComponentSetRunLastBranchByDefaultRequest) returns (IfComponentSetRunLastBranchByDefaultResponse);  # noqa : E501
 
   /**
    * Get the number of branches.
@@ -204,14 +203,12 @@ service ModelCenterWorkflowService {
   /**
    * Get the branch condition for a branch.
    */
-  rpc IfComponentGetBranchCondition(IfComponentGetBranchConditionRequest)
-  returns (IfComponentGetBranchConditionResponse);
+  rpc IfComponentGetBranchCondition(IfComponentGetBranchConditionRequest) returns (IfComponentGetBranchConditionResponse);  # noqa : E501
 
   /**
    * Set the branch condition for a branch.
    */
-  rpc IfComponentSetBranchCondition(IfComponentSetBranchConditionRequest)
-  returns (IfComponentSetBranchConditionResponse);
+  rpc IfComponentSetBranchCondition(IfComponentSetBranchConditionRequest) returns (IfComponentSetBranchConditionResponse);  # noqa : E501
 
   /**
    * Get the name of a branch.
@@ -234,13 +231,13 @@ service ModelCenterWorkflowService {
   rpc VariableGetState(ElementIdOrName) returns (VariableState);
 
   /**
-   * Finds any variables linked as an output to this variable, either returning only direct dependent variables 
+   * Finds any variables linked as an output to this variable, either returning only direct dependent variables
    * or recursively fetching all dependent variables.
    */
   rpc VariableGetDependents(GetVariableDependenciesRequest) returns (VariableInfoCollection);
 
   /**
-   * Finds any variables linked as an input to this variable, either returning only direct precedent variables 
+   * Finds any variables linked as an input to this variable, either returning only direct precedent variables
    * or recursively fetching all precedent variables.
    */
   rpc VariableGetPrecedents(GetVariableDependenciesRequest) returns (VariableInfoCollection);
@@ -280,7 +277,7 @@ service ModelCenterWorkflowService {
    * before the value is returned.
    */
   rpc IntegerArrayGetValue(ElementId) returns (IntegerArrayValue);
-    
+
   /**
    * Set the value of a integer array variable.
    *
@@ -314,7 +311,7 @@ service ModelCenterWorkflowService {
    * before the value is returned.
    */
   rpc StringArrayGetValue(ElementId) returns (StringArrayValue);
-  
+
   /**
    * Set the value of a string array variable.
    *
@@ -326,7 +323,7 @@ service ModelCenterWorkflowService {
 
   /**
    * Set the values of the referenced variables in a reference array.
-   * 
+   *
    * NOT_FOUND if the target variable cannot be located
    * INVALID_ARGUMENT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
@@ -411,7 +408,7 @@ service ModelCenterWorkflowService {
 
   /**
    * Set the value of a file array variable.
-   * 
+   *
    * NOT_FOUND if the target variable cannot be located
    * INVALID_ARGUMENT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
@@ -551,7 +548,7 @@ service ModelCenterWorkflowService {
 
   /**
    * Create a component within the workflow.
-   * 
+   *
    * NOT_FOUND if the parent assembly isn't found
    * INVALID_ARGUMENT if:
    *   connection fails, name is invalid
@@ -581,7 +578,7 @@ service ModelCenterWorkflowService {
 
   /**
    * Close the workflow.
-   * 
+   *
    * NOT_FOUND if specified workflow does not exist
    */
   rpc WorkflowClose(WorkflowId) returns (WorkflowCloseResponse);
@@ -599,7 +596,7 @@ service ModelCenterWorkflowService {
    * NOT_FOUND if the lhs isn't valid
    */
   rpc WorkflowBreakLink(WorkflowBreakLinkRequest) returns (WorkflowBreakLinkResponse);
-    
+
   /**
    * Suspend a link within the workflow.
    *
@@ -648,19 +645,19 @@ service ModelCenterWorkflowService {
    * Get the variables referenced by a reference variable.
    */
   rpc ReferenceVariableGetReferencedVariables(GetReferencedVariablesRequest) returns (GetReferencedVariablesResponse);
-  
+
   /**
    * Get variable metadata for a reference or reference array variable.
-   * 
+   *
    * Note that reference properties are a distinct concept from variable metadata,
    * and they need to be retrieved separately.
    */
   rpc ReferenceVariableGetMetadata(ElementId) returns (ReferenceVariableMetadata);
-  
+
   /**
    * Set variable metadata for a reference or reference array variable.
    *
-   * Note that refernce properties are a distinct concept from variable metadata,
+   * Note that reference properties are a distinct concept from variable metadata,
    * and they need to be manipulated separately.
    */
   rpc ReferenceVariableSetMetadata(SetReferenceVariableMetadataRequest) returns (SetMetadataResponse);
@@ -713,12 +710,12 @@ service ModelCenterWorkflowService {
    * Set the title of a reference property.
    */
   rpc ReferencePropertySetTitle(ReferencePropertySetTitleRequest) returns (ReferencePropertyGetTitleResponse);
-  
+
   /**
    * Get the metadata items from a reference property.
    */
   rpc ReferencePropertyGetMetadata(ReferencePropertyIdentifier) returns (VariableMetadata);
-  
+
   /**
    * Set the metadata of a reference property.
    *

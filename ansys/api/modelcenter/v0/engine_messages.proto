@@ -3,7 +3,7 @@
  */
 
 syntax = "proto3";
-package Ansys.ModelCenter.GRPCModelCenter;
+package ansys.api.modelcenter.v0.engine_messages;
 
 import "ansys/api/modelcenter/v0/element_messages.proto";
 
@@ -78,7 +78,7 @@ enum OnConnectionErrorMode {
    * Raise an error in response.
    */
   ERROR = 0;
-  
+
   /**
    * Ignore the connection failure and continue loading.
    */
@@ -256,7 +256,7 @@ message GetServerInfoResponse {
     int32 patch = 3;
     int32 revision = 4;
   }
-  
+
   /**
    * The version number.
    */
@@ -313,6 +313,6 @@ message HeartbeatRequest {
  * A response to a request to send a heartbeat signal to the server.
  */
 message HeartbeatResponse {
-   
+
 }
 

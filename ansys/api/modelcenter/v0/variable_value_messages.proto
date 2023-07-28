@@ -3,7 +3,7 @@
  */
 
 syntax = "proto3";
-package Ansys.ModelCenter.GRPCModelCenter;
+package ansys.api.modelcenter.v0.variable_value_messages;
 
 import "ansys/api/modelcenter/v0/element_messages.proto";
 
@@ -342,69 +342,69 @@ message SetVariableValueResponse {
  */
 enum VariableType {
   /**
-   * The variable type is unknown.
+   * The variable type is unspecified.
    */
-  VARTYPE_UNKNOWN = 0;
+  VARIABLE_TYPE_UNSPECIFIED = 0;
 
   /**
    * A 64-bit signed integer.
    */
-  VARTYPE_INTEGER = 1;
+  VARIABLE_TYPE_INTEGER = 1;
 
   /**
    * A double-precision floating-point number.
    */
-  VARTYPE_REAL = 2;
+  VARIABLE_TYPE_REAL = 2;
 
   /**
    * A boolean value.
    */
-  VARTYPE_BOOLEAN = 3;
+  VARIABLE_TYPE_BOOLEAN = 3;
 
   /**
    * A string value.
    */
-  VARTYPE_STRING = 4;
+  VARIABLE_TYPE_STRING = 4;
 
   /**
    * A file value.
    */
-  VARTYPE_FILE = 5;
+  VARIABLE_TYPE_FILE = 5;
 
   /**
    * An array of 64-bit integers.
    */
-  VARTYPE_INTEGER_ARRAY = 6;
+  VARIABLE_TYPE_INTEGER_ARRAY = 6;
 
   /**
    * An array of double-precision floating point numbers.
    */
-  VARTYPE_REAL_ARRAY = 7;
+  VARIABLE_TYPE_REAL_ARRAY = 7;
 
   /**
    * An array of boolean values.
    */
-  VARTYPE_BOOLEAN_ARRAY = 8;
+  VARIABLE_TYPE_BOOLEAN_ARRAY = 8;
 
   /**
    * An array of string values.
    */
-  VARTYPE_STRING_ARRAY = 9;
+  VARIABLE_TYPE_STRING_ARRAY = 9;
 
   /**
    * An array of file values.
    */
-  VARTYPE_FILE_ARRAY = 10;
+  VARIABLE_TYPE_FILE_ARRAY = 10;
 
   /**
    * A reference to another variable.
    */
-  VARTYPE_REFERENCE = 11;
+  VARIABLE_TYPE_REFERENCE = 11;
 
   /**
    * An array of references to other variables.
    */
-  VARTYPE_REFERENCE_ARRAY = 12;
+  VARIABLE_TYPE_REFERENCE_ARRAY = 12;
 }
 
 /**
@@ -569,7 +569,7 @@ message SetDoubleVariableMetadataRequest {
    * The target variable.
    */
   ElementId target = 1;
-  
+
   /**
    * The new metadata to use.
    */
@@ -724,7 +724,7 @@ message VariableMetadata {
 message SetReferenceVariableMetadataRequest {
 
   ElementId target = 1;
-  
+
   ReferenceVariableMetadata new_metadata = 2;
 }
 
@@ -733,7 +733,7 @@ message SetReferenceVariableMetadataRequest {
  */
 message SetReferencePropertyMetadataRequest {
   ReferencePropertyIdentifier target = 1;
-  
+
   VariableMetadata new_metadata = 2;
 
 }
@@ -787,7 +787,7 @@ message SetReferenceEquationRequest {
  * A response to a request to set the reference equation of a reference variable.
  */
 message SetReferenceEquationResponse {
-   
+
 };
 
 /**
@@ -831,7 +831,7 @@ message GetReferenceIsDirectRequest {
 }
 
 /**
- * A response to a request to get if a reference variable refers directly to a 
+ * A response to a request to get if a reference variable refers directly to a
  * single variable.
  */
 message GetReferenceIsDirectResponse {
@@ -866,7 +866,7 @@ message IndexedReferencePropertyIdentifier {
    * The reference property of interest.
    */
   ReferencePropertyIdentifier target_prop = 1;
-  
+
   /**
    * An index if the operation targets a particular index in
    * a property of a reference array.
@@ -1026,12 +1026,12 @@ message VariableInfo {
    * The identifier of the variable.
    */
   ElementId id = 1;
-    
+
   /**
    * The value type the variable stores.
    */
   VariableType value_type = 2;
-    
+
   /**
    * The variable's short name.
    */

@@ -3,7 +3,7 @@
  */
 
 syntax = "proto3";
-package Ansys.ModelCenter.GRPCModelCenter;
+package ansys.api.modelcenter.v0.grpc_modelcenter;
 
 import "ansys/api/modelcenter/v0/engine_messages.proto";
 
@@ -27,8 +27,9 @@ service GRPCModelCenterService {
   /**
    * Send a signal that the client that started this server is still alive.
    * When the server is started, it can be configured to expect a heartbeat call within a
-   * specified interval, and how many intervals can be missed before the client is assumed to have died.
-   * If enough calls are not recieved in time, the server will shutdown and log an error.
+   * specified interval, and how many intervals can be missed before the client is assumed
+   * to have died.
+   * If enough calls are not received in time, the server will shutdown and log an error.
    */
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
 
@@ -72,7 +73,7 @@ service GRPCModelCenterService {
    */
   rpc EngineGetUnitCategories(GetUnitCategoriesRequest) returns (GetUnitCategoriesResponse);
 
-  /** 
+  /**
    * Get the names of the units available in a particular category.
    */
   rpc EngineGetUnitNames(GetUnitNamesRequest) returns (GetUnitNamesResponse);

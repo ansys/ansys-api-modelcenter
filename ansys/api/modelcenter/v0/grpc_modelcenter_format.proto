@@ -8,6 +8,8 @@ package ansys.api.modelcenter.v0.grpc_modelcenter_format;
 
 import "ansys/api/modelcenter/v0/format_messages.proto";
 
+option csharp_namespace = "Ansys.Api.ModelCenter.V0.GRPCModelCenterFormat";
+
 /**
  * A service for formatting variables according to ModelCenter Desktop formatting rules.
  */

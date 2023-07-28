@@ -8,40 +8,42 @@ package ansys.api.modelcenter.v0.workflow_messages;
 import "ansys/api/modelcenter/v0/element_messages.proto";
 import "ansys/api/modelcenter/v0/variable_value_messages.proto";
 
+option csharp_namespace = "Ansys.Api.ModelCenter.V0.WorkflowMessages";
+
 /**
  * The workflow's execution state.
  */
 enum WorkflowInstanceState {
   /**
-   * The state is unknown.
+   * The state is unspecified.
    */
-  WFSTATE_UNKNOWN = 0;
+  WORKFLOW_INSTANCE_STATE_UNSPECIFIED = 0;
 
   /**
    * Some values in the workflow are not valid.
    * The workflow can be run to attempt to produce valid values for those variables.
    */
-  WFSTATE_INVALID = 1;
+  WORKFLOW_INSTANCE_STATE_INVALID = 1;
 
   /**
    * The workflow is currently running.
    */
-  WFSTATE_RUNNING = 2;
+  WORKFLOW_INSTANCE_STATE_RUNNING = 2;
 
   /**
    * A workflow run was started and paused.
    */
-  WFSTATE_PAUSED = 3;
+  WORKFLOW_INSTANCE_STATE_PAUSED = 3;
 
   /**
    * A workflow run failed.
    */
-  WFSTATE_FAILED = 4;
+  WORKFLOW_INSTANCE_STATE_FAILED = 4;
 
   /**
    * A workflow run succeeded.
    */
-  WFSTATE_SUCCESS = 5;
+  WORKFLOW_INSTANCE_STATE_SUCCESS = 5;
 }
 
 /**
@@ -71,7 +73,7 @@ message WorkflowId {
 /**
  * An element ID combined with a name.
  */
-message NamedElementInWorkflow {
+message NamedElementWorkflow {
   /**
    * The workflow's ID.
    */
@@ -449,5 +451,5 @@ message MoveComponentRequest {
    * If the index is larger than the number of components in the element,
    * it will be placed at the end.
    */
-  int32 index_in_parent = 3;
+  int32 index_parent = 3;
 }

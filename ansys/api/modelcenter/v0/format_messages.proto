@@ -4,10 +4,12 @@
 syntax = "proto3";
 package ansys.api.modelcenter.v0.format_messages;
 
+option csharp_namespace = "Ansys.Api.ModelCenter.V0.FormatMessages";
+
 /**
  * A request to format a value from a string to another string or a different form.
  */
-message FormatFromStringRequest {
+message FormatStringRequest {
   /**
    * The format to use.
    */
@@ -22,7 +24,7 @@ message FormatFromStringRequest {
 /**
  * A request to format a value from an integer to another form.
  */
-message FormatFromIntegerRequest {
+message FormatIntegerRequest {
   /**
    * The format to use.
    */
@@ -37,7 +39,7 @@ message FormatFromIntegerRequest {
 /**
  * A request to format a value from a double to another form.
  */
-message FormatFromDoubleRequest {
+message FormatDoubleRequest {
   /**
    * The format to use.
    */
@@ -52,7 +54,7 @@ message FormatFromDoubleRequest {
 /**
  * A response to a request to format a value to a string.
  */
-message FormatToStringResponse {
+message FormatStringResponse {
   /**
    * The result of the formatting operation.
    */
@@ -62,7 +64,7 @@ message FormatToStringResponse {
 /**
  * A response to a request to format a value to an integer.
  */
-message FormatToIntegerResponse {
+message FormatIntegerResponse {
   /**
    * The result of the formatting operation.
    */
@@ -72,7 +74,7 @@ message FormatToIntegerResponse {
 /**
  * A response to a request to format a value to a double.
  */
-message FormatToDoubleResponse {
+message FormatDoubleResponse {
   /**
    * The result of the formatting operation.
    */

@@ -8,7 +8,9 @@ package ansys.api.modelcenter.v0.grpc_modelcenter_workflow;
 import "ansys/api/modelcenter/v0/custom_metadata_messages.proto";
 import "ansys/api/modelcenter/v0/element_messages.proto";
 import "ansys/api/modelcenter/v0/variable_value_messages.proto";
-import "ansys/api/modelcenter/v0/workflow_messages.proto";
+import "ansys/api/modelcenter/v0/workflow_messages.proto";\
+
+option csharp_namespace = "Ansys.Api.ModelCenter.V0.GRPCModelCenterWorkflow";
 
 service ModelCenterWorkflowService {
 
@@ -193,7 +195,7 @@ service ModelCenterWorkflowService {
   /**
    * Set if there is an else branch that is run if no conditions are met.
    */
-  rpc IfComponentSetRunLastBranchByDefault(IfComponentSetRunLastBranchByDefaultRequest) returns (IfComponentSetRunLastBranchByDefaultResponse);  # noqa : E501
+  rpc IfComponentSetRunLastBranchByDefault(IfComponentSetRunLastBranchByDefaultRequest) returns (IfComponentSetRunLastBranchByDefaultResponse);
 
   /**
    * Get the number of branches.
@@ -203,12 +205,12 @@ service ModelCenterWorkflowService {
   /**
    * Get the branch condition for a branch.
    */
-  rpc IfComponentGetBranchCondition(IfComponentGetBranchConditionRequest) returns (IfComponentGetBranchConditionResponse);  # noqa : E501
+  rpc IfComponentGetBranchCondition(IfComponentGetBranchConditionRequest) returns (IfComponentGetBranchConditionResponse);
 
   /**
    * Set the branch condition for a branch.
    */
-  rpc IfComponentSetBranchCondition(IfComponentSetBranchConditionRequest) returns (IfComponentSetBranchConditionResponse);  # noqa : E501
+  rpc IfComponentSetBranchCondition(IfComponentSetBranchConditionRequest) returns (IfComponentSetBranchConditionResponse);
 
   /**
    * Get the name of a branch.

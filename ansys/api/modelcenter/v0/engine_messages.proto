@@ -7,6 +7,8 @@ package ansys.api.modelcenter.v0.engine_messages;
 
 import "ansys/api/modelcenter/v0/element_messages.proto";
 
+option csharp_namespace = "Ansys.Api.ModelCenter.V0.EngineMessages";
+
 /**
  * A request for the process ID of the engine.
  */
@@ -31,12 +33,12 @@ enum WorkflowType {
   /**
    * A data-dependency workflow.
    */
-  DATA = 0;
+  WORKFLOW_TYPE_DATA = 0;
 
   /**
    * A process workflow.
    */
-  PROCESS = 1;
+  WORKFLOW_TYPE_PROCESS = 1;
 }
 
 /**
@@ -77,12 +79,12 @@ enum OnConnectionErrorMode {
   /**
    * Raise an error in response.
    */
-  ERROR = 0;
+  WORKFLOW_TYPE_ERROR = 0;
 
   /**
    * Ignore the connection failure and continue loading.
    */
-  IGNORE = 1;
+  WORKFLOW_TYPE_IGNORE = 1;
 }
 
 /**

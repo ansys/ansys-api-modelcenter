@@ -7,6 +7,8 @@ package ansys.api.modelcenter.v0.variable_value_messages;
 
 import "ansys/api/modelcenter/v0/element_messages.proto";
 
+option csharp_namespace = "Ansys.Api.ModelCenter.V0.VariableValueMessages";
+
 /**
  * A message representing the value of a file variable.
  */

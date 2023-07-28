@@ -8,6 +8,8 @@ package ansys.api.modelcenter.v0.custom_metadata_messages;
 import "ansys/api/modelcenter/v0/element_messages.proto";
 import "ansys/api/modelcenter/v0/variable_value_messages.proto";
 
+option csharp_namespace = "Ansys.Api.ModelCenter.V0.CustomMetadataMessages";
+
 /**
  * A list of metadata property names.
  */

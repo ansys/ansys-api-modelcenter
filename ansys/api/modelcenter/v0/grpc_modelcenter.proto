@@ -7,6 +7,8 @@ package ansys.api.modelcenter.v0.grpc_modelcenter;
 
 import "ansys/api/modelcenter/v0/engine_messages.proto";
 
+option csharp_namespace = "Ansys.Api.ModelCenter.V0.GRPCModelCenter";
+
 /**
  * This service is used to interact with the ModelCenter workflow engine itself;
  * workflows and their contents are manipulated by the Workflow service.

@@ -15,37 +15,44 @@ service ModelCenterFormatService{
   /**
    * Format a string to an integer.
    */
-  rpc FormatStringToInteger(ansys.api.modelcenter.v0.format_messages.FormatStringRequest) returns (ansys.api.modelcenter.v0.format_messages.FormatIntegerResponse);
+  rpc FormatStringToInteger(ansys.api.modelcenter.v0.format_messages.FormatStringRequest)
+    returns (ansys.api.modelcenter.v0.format_messages.FormatIntegerResponse);
 
   /**
    * Format a string to a double.
    */
-  rpc FormatStringToDouble(ansys.api.modelcenter.v0.format_messages.FormatStringRequest) returns (ansys.api.modelcenter.v0.format_messages.FormatDoubleResponse);
+  rpc FormatStringToDouble(ansys.api.modelcenter.v0.format_messages.FormatStringRequest)
+    returns (ansys.api.modelcenter.v0.format_messages.FormatDoubleResponse);
 
   /**
    * Format an integer to a string for display.
    */
-  rpc FormatIntegerToString(ansys.api.modelcenter.v0.format_messages.FormatIntegerRequest) returns (ansys.api.modelcenter.v0.format_messages.FormatStringResponse);
+  rpc FormatIntegerToString(ansys.api.modelcenter.v0.format_messages.FormatIntegerRequest)
+    returns (ansys.api.modelcenter.v0.format_messages.FormatStringResponse);
 
   /**
    * Format a double to string for display.
    */
-  rpc FormatDoubleToString(ansys.api.modelcenter.v0.format_messages.FormatDoubleRequest) returns (ansys.api.modelcenter.v0.format_messages.FormatStringResponse);
+  rpc FormatDoubleToString(ansys.api.modelcenter.v0.format_messages.FormatDoubleRequest)
+    returns (ansys.api.modelcenter.v0.format_messages.FormatStringResponse);
 
   /**
    * Format a string to a formatted string for display.
    */
-  rpc FormatStringToString(ansys.api.modelcenter.v0.format_messages.FormatStringRequest) returns (ansys.api.modelcenter.v0.format_messages.FormatStringResponse);
+  rpc FormatStringToString(ansys.api.modelcenter.v0.format_messages.FormatStringRequest)
+    returns (ansys.api.modelcenter.v0.format_messages.FormatStringResponse);
 
   /**
    * Format an integer to a string to use in an editing field
    * (i.e. with full precision).
    */
-  rpc FormatIntegerToEditString(ansys.api.modelcenter.v0.format_messages.FormatIntegerRequest) returns (ansys.api.modelcenter.v0.format_messages.FormatStringResponse);
+  rpc FormatIntegerToEditString(ansys.api.modelcenter.v0.format_messages.FormatIntegerRequest)
+    returns (ansys.api.modelcenter.v0.format_messages.FormatStringResponse);
 
   /**
    * Format a double to a string to use in an editing field
    * (i.e. with full precision).
    */
-  rpc FormatDoubleToEditString(ansys.api.modelcenter.v0.format_messages.FormatDoubleRequest) returns (ansys.api.modelcenter.v0.format_messages.FormatStringResponse);
+  rpc FormatDoubleToEditString(ansys.api.modelcenter.v0.format_messages.FormatDoubleRequest)
+    returns (ansys.api.modelcenter.v0.format_messages.FormatStringResponse);
 }

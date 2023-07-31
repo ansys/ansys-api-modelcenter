@@ -25,7 +25,6 @@ repos:
     args:
       - --max-line-length=100
 
-
 - repo: https://github.com/codespell-project/codespell
   rev: v2.2.5
   hooks:

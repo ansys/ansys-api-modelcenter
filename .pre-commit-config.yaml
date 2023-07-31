@@ -34,7 +34,7 @@ repos:
 # - repo: https://github.com/yoheimuta/protolint
 #   rev: v0.45.0
 #   hooks:
-#   - id: protolint
+#   - id: protolint 
 
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.4.0

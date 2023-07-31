@@ -31,7 +31,7 @@ enum WorkflowType {
   /**
    * A data-dependency workflow.
    */
-  WORKFLOW_TYPE_DATA = 0;
+  WORKFLOW_TYPE_DATA_UNSPECIFIED = 0;
 
   /**
    * A process workflow.
@@ -77,7 +77,7 @@ enum OnConnectionErrorMode {
   /**
    * Raise an error in response.
    */
-  WORKFLOW_TYPE_ERROR = 0;
+  WORKFLOW_TYPE_ERROR_UNSPECIFIED = 0;
 
   /**
    * Ignore the connection failure and continue loading.

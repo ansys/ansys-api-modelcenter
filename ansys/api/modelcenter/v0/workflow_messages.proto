@@ -80,7 +80,7 @@ message NamedElementWorkflow {
   /**
    * The name of the element.
    */
-  ElementName element_full_name = 2;
+  ansys.api.modelcenter.v0.element_messages.ElementName element_full_name = 2;
 }
 
 /**
@@ -96,7 +96,7 @@ message WorkflowRunRequest {
    * Input values to be set before the run.
   * The keys in the map are variable names.
    */
-  map<string, VariableState> inputs = 2;
+  map<string, ansys.api.modelcenter.v0.variable_value_messages.VariableState> inputs = 2;
 
   /**
    * If true, reset the validity of all elements in the workflow before running.
@@ -121,7 +121,7 @@ message WorkflowRunResponse {
   /**
    * The requested variables.
    */
-  map<string, VariableState> results= 1;
+  map<string, ansys.api.modelcenter.v0.variable_value_messages.VariableState> results= 1;
 }
 
 /**
@@ -195,7 +195,7 @@ message WorkflowCreateComponentRequest {
     /**
      * Coordinates at which to place the new component.
      */
-    AnalysisViewPosition coords = 5;
+    ansys.api.modelcenter.v0.element_messages.AnalysisViewPosition coords = 5;
 
     /**
      * A component after which the new component should be placed.
@@ -396,12 +396,12 @@ message ElementInfo {
   /*
    * The type of the element.
    */
-  ElementType type = 2;
+  ansys.api.modelcenter.v0.element_messages.ElementType type = 2;
 
   /*
    * If the element is a variable, it's variable type.
    */
-  optional VariableType var_type = 3;
+  optional ansys.api.modelcenter.v0.variable_value_messages.VariableType var_type = 3;
 }
 
 /**
@@ -418,7 +418,7 @@ message ElementInfoCollection {
 message ElementIdOrName {
   oneof target {
     ansys.api.modelcenter.v0.element_messages.ElementId target_id = 1;
-    NamedElementInWorkflow target_name = 2;
+    NamedElementWorkflow target_name = 2;
   }
 }
 

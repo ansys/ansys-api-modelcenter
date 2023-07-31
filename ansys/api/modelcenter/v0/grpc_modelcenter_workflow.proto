@@ -63,7 +63,7 @@ service ModelCenterWorkflowService {
   /**
   * Get the type of an assembly.
   */
-  rpc RegistryGetControlType(ansys.api.modelcenter.v0.element_messages.ElementId) returns (AssemblyType);
+  rpc RegistryGetControlType(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.AssemblyType);
 
   /**
   * Get the child assemblies and components of an assembly.
@@ -77,7 +77,7 @@ service ModelCenterWorkflowService {
   * INVALID_ARGUMENT if the name / position / type are invalid.
   * ALREADY_EXISTS if there is a name collision
   */
-  rpc AssemblyAddAssembly(AddAssemblyRequest) returns (AddAssemblyResponse);
+  rpc AssemblyAddAssembly(ansys.api.modelcenter.v0.element_messages.AddAssemblyRequest) returns (ansys.api.modelcenter.v0.element_messages.AddAssemblyResponse);
 
   /**
   * Add a variable to an assembly.
@@ -86,7 +86,7 @@ service ModelCenterWorkflowService {
   * INVALID_ARGUMENT if the name / position / type are invalid.
   * ALREADY_EXISTS if theere is a name collision
   */
-  rpc AssemblyAddVariable(AddAssemblyVariableRequest) returns (AddAssemblyVariableResponse);
+  rpc AssemblyAddVariable(ansys.api.modelcenter.v0.element_messages.AddAssemblyVariableRequest) returns (ansys.api.modelcenter.v0.element_messages.AddAssemblyVariableResponse);
 
   /**
   * Delete a variable on an assembly.
@@ -94,7 +94,7 @@ service ModelCenterWorkflowService {
   * NOT_FOUND if the specified parent assembly can't be found.
   * No error should be raised if the specified variable is already nonexistent (see response).
   */
-  rpc AssemblyDeleteVariable(DeleteAssemblyVariableRequest) returns (DeleteAssemblyVariableResponse);
+  rpc AssemblyDeleteVariable(ansys.api.modelcenter.v0.workflow_messages.DeleteAssemblyVariableRequest) returns (ansys.api.modelcenter.v0.element_messages.DeleteAssemblyVariableResponse);
 
   /**
   * Rename an assembly.
@@ -103,42 +103,42 @@ service ModelCenterWorkflowService {
   * INVALID_ARGUMENT if the new name is invalid.
   * ALREADY_EXISTS if there is a name collision.
   */
-  rpc AssemblyRename(RenameRequest) returns (RenameResponse);
+  rpc AssemblyRename(ansys.api.modelcenter.v0.element_messages.RenameRequest) returns (ansys.api.modelcenter.v0.element_messages.RenameResponse);
 
   /**
   * Set an assembly's icon.
   */
-  rpc AssemblySetIcon(AssemblyIconSetRequest) returns (AssemblyIconSetResponse);
+  rpc AssemblySetIcon(ansys.api.modelcenter.v0.element_messages.AssemblyIconSetRequest) returns (ansys.api.modelcenter.v0.element_messages.AssemblyIconSetResponse);
 
   /**
   * Get an assembly's icon.
   */
-  rpc AssemblyGetIcon(ansys.api.modelcenter.v0.element_messages.ElementId) returns (AssemblyIconResponse);
+  rpc AssemblyGetIcon(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.AssemblyIconResponse);
 
   /**
   * Get an element's index in its parent.
   */
-  rpc ElementGetIndexInParent(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ElementIndexInParentResponse);
+  rpc ElementGetIndexInParent(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.ElementIndexParentResponse);
 
   /**
   * Get an assembly's position on the analysis view.
   */
-  rpc AssemblyGetAnalysisViewPosition(ansys.api.modelcenter.v0.element_messages.ElementId) returns (AnalysisViewPosition);
+  rpc AssemblyGetAnalysisViewPosition(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.AnalysisViewPosition);
 
   /**
   * Get an assembly's source.
   */
-  rpc ComponentGetSource(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ComponentSourceResponse);
+  rpc ComponentGetSource(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.ComponentSourceResponse);
 
   /**
   * Get a component's pacz URL.
   */
-  rpc ComponentGetPaczUrl(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ComponentPaczUrlResponse);
+  rpc ComponentGetPaczUrl(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.ComponentPaczUrlResponse);
 
   /**
   * Run the specified component.
   */
-  rpc ComponentRun(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ComponentRunResponse);
+  rpc ComponentRun(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.ComponentRunResponse);
 
   /**
    * Invoke a method on the specified component.
@@ -147,106 +147,106 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUMENT if the target method can't be found
    * FAILED_PRECONDITION if the method run fails
    */
-  rpc ComponentInvokeMethod(ComponentInvokeMethodRequest) returns (ComponentInvokeMethodResponse);
+  rpc ComponentInvokeMethod(ansys.api.modelcenter.v0.element_messages.ComponentInvokeMethodRequest) returns (ansys.api.modelcenter.v0.element_messages.ComponentInvokeMethodResponse);
 
   /**
    * Invalidate the specified component.
    */
-  rpc ComponentInvalidate(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ComponentInvalidateResponse);
+  rpc ComponentInvalidate(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.ComponentInvalidateResponse);
 
   /**
    * Reconnect or reload the specified component.
    *
    * FAILED_PRECONDITION if the reconnect fails
    */
-  rpc ComponentReconnect(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ComponentReconnectResponse);
+  rpc ComponentReconnect(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.ComponentReconnectResponse);
 
   /**
    * Download the component's variable values if it is a ModelCenter Remote Execution component.
    *
    * FAILED_PRECONDITION if the download fails
    */
-  rpc ComponentDownloadValues(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ComponentDownloadValuesResponse);
+  rpc ComponentDownloadValues(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.ComponentDownloadValuesResponse);
 
   /*
    * Get if a component is connected to its source.
    * A component may be disconnected from its source if it fails to connect on load, and
    * OnConnectionModeError is set to IGNORE.
    */
-  rpc ComponentIsConnected(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ComponentIsConnectedResponse);
+  rpc ComponentIsConnected(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.ComponentIsConnectedResponse);
 
   /**
    * Get whether the branching condition is exclusive.
    */
-  rpc IfComponentGetExclusive(ansys.api.modelcenter.v0.element_messages.ElementId) returns (IfComponentGetExclusiveResponse);
+  rpc IfComponentGetExclusive(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.IfComponentGetExclusiveResponse);
 
   /**
    * Set whether the branching condition is exclusive.
    */
-  rpc IfComponentSetExclusive(IfComponentSetExclusiveRequest) returns (IfComponentSetExclusiveResponse);
+  rpc IfComponentSetExclusive(ansys.api.modelcenter.v0.element_messages.IfComponentSetExclusiveRequest) returns (ansys.api.modelcenter.v0.element_messages.IfComponentSetExclusiveResponse);
 
   /**
    * Get if there is an else branch that is run if no conditions are met.
    */
-  rpc IfComponentGetRunLastBranchByDefault(ansys.api.modelcenter.v0.element_messages.ElementId) returns (IfComponentGetRunLastBranchByDefaultResponse);
+  rpc IfComponentGetRunLastBranchByDefault(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.IfComponentGetRunLastBranchDefaultResponse);
 
   /**
    * Set if there is an else branch that is run if no conditions are met.
    */
-  rpc IfComponentSetRunLastBranchByDefault(IfComponentSetRunLastBranchByDefaultRequest) returns (IfComponentSetRunLastBranchByDefaultResponse);
+  rpc IfComponentSetRunLastBranchByDefault(ansys.api.modelcenter.v0.element_messages.IfComponentSetRunLastBranchDefaultRequest) returns (ansys.api.modelcenter.v0.element_messages.IfComponentSetRunLastBranchDefaultResponse);
 
   /**
    * Get the number of branches.
    */
-  rpc IfComponentGetNumberOfBranches(ansys.api.modelcenter.v0.element_messages.ElementId) returns (IfComponentGetNumberOfBranchesResponse);
+  rpc IfComponentGetNumberOfBranches(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.IfComponentGetNumberBranchesResponse);
 
   /**
    * Get the branch condition for a branch.
    */
-  rpc IfComponentGetBranchCondition(IfComponentGetBranchConditionRequest) returns (IfComponentGetBranchConditionResponse);
+  rpc IfComponentGetBranchCondition(ansys.api.modelcenter.v0.element_messages.IfComponentGetBranchConditionRequest) returns (ansys.api.modelcenter.v0.element_messages.IfComponentGetBranchConditionResponse);
 
   /**
    * Set the branch condition for a branch.
    */
-  rpc IfComponentSetBranchCondition(IfComponentSetBranchConditionRequest) returns (IfComponentSetBranchConditionResponse);
+  rpc IfComponentSetBranchCondition(ansys.api.modelcenter.v0.element_messages.IfComponentSetBranchConditionRequest) returns (ansys.api.modelcenter.v0.element_messages.IfComponentSetBranchConditionResponse);
 
   /**
    * Get the name of a branch.
    */
-  rpc IfComponentGetBranchName(IfComponentGetBranchNameRequest) returns (IfComponentGetBranchNameResponse);
+  rpc IfComponentGetBranchName(ansys.api.modelcenter.v0.element_messages.IfComponentGetBranchNameRequest) returns (ansys.api.modelcenter.v0.element_messages.IfComponentGetBranchNameResponse);
 
   /**
    * Set the name of a branch.
    */
-  rpc IfComponentSetBranchName(IfComponentSetBranchNameRequest) returns (IfComponentSetBranchNameResponse);
+  rpc IfComponentSetBranchName(ansys.api.modelcenter.v0.element_messages.IfComponentSetBranchNameRequest) returns (ansys.api.modelcenter.v0.element_messages.IfComponentSetBranchNameResponse);
 
   /**
    * Get the data type of a variable.
    */
-  rpc VariableGetType(ansys.api.modelcenter.v0.element_messages.ElementId) returns (VariableTypeResponse);
+  rpc VariableGetType(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.VariableTypeResponse);
 
   /**
    * Get the state of a variable.
    */
-  rpc VariableGetState(ElementIdOrName) returns (VariableState);
+  rpc VariableGetState(ansys.api.modelcenter.v0.workflow_messages.ElementIdOrName) returns (ansys.api.modelcenter.v0.variable_value_messages.VariableState);
 
   /**
    * Finds any variables linked as an output to this variable, either returning only direct dependent variables
    * or recursively fetching all dependent variables.
    */
-  rpc VariableGetDependents(GetVariableDependenciesRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.VariableInfoCollection);
+  rpc VariableGetDependents(ansys.api.modelcenter.v0.variable_value_messages.GetVariableDependenciesRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.VariableInfoCollection);
 
   /**
    * Finds any variables linked as an input to this variable, either returning only direct precedent variables
    * or recursively fetching all precedent variables.
    */
-  rpc VariableGetPrecedents(GetVariableDependenciesRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.VariableInfoCollection);
+  rpc VariableGetPrecedents(ansys.api.modelcenter.v0.variable_value_messages.GetVariableDependenciesRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.VariableInfoCollection);
 
   // TODO: May be able to delete
   /**
    * Get the value of a double array variable.
    */
-  rpc DoubleArrayGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (DoubleArrayValue);
+  rpc DoubleArrayGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.DoubleArrayValue);
 
   /**
    * Set the value of a double array variable.
@@ -255,7 +255,7 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUMENT if target variable is not a double array
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc DoubleArraySetValue(SetDoubleArrayValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc DoubleArraySetValue(ansys.api.modelcenter.v0.variable_value_messages.SetDoubleArrayValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   // TODO: May be able to delete
   /**
@@ -263,12 +263,12 @@ service ModelCenterWorkflowService {
    * If necessary, the workflow will be run such that the variable value is valid
    * before the value is returned.
    */
-  rpc FileArrayGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (FileArrayValue);
+  rpc FileArrayGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.FileArrayValue);
 
   /**
    * Set the value of a file array variable.
    */
-  rpc FileArraySetValue(SetFileArrayValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc FileArraySetValue(ansys.api.modelcenter.v0.variable_value_messages.SetFileArrayValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   // TODO: May be able to delete
   /**
@@ -276,7 +276,7 @@ service ModelCenterWorkflowService {
    * If necessary, the workflow will be run such that the variable value is valid
    * before the value is returned.
    */
-  rpc IntegerArrayGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (IntegerArrayValue);
+  rpc IntegerArrayGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.IntegerArrayValue);
 
   /**
    * Set the value of a integer array variable.
@@ -285,7 +285,7 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUEMNT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc IntegerArraySetValue(SetIntegerArrayValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc IntegerArraySetValue(ansys.api.modelcenter.v0.variable_value_messages.SetIntegerArrayValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   // TODO: May be able to delete
   /**
@@ -293,7 +293,7 @@ service ModelCenterWorkflowService {
    * If necessary, the workflow will be run such that the variable value is valid
    * before the value is returned.
    */
-  rpc BooleanArrayGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (BooleanArrayValue);
+  rpc BooleanArrayGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.BooleanArrayValue);
 
   /**
    * Set the value of a boolean array variable.
@@ -302,7 +302,7 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUEMNT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc BooleanArraySetValue(SetBooleanArrayValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc BooleanArraySetValue(ansys.api.modelcenter.v0.variable_value_messages.SetBooleanArrayValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   // TODO: May be able to delete
   /**
@@ -310,7 +310,7 @@ service ModelCenterWorkflowService {
    * If necessary, the workflow will be run such that the variable value is valid
    * before the value is returned.
    */
-  rpc StringArrayGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (StringArrayValue);
+  rpc StringArrayGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.StringArrayValue);
 
   /**
    * Set the value of a string array variable.
@@ -319,7 +319,7 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUEMNT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc StringArraySetValue(SetStringArrayValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc StringArraySetValue(ansys.api.modelcenter.v0.variable_value_messages.SetStringArrayValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   /**
    * Set the values of the referenced variables in a reference array.
@@ -328,7 +328,7 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUMENT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc ReferenceArraySetReferencedValues(SetDoubleArrayValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc ReferenceArraySetReferencedValues(ansys.api.modelcenter.v0.variable_value_messages.SetDoubleArrayValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   // TODO: May be able to delete
   /**
@@ -336,7 +336,7 @@ service ModelCenterWorkflowService {
    * If necessary, the workflow will be run such that the variable value is valid
    * before the value is returned.
    */
-  rpc DoubleVariableGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (DoubleValue);
+  rpc DoubleVariableGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.DoubleValue);
 
   /**
    * Set the value of a double variable.
@@ -345,7 +345,7 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUEMNT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc DoubleVariableSetValue(SetDoubleValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc DoubleVariableSetValue(ansys.api.modelcenter.v0.variable_value_messages.SetDoubleValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   // TODO: May be able to delete
   /**
@@ -353,7 +353,7 @@ service ModelCenterWorkflowService {
    * If necessary, the workflow will be run such that the variable value is valid
    * before the value is returned.
    */
-  rpc IntegerVariableGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (IntegerValue);
+  rpc IntegerVariableGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.IntegerValue);
 
   /**
    * Set the value of a integer variable.
@@ -362,7 +362,7 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUEMNT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc IntegerVariableSetValue(SetIntegerValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc IntegerVariableSetValue(ansys.api.modelcenter.v0.variable_value_messages.SetIntegerValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   // TODO: May be able to delete
   /**
@@ -370,7 +370,7 @@ service ModelCenterWorkflowService {
    * If necessary, the workflow will be run such that the variable value is valid
    * before the value is returned.
    */
-  rpc BooleanVariableGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (BooleanValue);
+  rpc BooleanVariableGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.BooleanValue);
 
   /**
    * Set the value of a boolean variable.
@@ -379,7 +379,7 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUEMNT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc BooleanVariableSetValue(SetBooleanValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc BooleanVariableSetValue(ansys.api.modelcenter.v0.variable_value_messages.SetBooleanValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   // TODO: May be able to delete
   /**
@@ -387,7 +387,7 @@ service ModelCenterWorkflowService {
    * If necessary, the workflow will be run such that the variable value is valid
    * before the value is returned.
    */
-  rpc StringVariableGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (StringValue);
+  rpc StringVariableGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.StringValue);
 
   /**
    * Set the value of a string variable.
@@ -396,7 +396,7 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUEMNT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc StringVariableSetValue(SetStringValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc StringVariableSetValue(ansys.api.modelcenter.v0.variable_value_messages.SetStringValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   // TODO: May be able to delete
   /**
@@ -404,7 +404,7 @@ service ModelCenterWorkflowService {
    * If necessary, the workflow will be run such that the variable value is valid
    * before the value is returned.
    */
-  rpc FileVariableGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (FileValue);
+  rpc FileVariableGetValue(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.FileValue);
 
   /**
    * Set the value of a file array variable.
@@ -413,7 +413,7 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUMENT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc FileVariableSetValue(SetFileValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc FileVariableSetValue(ansys.api.modelcenter.v0.variable_value_messages.SetFileValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   /**
    * Get the value of a reference variable or member of a reference array variable.
@@ -423,7 +423,7 @@ service ModelCenterWorkflowService {
    * NOT_FOUND if the target variable cannot be located
    * INVALID_ARGUEMNT if target variable is not the right type
    */
-  rpc ReferenceVariableGetValue(GetReferenceValueRequest) returns (VariableState);
+  rpc ReferenceVariableGetValue(ansys.api.modelcenter.v0.variable_value_messages.GetReferenceValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.VariableState);
 
   /**
    * Set the value of a reference variable or member of a reference array variable.
@@ -432,37 +432,37 @@ service ModelCenterWorkflowService {
    * INVALID_ARGUEMNT if target variable is not the right type
    * OUT_OF_RANGE if bounds or enum constraints are violated
    */
-  rpc ReferenceVariableSetValue(SetReferenceValueRequest) returns (Setansys.api.modelcenter.v0.variable_value_messages.VariableValueResponse);
+  rpc ReferenceVariableSetValue(ansys.api.modelcenter.v0.variable_value_messages.SetReferenceValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetVariableValueResponse);
 
   /**
    * Get whether or not a variable is an input to its component and in the workflow.
    */
-  rpc VariableGetIsInput(ansys.api.modelcenter.v0.element_messages.ElementId) returns (VariableIsInputResponse);
+  rpc VariableGetIsInput(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.element_messages.VariableIsInputResponse);
 
   /**
    * Get the metadata for a boolean or boolean array variable.
    */
-  rpc BooleanVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (BooleanVariableMetadata);
+  rpc BooleanVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.BooleanVariableMetadata);
 
   /**
    * Get the metadata for a double or double array variable.
    */
-  rpc DoubleVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (DoubleVariableMetadata);
+  rpc DoubleVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.DoubleVariableMetadata);
 
   /**
    * Get the metadata for an integer or integer array variable.
    */
-  rpc IntegerVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (IntegerVariableMetadata);
+  rpc IntegerVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.IntegerVariableMetadata);
 
   /**
    * Get the metadata for a string or string array variable.
    */
-  rpc StringVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (StringVariableMetadata);
+  rpc StringVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.StringVariableMetadata);
 
   /**
    * Get the metadata for a file or file array variable.
    */
-  rpc FileVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (FileVariableMetadata);
+  rpc FileVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.FileVariableMetadata);
 
   /**
    * Set the metadata for a boolean or boolean array variable.
@@ -470,7 +470,7 @@ service ModelCenterWorkflowService {
    * NOT_FOUND if the target element can't be found
    * INVALID_ARGUMENT if the target element is not a boolean or boolean array
    */
-  rpc BooleanVariableSetMetadata(SetBooleanVariableMetadataRequest) returns (SetMetadataResponse);
+  rpc BooleanVariableSetMetadata(ansys.api.modelcenter.v0.variable_value_messages.SetBooleanVariableMetadataRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetMetadataResponse);
 
   /**
    * Set the metadata for a double or double array variable.
@@ -478,7 +478,7 @@ service ModelCenterWorkflowService {
    * NOT_FOUND if the target element can't be found
    * INVALID_ARGUMENT if the target element is not a double or double array
    */
-  rpc DoubleVariableSetMetadata(SetDoubleVariableMetadataRequest) returns (SetMetadataResponse);
+  rpc DoubleVariableSetMetadata(ansys.api.modelcenter.v0.variable_value_messages.SetDoubleVariableMetadataRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetMetadataResponse);
 
   /**
    * Set the metadata for an integer or integer array variable.
@@ -486,7 +486,7 @@ service ModelCenterWorkflowService {
    * NOT_FOUND if the target element can't be found
    * INVALID_ARGUMENT if the target element is not an integer or integer array
    */
-  rpc IntegerVariableSetMetadata(SetIntegerVariableMetadataRequest) returns (SetMetadataResponse);
+  rpc IntegerVariableSetMetadata(ansys.api.modelcenter.v0.variable_value_messages.SetIntegerVariableMetadataRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetMetadataResponse);
 
   /**
    * Set the metadata for a string or string array variable.
@@ -494,7 +494,7 @@ service ModelCenterWorkflowService {
    * NOT_FOUND if the target element can't be found
    * INVALID_ARGUMENT if the target element is not a string or string array
    */
-  rpc StringVariableSetMetadata(SetStringVariableMetadataRequest) returns (SetMetadataResponse);
+  rpc StringVariableSetMetadata(ansys.api.modelcenter.v0.variable_value_messages.SetStringVariableMetadataRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetMetadataResponse);
 
   /**
    * Set the metadata for a file or file array variable.
@@ -502,12 +502,12 @@ service ModelCenterWorkflowService {
    * NOT_FOUND if the target element can't be found
    * INVALID_ARGUMENT if the target element is not a file or file array
    */
-  rpc FileVariableSetMetadata(SetFileVariableMetadataRequest) returns (SetMetadataResponse);
+  rpc FileVariableSetMetadata(ansys.api.modelcenter.v0.variable_value_messages.SetFileVariableMetadataRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetMetadataResponse);
 
   /**
    * Get the state of the workflow's execution.
    */
-  rpc WorkflowGetState(GetWorkflowStateRequest) returns (GetWorkflowStateResponse);
+  rpc WorkflowGetState(ansys.api.modelcenter.v0.workflow_messages.GetWorkflowStateRequest) returns (ansys.api.modelcenter.v0.workflow_messages.GetWorkflowStateResponse);
 
   /**
    * Execute the workflow.
@@ -518,7 +518,7 @@ service ModelCenterWorkflowService {
    *    mismatched types for values in the request
    * OUT_OF_RANGE if input values violate enum, bounds
    */
-  rpc WorkflowRun(WorkflowRunRequest) returns (WorkflowRunResponse);
+  rpc WorkflowRun(ansys.api.modelcenter.v0.workflow_messages.WorkflowRunRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowRunResponse);
 
   /**
    * Start executing the workflow, and allow it to run asynchronously.
@@ -529,22 +529,22 @@ service ModelCenterWorkflowService {
    *    mismatched types for values in the request
    * OUT_OF_RANGE if input values violate enum, bounds
    */
-  rpc WorkflowStartRun(WorkflowRunRequest) returns (WorkflowStartRunResponse);
+  rpc WorkflowStartRun(ansys.api.modelcenter.v0.workflow_messages.WorkflowRunRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowStartRunResponse);
 
   /**
    * Stop executing the workflow.
    */
-  rpc WorkflowHalt(WorkflowHaltRequest) returns (WorkflowHaltResponse);
+  rpc WorkflowHalt(ansys.api.modelcenter.v0.workflow_messages.WorkflowHaltRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowHaltResponse);
 
   /**
    * Get the root element of the workflow.
    */
-  rpc WorkflowGetRoot(WorkflowId) returns (WorkflowGetRootResponse);
+  rpc WorkflowGetRoot(ansys.api.modelcenter.v0.workflow_messages.WorkflowId) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowGetRootResponse);
 
   /**
    * Get the directory for a workflow.
    */
-  rpc WorkflowGetDirectory(WorkflowId) returns (WorkflowGetDirectoryResponse);
+  rpc WorkflowGetDirectory(ansys.api.modelcenter.v0.workflow_messages.WorkflowId) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowGetDirectoryResponse);
 
   /**
    * Create a component within the workflow.
@@ -555,47 +555,47 @@ service ModelCenterWorkflowService {
    * ALREADY_EXISTS if:
    *    name is invalid
    */
-  rpc WorkflowCreateComponent(WorkflowCreateComponentRequest) returns (WorkflowCreateComponentResponse);
+  rpc WorkflowCreateComponent(ansys.api.modelcenter.v0.workflow_messages.WorkflowCreateComponentRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowCreateComponentResponse);
 
   /**
    * Create a link within the workflow.
    *
    * INVALID_ARGUMENT if: LHS or RHS are not valid
    */
-  rpc WorkflowCreateLink(WorkflowCreateLinkRequest) returns (WorkflowCreateLinkResponse);
+  rpc WorkflowCreateLink(ansys.api.modelcenter.v0.workflow_messages.WorkflowCreateLinkRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowCreateLinkResponse);
 
   /**
    * Save the workflow to its current location.
    */
-  rpc WorkflowSave(WorkflowId) returns (WorkflowSaveResponse);
+  rpc WorkflowSave(ansys.api.modelcenter.v0.workflow_messages.WorkflowId) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowSaveResponse);
 
   /**
    * Save the workflow to a new location.
    *
    * INVALID_ARGUMENT if: new path is not valid
    */
-  rpc WorkflowSaveAs(WorkflowSaveAsRequest) returns (WorkflowSaveResponse);
+  rpc WorkflowSaveAs(ansys.api.modelcenter.v0.workflow_messages.WorkflowSaveAsRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowSaveResponse);
 
   /**
    * Close the workflow.
    *
    * NOT_FOUND if specified workflow does not exist
    */
-  rpc WorkflowClose(WorkflowId) returns (WorkflowCloseResponse);
+  rpc WorkflowClose(ansys.api.modelcenter.v0.workflow_messages.WorkflowId) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowCloseResponse);
 
   /**
    * Remove a component from the workflow.
    *
    * Does not error if the specified component has already been removed.
    */
-  rpc WorkflowRemoveComponent(WorkflowRemoveComponentRequest) returns (WorkflowRemoveComponentResponse);
+  rpc WorkflowRemoveComponent(ansys.api.modelcenter.v0.workflow_messages.WorkflowRemoveComponentRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowRemoveComponentResponse);
 
   /**
    * Break a link within the workflow.
    *
    * NOT_FOUND if the lhs isn't valid
    */
-  rpc WorkflowBreakLink(WorkflowBreakLinkRequest) returns (WorkflowBreakLinkResponse);
+  rpc WorkflowBreakLink(ansys.api.modelcenter.v0.workflow_messages.WorkflowBreakLinkRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowBreakLinkResponse);
 
   /**
    * Suspend a link within the workflow.
@@ -606,12 +606,12 @@ service ModelCenterWorkflowService {
    *
    * NOT_FOUND if the lhs isn't valid
    */
-  rpc WorkflowSuspendOrResumeLink(WorkflowSuspendOrResumeLinkRequest) returns (WorkflowLinkSuspension);
+  rpc WorkflowSuspendOrResumeLink(ansys.api.modelcenter.v0.workflow_messages.WorkflowSuspendOrResumeLinkRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowLinkSuspension);
 
   /**
    * Get the suspension state of a link.
    */
-  rpc WorkflowGetLinkSuspensionState(WorkflowBreakLinkRequest) returns (WorkflowLinkSuspension);
+  rpc WorkflowGetLinkSuspensionState(ansys.api.modelcenter.v0.workflow_messages.WorkflowBreakLinkRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowLinkSuspension);
 
   /**
    * Auto-link two components within the workflow.
@@ -619,32 +619,32 @@ service ModelCenterWorkflowService {
    *
    * INVALID_ARGUMENT if either component can't be located.
    */
-  rpc WorkflowAutoLink(WorkflowAutoLinkRequest) returns (WorkflowAutoLinkResponse);
+  rpc WorkflowAutoLink(ansys.api.modelcenter.v0.workflow_messages.WorkflowAutoLinkRequest) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowAutoLinkResponse);
 
   /**
    * Get a list of all the links in the workflow.
    */
-  rpc WorkflowGetLinksRequest(WorkflowId) returns (WorkflowGetLinksResponse);
+  rpc WorkflowGetLinksRequest(ansys.api.modelcenter.v0.workflow_messages.WorkflowId) returns (ansys.api.modelcenter.v0.workflow_messages.WorkflowGetLinksResponse);
 
   /**
    * Get a component or assembly's ID and type by name.
    */
-  rpc WorkflowGetElementByName(NamedElementInWorkflow) returns (ansys.api.modelcenter.v0.workflow_messages.ElementInfo);
+  rpc WorkflowGetElementByName(ansys.api.modelcenter.v0.workflow_messages.NamedElementWorkflow) returns (ansys.api.modelcenter.v0.workflow_messages.ElementInfo);
 
   /**
    * Get the reference equation of a reference variable.
    */
-  rpc ReferenceVariableGetReferenceEquation(GetReferenceEquationRequest) returns (GetReferenceEquationResponse);
+  rpc ReferenceVariableGetReferenceEquation(ansys.api.modelcenter.v0.variable_value_messages.GetReferenceEquationRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.GetReferenceEquationResponse);
 
   /**
    * Set the reference equation of a reference variable.
    */
-  rpc ReferenceVariableSetReferenceEquation(SetReferenceEquationRequest) returns (SetReferenceEquationResponse);
+  rpc ReferenceVariableSetReferenceEquation(ansys.api.modelcenter.v0.variable_value_messages.SetReferenceEquationRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetReferenceEquationResponse);
 
   /**
    * Get the variables referenced by a reference variable.
    */
-  rpc ReferenceVariableGetReferencedVariables(GetReferencedVariablesRequest) returns (GetReferencedVariablesResponse);
+  rpc ReferenceVariableGetReferencedVariables(ansys.api.modelcenter.v0.variable_value_messages.GetReferencedVariablesRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.GetReferencedVariablesResponse);
 
   /**
    * Get variable metadata for a reference or reference array variable.
@@ -652,7 +652,7 @@ service ModelCenterWorkflowService {
    * Note that reference properties are a distinct concept from variable metadata,
    * and they need to be retrieved separately.
    */
-  rpc ReferenceVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ReferenceVariableMetadata);
+  rpc ReferenceVariableGetMetadata(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.ReferenceVariableMetadata);
 
   /**
    * Set variable metadata for a reference or reference array variable.
@@ -660,17 +660,17 @@ service ModelCenterWorkflowService {
    * Note that reference properties are a distinct concept from variable metadata,
    * and they need to be manipulated separately.
    */
-  rpc ReferenceVariableSetMetadata(SetReferenceVariableMetadataRequest) returns (SetMetadataResponse);
+  rpc ReferenceVariableSetMetadata(ansys.api.modelcenter.v0.variable_value_messages.SetReferenceVariableMetadataRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetMetadataResponse);
 
   /**
    * Get whether a reference variable refers directly to a single variable.
    */
-  rpc ReferenceVariableGetIsDirect(GetReferenceIsDirectRequest) returns (GetReferenceIsDirectResponse);
+  rpc ReferenceVariableGetIsDirect(ansys.api.modelcenter.v0.variable_value_messages.GetReferenceIsDirectRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.GetReferenceIsDirectResponse);
 
   /**
    * Get the available reference properties of a reference variable
    */
-  rpc ReferenceVariableGetReferenceProperties(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ReferencePropertyNames);
+  rpc ReferenceVariableGetReferenceProperties(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyNames);
 
   /**
    * Get the value of a reference property.
@@ -680,7 +680,7 @@ service ModelCenterWorkflowService {
    * is a property of a reference array.
    * Otherwise, the index should be blank.
    */
-  rpc ReferencePropertyGetValue(IndexedReferencePropertyIdentifier) returns (VariableState);
+  rpc ReferencePropertyGetValue(ansys.api.modelcenter.v0.variable_value_messages.IndexedReferencePropertyIdentifier) returns (ansys.api.modelcenter.v0.variable_value_messages.VariableState);
 
   /**
    * Set the value of a reference property.
@@ -689,32 +689,32 @@ service ModelCenterWorkflowService {
    * is a property of a reference array.
    * Otherwise, the index should be blank.
    */
-  rpc ReferencePropertySetValue(ReferencePropertySetValueRequest) returns (ReferencePropertySetValueResponse);
+  rpc ReferencePropertySetValue(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertySetValueRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertySetValueResponse);
 
   /**
    * Get whether a reference property is an input.
    */
-  rpc ReferencePropertyGetIsInput(ReferencePropertyIdentifier) returns (ReferencePropertyGetIsInputResponse);
+  rpc ReferencePropertyGetIsInput(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyIdentifier) returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyGetIsInputResponse);
 
   /**
    * Set whether a reference property should be an input.
    */
-  rpc ReferencePropertySetIsInput(ReferencePropertySetIsInputRequest) returns (ReferencePropertyGetIsInputResponse);
+  rpc ReferencePropertySetIsInput(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertySetIsInputRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyGetIsInputResponse);
 
   /**
    * Get the title of a reference property.
    */
-  rpc ReferencePropertyGetTitle(ReferencePropertyIdentifier) returns (ReferencePropertyGetTitleResponse);
+  rpc ReferencePropertyGetTitle(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyIdentifier) returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyGetTitleResponse);
 
   /**
    * Set the title of a reference property.
    */
-  rpc ReferencePropertySetTitle(ReferencePropertySetTitleRequest) returns (ReferencePropertyGetTitleResponse);
+  rpc ReferencePropertySetTitle(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertySetTitleRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyGetTitleResponse);
 
   /**
    * Get the metadata items from a reference property.
    */
-  rpc ReferencePropertyGetMetadata(ReferencePropertyIdentifier) returns (VariableMetadata);
+  rpc ReferencePropertyGetMetadata(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyIdentifier) returns (ansys.api.modelcenter.v0.variable_value_messages.VariableMetadata);
 
   /**
    * Set the metadata of a reference property.
@@ -722,20 +722,20 @@ service ModelCenterWorkflowService {
    * Note that this item only works on reference properties which have a numeric type
    * in which case only the display format is set.
    */
-  rpc ReferencePropertySetMetadata(SetReferencePropertyMetadataRequest) returns (SetMetadataResponse);
+  rpc ReferencePropertySetMetadata(ansys.api.modelcenter.v0.variable_value_messages.SetReferencePropertyMetadataRequest) returns (ansys.api.modelcenter.v0.variable_value_messages.SetMetadataResponse);
 
   /**
    * Get the type of a reference property.
    */
-  rpc ReferencePropertyGetType(ReferencePropertyIdentifier) returns (ReferencePropertyGetTypeResponse);
+  rpc ReferencePropertyGetType(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyIdentifier) returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyGetTypeResponse);
 
   /**
    * Get the length of a reference array.
    */
-  rpc ReferenceArrayGetLength(ansys.api.modelcenter.v0.element_messages.ElementId) returns (IntegerValue);
+  rpc ReferenceArrayGetLength(ansys.api.modelcenter.v0.element_messages.ElementId) returns (ansys.api.modelcenter.v0.variable_value_messages.IntegerValue);
 
   /**
    * Move a component or assembly under a new parent.
    */
-  rpc WorkflowMoveComponent(MoveComponentRequest) returns (ElementIndexInParentResponse);
+  rpc WorkflowMoveComponent(ansys.api.modelcenter.v0.workflow_messages.MoveComponentRequest) returns (ansys.api.modelcenter.v0.element_messages.ElementIndexParentResponse);
 }

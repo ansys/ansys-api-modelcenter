@@ -1,0 +1,62 @@
+// ©2023, ANSYS Inc. Unauthorized use, distribution or duplication is prohibited.
+
+/*
+ * This file contains messages related to management and querying of custom metadata.
+ */
+
+syntax = "proto3";
+package ansys.api.modelcenter.v0.custom_metadata_messages;
+
+import "ansys/api/modelcenter/v0/element_messages.proto";
+import "ansys/api/modelcenter/v0/variable_value_messages.proto";
+
+/**
+ * A list of metadata property names.
+ */
+message MetadataPropertyNamesResponse {
+  /**
+   * The requested names.
+   */
+  repeated string names = 1;
+}
+
+/**
+ * A request for a value of a custom metadata property.
+ */
+message MetadataGetValueRequest {
+  /**
+   * The element on which the metadata property exists.
+   */
+  ansys.api.modelcenter.v0.element_messages.ElementId id = 1;
+
+  /**
+   * The name of the property of interest.
+   */
+  string property_name = 2;
+}
+
+/**
+ * A request to set the value of a custom metadata property.
+ */
+message MetadataSetValueRequest {
+  /**
+   * The element on which the metadata property exists.
+   */
+  ansys.api.modelcenter.v0.element_messages.ElementId id = 1;
+
+  /**
+   * The name of the property of interest.
+   */
+  string property_name = 2;
+
+  /**
+   * The new value for the property.
+   */
+  ansys.api.modelcenter.v0.variable_value_messages.VariableValue value = 3;
+}
+
+/**
+ * A response to a request to set the value of a custom metadata property.
+ */
+message MetadataSetValueResponse {
+}

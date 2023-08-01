@@ -1,0 +1,320 @@
+// ©2023, ANSYS Inc. Unauthorized use, distribution or duplication is prohibited.
+
+/*
+ * This file contains messages related to interacting with the MCD workflow engine itself.
+ */
+
+syntax = "proto3";
+package ansys.api.modelcenter.v0.engine_messages;
+
+import "ansys/api/modelcenter/v0/element_messages.proto";
+
+/**
+ * A request for the process ID of the engine.
+ */
+message EngineProcessIdRequest {
+
+}
+
+/**
+ * A response to a request for the process ID of the engine.
+ */
+message EngineProcessIdResponse {
+  /**
+   * The requested process ID.
+   */
+  uint64 process_id = 1;
+}
+
+/**
+ * The workflow types available.
+ */
+enum WorkflowType {
+  /**
+   * A data-dependency workflow.
+   */
+  WORKFLOW_TYPE_DATA_UNSPECIFIED = 0;
+
+  /**
+   * A process workflow.
+   */
+  WORKFLOW_TYPE_PROCESS = 1;
+}
+
+/**
+ * A request to create a new workflow.
+ */
+message NewWorkflowRequest {
+  /**
+   * The path at which the new workflow will be saved.
+   */
+  string path = 1;
+
+  /**
+   * The type of the new workflow.
+   */
+  WorkflowType workflow_type = 2;
+}
+
+/**
+ * A response to a request to create a new workflow.
+ */
+message NewWorkflowResponse {
+  /**
+   * The root element of the new workflow.
+   */
+  ansys.api.modelcenter.v0.element_messages.ElementId root_element = 1;
+
+  /**
+   * The created workflow's ID. Use this ID in future requests to refer to this workflow.
+   */
+  string workflow_id = 2;
+}
+
+/**
+ * An enumeration describing potential responses to a failure
+ * to connect to a remote component when loading a workflow.
+ */
+enum OnConnectionErrorMode {
+  /**
+   * Raise an error in response.
+   */
+  WORKFLOW_TYPE_ERROR_UNSPECIFIED = 0;
+
+  /**
+   * Ignore the connection failure and continue loading.
+   */
+  WORKFLOW_TYPE_IGNORE = 1;
+}
+
+/**
+ * A request to load a workflow.
+ */
+message LoadWorkflowRequest {
+  /**
+   * The path to the workflow file.
+   */
+  string path = 1;
+
+  /**
+   * How to handle connection failures for remote components.
+   */
+  OnConnectionErrorMode connect_err_mode = 2;
+}
+
+/**
+ * A response to a request to load a workflow.
+ */
+message LoadWorkflowResponse {
+  /**
+   * The root element of the loaded workflow.
+   */
+  ansys.api.modelcenter.v0.element_messages.ElementId root_element = 1;
+
+  /**
+   * The type of the loaded workflow.
+   */
+  WorkflowType workflow_type = 2;
+
+  /**
+   * The loaded workflow's ID. Use this ID in future requests to refer to this workflow.
+   */
+  string workflow_id = 3;
+}
+
+/**
+ * A request to set the username ModelCenter Desktop uses when authenticating with ModelCenter Remote Execution.
+ */
+message SetUserNameRequest {
+  string user_name = 1;
+}
+
+/**
+ * A response to an attempt to set the username ModelCenter Desktop uses for ModelCenter Remote Execution.
+ */
+message SetUserNameResponse {
+
+}
+
+/**
+ * A request to set the password ModelCenter Desktop uses when authenticating with ModelCenter Remote Execution.
+ */
+message SetPasswordRequest {
+  string password = 1;
+}
+
+/**
+ * A response to an attempt to set the password ModelCenter Desktop uses for ModelCenter Remote Execution.
+ */
+message SetPasswordResponse {
+}
+
+/**
+ * A request to get a preference value.
+ */
+message GetPreferenceRequest {
+  /**
+   * The name of the preference.
+   */
+  string preference_name = 1;
+}
+
+/**
+ * A response to a request to get a preference value.
+ */
+message GetPreferenceResponse {
+  /**
+   * The requested preference value.
+   */
+  oneof value {
+    bool bool_value = 1;
+    int64 int_value = 2;
+    double double_value = 3;
+    string str_value = 4;
+  }
+}
+
+/*
+ * A request to set a preference value.
+ */
+message SetPreferenceRequest {
+  /**
+   * The name of the preference.
+   */
+  string preference_name = 1;
+
+  /**
+   * The preference value.
+   */
+  oneof value {
+    bool bool_value = 2;
+    int64 int_value = 3;
+    double double_value = 4;
+    string str_value = 5;
+  }
+}
+
+/*
+ * A response to a request to set a preference value.
+ */
+message SetPreferenceResponse {
+
+}
+
+/**
+ * A request to get unit categories.
+ */
+message GetUnitCategoriesRequest {
+
+}
+
+/**
+ * A response to a request to get unit categories.
+ */
+message GetUnitCategoriesResponse {
+  /**
+   * The unit categories available in the engine.
+   */
+  repeated string names = 1;
+}
+
+/**
+ * A request to get the units available in a category.
+ */
+message GetUnitNamesRequest {
+  /**
+   * The category of interest.
+   */
+  string category = 1;
+}
+
+/**
+ * A response to a request to get the units available in a category.
+ */
+message GetUnitNamesResponse {
+  /**
+   * The requested units.
+   */
+  repeated string names = 1;
+}
+
+/**
+ * A request for information about the ModelCenter workflow engine.
+ */
+message GetServerInfoRequest {
+
+}
+
+/**
+ * A response with information about the ModelCenter workflow engine.
+ */
+message GetServerInfoResponse {
+  /**
+   * A message with version information.
+   */
+  message Version {
+    int32 major = 1;
+    int32 minor = 2;
+    int32 patch = 3;
+    int32 revision = 4;
+  }
+
+  /**
+   * The version number.
+   */
+  Version version = 1;
+
+  /**
+   * True if the build is a release build, false for other types.
+   */
+  bool is_release = 2;
+
+  /**
+   * A snippet indicating the build type (for example, beta, release-branch, release, etc.
+   */
+  string build_type = 3;
+
+  /**
+   * The server type.
+   */
+  string server_type = 4;
+
+  /**
+   * The installation directory.
+   */
+  string directory_path = 5;
+
+  /**
+   * The path to the ModelCenter executable.
+   */
+  string executable_path = 6;
+}
+
+/**
+ * A request to shut down the server.
+ */
+message ShutdownRequest {
+
+}
+
+/**
+ * A response to a request to shut down the server.
+ */
+message ShutdownResponse {
+
+}
+
+/**
+ * A request to send a heartbeat signal to the server.
+ */
+message HeartbeatRequest {
+
+}
+
+/**
+ * A response to a request to send a heartbeat signal to the server.
+ */
+message HeartbeatResponse {
+
+}
+

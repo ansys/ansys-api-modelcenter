@@ -1,0 +1,82 @@
+// ©2023, ANSYS Inc. Unauthorized use, distribution or duplication is prohibited.
+
+/*
+ * This file contains messages related to ModelCenter Desktop string formatting.
+ */
+syntax = "proto3";
+package ansys.api.modelcenter.v0.format_messages;
+
+/**
+ * A request to format a value from a string to another string or a different form.
+ */
+message FormatStringRequest {
+  /**
+   * The format to use.
+   */
+  string format = 1;
+
+  /**
+   * The original value.
+   */
+  string original = 2;
+}
+
+/**
+ * A request to format a value from an integer to another form.
+ */
+message FormatIntegerRequest {
+  /**
+   * The format to use.
+   */
+  string format = 1;
+
+  /**
+   * The original value.
+   */
+  int64 original = 2;
+}
+
+/**
+ * A request to format a value from a double to another form.
+ */
+message FormatDoubleRequest {
+  /**
+   * The format to use.
+   */
+  string format = 1;
+
+  /**
+   * The original value.
+   */
+  double original = 2;
+}
+
+/**
+ * A response to a request to format a value to a string.
+ */
+message FormatStringResponse {
+  /**
+   * The result of the formatting operation.
+   */
+  string result = 1;
+}
+
+/**
+ * A response to a request to format a value to an integer.
+ */
+message FormatIntegerResponse {
+  /**
+   * The result of the formatting operation.
+   */
+  int64 result = 1;
+}
+
+/**
+ * A response to a request to format a value to a double.
+ */
+message FormatDoubleResponse {
+  /**
+   * The result of the formatting operation.
+   */
+  double result = 1;
+}

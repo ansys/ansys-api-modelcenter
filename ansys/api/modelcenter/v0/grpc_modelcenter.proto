@@ -1,0 +1,95 @@
+// ©2023, ANSYS Inc. Unauthorized use, distribution or duplication is prohibited.
+
+/*
+ * This file contains the main ModelCenter service.
+ */
+
+syntax = "proto3";
+package ansys.api.modelcenter.v0.grpc_modelcenter;
+
+import "ansys/api/modelcenter/v0/engine_messages.proto";
+
+/**
+ * This service is used to interact with the ModelCenter workflow engine itself;
+ * workflows and their contents are manipulated by the Workflow service.
+ */
+service GRPCModelCenterService {
+  /**
+   * Get information about the service.
+   */
+  rpc GetEngineInfo(ansys.api.modelcenter.v0.engine_messages.GetServerInfoRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.GetServerInfoResponse);
+
+  /**
+   * Shut down a local instance of the service.
+   * Naturally, this request does not block until the process has actually exited.
+   * The caller must monitor this separately.
+   */
+  rpc Shutdown(ansys.api.modelcenter.v0.engine_messages.ShutdownRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.ShutdownResponse);
+
+  /**
+   * Send a signal that the client that started this server is still alive.
+   * When the server is started, it can be configured to expect a heartbeat call within a
+   * specified interval, and how many intervals can be missed before the client is assumed
+   * to have died.
+   * If enough calls are not received in time, the server will shutdown and log an error.
+   */
+  rpc Heartbeat(ansys.api.modelcenter.v0.engine_messages.HeartbeatRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.HeartbeatResponse);
+
+  /**
+   * Get the process ID of the ModelCenter engine.
+   */
+  rpc EngineGetProcessId(ansys.api.modelcenter.v0.engine_messages.EngineProcessIdRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.EngineProcessIdResponse);
+
+  /**
+   * Load a workflow.
+   */
+  rpc EngineLoadWorkflow(ansys.api.modelcenter.v0.engine_messages.LoadWorkflowRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.LoadWorkflowResponse);
+
+  /**
+   * Create a new workflow.
+  */
+  rpc EngineCreateWorkflow(ansys.api.modelcenter.v0.engine_messages.NewWorkflowRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.NewWorkflowResponse);
+
+  /**
+   * Set a username for ModelCenter to use while authenticating to ModelCenter Remote Execution.
+   */
+  rpc EngineSetUserName(ansys.api.modelcenter.v0.engine_messages.SetUserNameRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.SetUserNameResponse);
+
+  /**
+   * Set a password for ModelCenter to use while authenticating to ModelCenter Remote Execution.
+   */
+  rpc EngineSetPassword(ansys.api.modelcenter.v0.engine_messages.SetPasswordRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.SetPasswordResponse);
+
+  /**
+   * Get the value of a preference.
+   */
+  rpc EngineGetPreference(ansys.api.modelcenter.v0.engine_messages.GetPreferenceRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.GetPreferenceResponse);
+
+  /**
+   * Set the value of a preference.
+   */
+  rpc EngineSetPreference(ansys.api.modelcenter.v0.engine_messages.SetPreferenceRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.SetPreferenceResponse);
+
+  /**
+   * Get the unit categories available.
+   */
+  rpc EngineGetUnitCategories(ansys.api.modelcenter.v0.engine_messages.GetUnitCategoriesRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.GetUnitCategoriesResponse);
+
+  /**
+   * Get the names of the units available in a particular category.
+   */
+  rpc EngineGetUnitNames(ansys.api.modelcenter.v0.engine_messages.GetUnitNamesRequest)
+    returns (ansys.api.modelcenter.v0.engine_messages.GetUnitNamesResponse);
+
+}

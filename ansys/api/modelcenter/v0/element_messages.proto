@@ -1,364 +1,385 @@
+// ©2023, ANSYS Inc. Unauthorized use, distribution or duplication is prohibited.
+
 /*
  * This file contains messages related to management of workflow elements.
  */
-syntax = "proto3";
-package Ansys.ModelCenter.GRPCModelCenter;
 
-/** 
+syntax = "proto3";
+package ansys.api.modelcenter.v0.element_messages;
+
+/**
  * Represents an element name.
  */
 message ElementName {
-   /**
-    * The name.
-    */
-   string name = 1;
+  /**
+   * The name.
+   */
+  string name = 1;
 }
 
 /**
  * Represents a unique identifier for an element.
  */
 message ElementId {
-   /**
-    * An identifying string for this element.
-    */
-   string id_string = 1;
+  /**
+   * An identifying string for this element.
+   */
+  string id_string = 1;
 }
 
 /**
  * Represents a collection of element IDs.
  */
 message ElementIdCollection {
-   /**
-    * The IDs of interest.
-    */
-   repeated ElementId ids = 1;
+  /**
+   * The IDs of interest.
+   */
+  repeated ElementId ids = 1;
 }
 
 /*
  * The types of elements that an ElementId can reference.
  */
 enum ElementType {
-   /*
-    * The element type is unknown.
-    * Typically only used when the element does not exist.
-    */
-   ELEMTYPE_UNKNOWN = 0;
+  /*
+   * The element type is unspecified.
+   * Typically only used when the element does not exist.
+   */
+  ELEMENT_TYPE_UNSPECIFIED = 0;
 
-   /*
-    * The element is an assembly.
-    */
-   ELEMTYPE_ASSEMBLY = 1;
+  /*
+   * The element is an assembly.
+   */
+  ELEMENT_TYPE_ASSEMBLY = 1;
 
-   /*
-    * The element is a component.
-    * Note there are special component types that have their own ElementType entry.
-    */
-   ELEMTYPE_COMPONENT = 2;
+  /*
+   * The element is a component.
+   * Note there are special component types that have their own ElementType entry.
+   */
+  ELEMENT_TYPE_COMPONENT = 2;
 
-   /*
-    * The element is a group.
-    */
-   ELEMTYPE_GROUP = 3;
+  /*
+   * The element is a group.
+   */
+  ELEMENT_TYPE_GROUP = 3;
 
-   /*
-    * The element is a variable.
-    */
-   ELEMTYPE_VARIABLE = 4;
+  /*
+   * The element is a variable.
+   */
+  ELEMENT_TYPE_VARIABLE = 4;
 
-   /*
-    * The element is an if component.
-    */
-   ELEMTYPE_IFCOMPONENT = 5;
+  /*
+   * The element is an if component.
+   */
+  ELEMENT_TYPE_IFCOMPONENT = 5;
 }
 
 /**
  * Represents an assembly type within ModelCenter (such as a Data assembly, Sequence, etc).
  */
 message AssemblyType {
-   /**
-    * The type of the assembly.
-    */
-   string type = 1;
+  /**
+   * The type of the assembly.
+   */
+  string type = 1;
 }
 
 /**
  * Represents a request to set the icon of an assembly.
  */
 message AssemblyIconSetRequest {
-   /**
-    * The target element.
-    */
-   ElementId target = 1;
+  /**
+   * The target element.
+   */
+  ElementId target = 1;
 
-   /**
-    * The new icon to use.
-    */
-   optional int32 new_icon_id = 2;
+  /**
+   * The new icon to use.
+   */
+  optional int32 new_icon_id = 2;
 }
 
 /**
  * The response from setting an icon.
  */
-message AssemblyIconSetResponse {}
+message AssemblyIconSetResponse {
+
+}
 
 /**
  * Represents a response to a query about an icon.
  */
 message AssemblyIconResponse {
-   /**
-    * The icon in use.
-    */
-   optional int32 id = 1;
+  /**
+   * The icon in use.
+   */
+  optional int32 id = 1;
 }
 
 /**
  * Represents an assembly's index in its parent.
  */
-message ElementIndexInParentResponse {
-   /**
-    * The index.
-    */
-   int64 index = 1;
+message ElementIndexParentResponse {
+  /**
+   * The index.
+   */
+  int64 index = 1;
 }
 
 /**
  * Represents a position on the analysis view.
  */
 message AnalysisViewPosition {
-   int64 x_pos = 1;
-   int64 y_pos = 2;
+  int64 x_pos = 1;
+  int64 y_pos = 2;
 }
 
 /**
  * Represents a request to add an assembly.
  */
 message AddAssemblyRequest {
-   /**
-    * The short name for the new assembly.
-    */
-   ElementName name = 1;
-   
-   /**
-    * The parent for the new assembly.
-    */
-   ElementId parent = 2;
+  /**
+   * The short name for the new assembly.
+   */
+  ElementName name = 1;
 
-   /**
-    * The position in the analysis view for the new assembly.
-    */
-   AnalysisViewPosition av_pos = 3;
+  /**
+   * The parent for the new assembly.
+   */
+  ElementId parent = 2;
 
-   /**
-    * The type of the new assembly.
-    * This should be one of:
-    *    "Assembly", "Sequence", "If", "Parallel",
-    *    "Empty", "Loop", "ForEach", "For",
-    *    "While", "RepeatUntil".
-    */
-   string assembly_type = 4;
+  /**
+   * The position in the analysis view for the new assembly.
+   */
+  AnalysisViewPosition av_pos = 3;
+
+  /**
+   * The type of the new assembly.
+   * This should be one of:
+   *   "Assembly", "Sequence", "If", "Parallel",
+   *   "Empty", "Loop", "ForEach", "For",
+   *   "While", "RepeatUntil".
+   */
+  string assembly_type = 4;
 }
 
 /**
  * Represents a response to adding an assembly.
  */
 message AddAssemblyResponse{
-   ElementId id = 1;
+  ElementId id = 1;
 }
 
 /**
  * Represents a request to add a variable to an assembly.
  */
 message AddAssemblyVariableRequest {
-   ElementName name = 1;
-   ElementId target_assembly = 2;   
-   string variable_type = 3;
+  ElementName name = 1;
+  ElementId target_assembly = 2;
+  string variable_type = 3;
 }
 
 /**
  * Represents a response to an attempt to add an assembly.
  */
 message AddAssemblyVariableResponse {
-   ElementId id = 1;
+  ElementId id = 1;
 }
 
 /**
  * Represents a request to rename an element.
  */
 message RenameRequest {
-   ElementId target_assembly = 1;
-   ElementName new_name = 2;
+  ElementId target_assembly = 1;
+  ElementName new_name = 2;
 }
 
 /**
  * Represents a response to the request to rename an element.
  */
-message RenameResponse {}
+message RenameResponse {
+
+}
 
 /**
  * Represents a response to an attempt to delete an assembly variable.
  */
 message DeleteAssemblyVariableResponse {
-   bool existed = 1;
+  bool existed = 1;
 }
 
 /**
  * A response to a request for a component source.
  */
 message ComponentSourceResponse {
-   string source = 1;
+  string source = 1;
 }
 
 /**
  * A response to a request for a component PACZ url.
  */
 message ComponentPaczUrlResponse {
-   optional string pacz_url = 1;
+  optional string pacz_url = 1;
 }
 
 /**
  * A response to a request to run an individual, specific component.
  */
-message ComponentRunResponse {}
+message ComponentRunResponse {
+
+}
 
 /**
  * A request to invoke a particular method on a component.
  */
 message ComponentInvokeMethodRequest {
-   /**
-    * The target component.
-    */
-   ElementId target = 1;
+  /**
+   * The target component.
+   */
+  ElementId target = 1;
 
-   /**
-    * The name of the method which should be invoked.
-    */
-   string method_name = 2;
+  /**
+   * The name of the method which should be invoked.
+   */
+  string method_name = 2;
 }
 
 /**
  * A response to a request to invoke a component method.
  */
-message ComponentInvokeMethodResponse {}
+message ComponentInvokeMethodResponse {
+
+}
 
 /**
  * A response to a request to invalidate a component.
  */
-message ComponentInvalidateResponse {}
+message ComponentInvalidateResponse {
+
+}
 
 /**
  * A response to a request to reconnect a component.
  */
-message ComponentReconnectResponse {}
+message ComponentReconnectResponse {
+
+}
 
 /**
  * A response to a request to download values for a component from MCRE.
  */
-message ComponentDownloadValuesResponse {}
+message ComponentDownloadValuesResponse {
+
+}
 
 /*
  * A response to a request to get if a component is connected to its source.
  */
 message ComponentIsConnectedResponse {
-   /*
-    * Is the component connected to its source?
-    */
-   bool is_connected = 1;
+  /*
+   * Is the component connected to its source?
+   */
+  bool is_connected = 1;
 }
 
 /**
  * A response to a request to get if an if-component's branching condition is exclusive.
  */
 message IfComponentGetExclusiveResponse {
-   /**
-    * Is the branching condition exclusive?
-    */
-   bool is_exclusive = 1;
+  /**
+   * Is the branching condition exclusive?
+   */
+  bool is_exclusive = 1;
 }
 
 /**
  * A request to set if an if-component's branching condition is exclusive.
  */
 message IfComponentSetExclusiveRequest {
-   /**
-    * The target component.
-    */
-   ElementId target = 1;
+  /**
+   * The target component.
+   */
+  ElementId target = 1;
 
-   /**
-    * Is the branching condition exclusive?
-    */
-   bool is_exclusive = 2;
+  /**
+   * Is the branching condition exclusive?
+   */
+  bool is_exclusive = 2;
 }
 
 /**
  * A response to a request to set if an if-component's branching condition is exclusive.
  */
-message IfComponentSetExclusiveResponse {}
+message IfComponentSetExclusiveResponse {
+
+}
 
 /**
  * A response to a request to get if an if-component has an else branch that is run if no conditions are met.
  */
-message IfComponentGetRunLastBranchByDefaultResponse {
-   /**
-    * Is there a default branch?
-    */
-   bool has_default = 1;
+message IfComponentGetRunLastBranchDefaultResponse {
+  /**
+   * Is there a default branch?
+   */
+  bool has_default = 1;
 }
 
 /**
  * A request to set if an if-component has an else branch that is run if no conditions are met.
  */
-message IfComponentSetRunLastBranchByDefaultRequest {
-   /**
-    * The target component.
-    */
-   ElementId target = 1;
+message IfComponentSetRunLastBranchDefaultRequest {
+  /**
+   * The target component.
+   */
+  ElementId target = 1;
 
 
-   /**
-    * Is there a default branch?
-    */
-   bool has_default = 2;
+  /**
+   * Is there a default branch?
+   */
+  bool has_default = 2;
 }
 
 /**
  * A response to a request to set if an if-component has an else branch that is run if no conditions are met.
  */
-message IfComponentSetRunLastBranchByDefaultResponse {}
+message IfComponentSetRunLastBranchDefaultResponse {
+
+}
 
 /**
  * A response to a request to get the number of branches in an if-component.
  */
-message IfComponentGetNumberOfBranchesResponse {
-   /**
-    * The number of branches in the component.
-    */
-   int64 num_branches = 1;
+message IfComponentGetNumberBranchesResponse {
+  /**
+   * The number of branches in the component.
+   */
+  int64 num_branches = 1;
 }
 
 /**
  * A request to get the branch condition of a branch in an if-component.
  */
 message IfComponentGetBranchConditionRequest {
-   /**
-    * The target component.
-    */
-   ElementId target = 1;
+  /**
+   * The target component.
+   */
+  ElementId target = 1;
 
-   /**
-    * The index of the branch.
-    */
-   int64 index = 2;
+  /**
+   * The index of the branch.
+   */
+  int64 index = 2;
 }
 
 /**
  * A response to a request to get the branch condition of a branch in an if-component.
  */
 message IfComponentGetBranchConditionResponse {
-   /**
-    * The condition of the branch.
-    */
-   string condition = 1;
+  /**
+   * The condition of the branch.
+   */
+  string condition = 1;
 }
 
 
@@ -366,50 +387,52 @@ message IfComponentGetBranchConditionResponse {
  * A request to set the branch condition of a branch in an if-component.
  */
 message IfComponentSetBranchConditionRequest {
-   /**
-    * The target component.
-    */
-   ElementId target = 1;
+  /**
+   * The target component.
+   */
+  ElementId target = 1;
 
-   /**
-    * The index of the branch.
-    */
-   int64 index = 2;
+  /**
+   * The index of the branch.
+   */
+  int64 index = 2;
 
-   /**
-    * The condition of the branch.
-    */
-   string condition = 3;
+  /**
+   * The condition of the branch.
+   */
+  string condition = 3;
 }
 
 /**
  * A response to a request to set the branch condition of a branch in an if-component.
  */
-message IfComponentSetBranchConditionResponse {}
+message IfComponentSetBranchConditionResponse {
+
+}
 
 /**
  * A request to get the branch name of a branch in an if-component.
  */
 message IfComponentGetBranchNameRequest {
-   /**
-    * The target component.
-    */
-   ElementId target = 1;
+  /**
+   * The target component.
+   */
+  ElementId target = 1;
 
-   /**
-    * The index of the branch.
-    */
-   int64 index = 2;
+  /**
+   * The index of the branch.
+   */
+  int64 index = 2;
 }
 
 /**
  * A response to a request to get the branch name of a branch in an if-component.
  */
 message IfComponentGetBranchNameResponse {
-   /**
-    * The name of the branch.
-    */
-   string name = 1;
+  /**
+   * The name of the branch.
+   */
+  string name = 1;
 }
 
 
@@ -417,32 +440,34 @@ message IfComponentGetBranchNameResponse {
  * A request to set the branch name of a branch in an if-component.
  */
 message IfComponentSetBranchNameRequest {
-   /**
-    * The target component.
-    */
-   ElementId target = 1;
+  /**
+   * The target component.
+   */
+  ElementId target = 1;
 
-   /**
-    * The index of the branch.
-    */
-   int64 index = 2;
+  /**
+   * The index of the branch.
+   */
+  int64 index = 2;
 
-   /**
-    * The name of the branch.
-    */
-   string name = 3;
+  /**
+   * The name of the branch.
+   */
+  string name = 3;
 }
 
 /**
  * A response to a request to set the branch name of a branch in an if-component.
  */
-message IfComponentSetBranchNameResponse {}
+message IfComponentSetBranchNameResponse {
+
+}
 
 /**
  * Get whether the variable is an input on its component and in its workflow overall.
  */
 message VariableIsInputResponse
 {
-   bool is_input_in_component = 1;
-   bool is_input_in_workflow = 2;
+  bool is_input_component = 1;
+  bool is_input_workflow = 2;
 }

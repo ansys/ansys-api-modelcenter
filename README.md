@@ -43,10 +43,13 @@ these are built on PRs, the main branch, and on tags when pushing. Artifacts
 are uploaded for each PR.
 
 To publicly release wheels to PyPI, ensure your branch is up-to-date and then
-push tags. For example, for the version ``v0.1.0``.
+push tags.
 
 ```bash
-git tag v0.1.0
-git push --tags
-```
+git checkout release/{new_version}
+git merge main 
+--> Bump the version 
+git push origin  
+git tag v{new_version}
+git push origin v{{new_version}
 ## Automatic Deployment

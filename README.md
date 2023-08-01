@@ -52,4 +52,3 @@ git merge main
 git push origin  
 git tag v{new_version}
 git push origin v{{new_version}
-## Automatic Deployment

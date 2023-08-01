@@ -47,8 +47,9 @@ push tags.
 
 ```bash
 git checkout release/{new_version}
-git merge main 
---> Bump the version 
-git push origin  
+git merge main
+--> Bump the version
+git push origin
 git tag v{new_version}
 git push origin v{{new_version}
+```

@@ -14,12 +14,13 @@ with open(os.path.join(HERE, "README.md"), encoding="utf-8") as f:
 product = "modelcenter"
 library = ""
 package_info = ["ansys", "api", product, library, "v0"]
+username="ansys"
+package_name = "ansys-api-modelcenter"
+
 with open(
     os.path.join(HERE, "ansys", "api", product, library, "VERSION"), encoding="utf-8"  # noqa : E501
 ) as f:  # noqa : E501
     version = f.read().strip()
-
-package_name = "ansys-api-modelcenter"
 dot_package_name = ".".join(filter(None, package_info))
 
 
@@ -36,7 +37,7 @@ if __name__ == "__main__":
         description=description,
         long_description=long_description,
         long_description_content_type="text/markdown",
-        url=f"https://github.com/ansys/{package_name}",
+        url=f"https://github.com/{username}/{package_name}",
         license="MIT",
         python_requires=">=3.8",
         install_requires=["grpcio~=1.47", "protobuf~=3.19"],
@@ -51,8 +52,8 @@ if __name__ == "__main__":
         },
         cmdclass=CMDCLASS_OVERRIDE,
         project_urls={
-            "Documentation": "https://github.com/ansys/ansys-api-modelcenter/#readme",  # noqa : E501
-            "Source": "https://github.com/ansys/ansys-api-modelcenter/",  # noqa : E501
-            "Tracker": "https://github.com/ansys/ansys-api-modelcenter/issues/",  # noqa : E501
+            "Documentation": f"https://github.com/{username}/{package_name}/#readme",  # noqa : E501
+            "Source": f"https://github.com/{username}/{package_name}/",  # noqa : E501
+            "Tracker": f"https://github.com/{username}/{package_name}/issues/",  # noqa : E501
         },
     )

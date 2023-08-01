@@ -810,21 +810,9 @@ service ModelCenterWorkflowService {
     returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyGetIsInputResponse);
 
   /**
-   * Set whether a reference property should be an input.
-   */
-  rpc ReferencePropertySetIsInput(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertySetIsInputRequest)
-    returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyGetIsInputResponse);
-
-  /**
    * Get the title of a reference property.
    */
   rpc ReferencePropertyGetTitle(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyIdentifier)
-    returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyGetTitleResponse);
-
-  /**
-   * Set the title of a reference property.
-   */
-  rpc ReferencePropertySetTitle(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertySetTitleRequest)
     returns (ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyGetTitleResponse);
 
   /**
@@ -832,17 +820,6 @@ service ModelCenterWorkflowService {
    */
   rpc ReferencePropertyGetMetadata(ansys.api.modelcenter.v0.variable_value_messages.ReferencePropertyIdentifier)
     returns (ansys.api.modelcenter.v0.variable_value_messages.VariableMetadata);
-
-  /**
-   * Set the metadata of a reference property.
-   *
-   * Note that this item only works on reference properties which have a numeric type
-   * in which case only the display format is set.
-   */
-  rpc ReferencePropertySetMetadata(
-    ansys.api.modelcenter.v0.variable_value_messages.SetReferencePropertyMetadataRequest
-  )
-    returns (ansys.api.modelcenter.v0.variable_value_messages.SetMetadataResponse);
 
   /**
    * Get the type of a reference property.

@@ -6,7 +6,7 @@
 *   [Mark Koninckx](https://github.com/phx-mkoninckx)
 *   [Mark Potter](https://github.com/potterphx)
 
-# Individual Contributors
+## Individual Contributors
 
 *   [Michel Pascale](https://github.com/phx-mpascale)
 *   [Cody Leftwich](https://github.com/cleftwich)

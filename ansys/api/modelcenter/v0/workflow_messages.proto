@@ -472,4 +472,6 @@ message SetReferenceArrayLengthRequest {
 /**
  * Represents a response to a request to resize a reference array.
  */
-message SetReferenceArrayLengthResponse {}
+message SetReferenceArrayLengthResponse {
+
+}

@@ -834,6 +834,14 @@ service ModelCenterWorkflowService {
     returns (ansys.api.modelcenter.v0.variable_value_messages.IntegerValue);
 
   /**
+   * Set the length of a reference array.
+   * If larger that the current size, the array will be expanded with empty elements.
+   * If smaller than the current size, items at the end of the array will be dropped.
+   */
+  rpc ReferenceArraySetLength(ansys.api.modelcenter.v0.workflow_messages.SetReferenceArrayLengthRequest)
+      returns (ansys.api.modelcenter.v0.workflow_messages.SetReferenceArrayLengthResponse);
+
+  /**
    * Move a component or assembly under a new parent.
    */
   rpc WorkflowMoveComponent(ansys.api.modelcenter.v0.workflow_messages.MoveComponentRequest)

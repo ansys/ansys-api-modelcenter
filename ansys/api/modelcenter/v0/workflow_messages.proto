@@ -453,3 +453,23 @@ message MoveComponentRequest {
    */
   int32 index_parent = 3;
 }
+
+/**
+ * Represents a request to resize a reference array.
+ */
+message SetReferenceArrayLengthRequest {
+  /**
+   * The reference array to modify.
+   */
+  ansys.api.modelcenter.v0.element_messages.ElementId target = 1;
+
+  /**
+   * The new size of the array.
+   */
+  ansys.api.modelcenter.v0.variable_value_messages.IntegerValue new_size = 2;
+}
+
+/**
+ * Represents a response to a request to resize a reference array.
+ */
+message SetReferenceArrayLengthResponse {}

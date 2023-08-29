@@ -837,6 +837,8 @@ service ModelCenterWorkflowService {
    * Set the length of a reference array.
    * If larger that the current size, the array will be expanded with empty elements.
    * If smaller than the current size, items at the end of the array will be dropped.
+   *
+   * OUT_OF_RANGE if an invalid size is given.
    */
   rpc ReferenceArraySetLength(ansys.api.modelcenter.v0.workflow_messages.SetReferenceArrayLengthRequest)
       returns (ansys.api.modelcenter.v0.workflow_messages.SetReferenceArrayLengthResponse);

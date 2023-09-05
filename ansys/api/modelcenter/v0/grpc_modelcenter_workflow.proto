@@ -582,7 +582,24 @@ service ModelCenterWorkflowService {
     returns (ansys.api.modelcenter.v0.variable_value_messages.SetMetadataResponse);
 
   /**
-   * Get the state of the workflow's execution.
+   * Get the state of the workflow instance.
+   *
+   * Possible states are:
+   * - WorkflowInstanceState.WORKFLOW_INSTANCE_STATE_UNSPECIFIED:
+   *    If any datapin validated by the last run no longer exists, or some other error occurs
+   *    getting the state.
+   * - WorkflowInstanceState.WORKFLOW_INSTANCE_STATE_INVALID:
+   *    If any datapin validated by the last run is not valid, or the workflow has never been
+   *    run and the root assembly is invalid. Note that this can be returned by requesting a
+   *    datapin that will not be validated even if the workflow runs successfully, such as
+   *    a datapin in an inactive branch of an if-component.
+   * - WorkflowInstanceState.WORKFLOW_INSTANCE_STATE_RUNNING:
+   *    If the workflow is currently running.
+   * - WorkflowInstanceState.WORKFLOW_INSTANCE_STATE_FAILED:
+   *    If the last workflow run terminated due to a failure.
+   * - WorkflowInstanceState.WORKFLOW_INSTANCE_STATE_SUCCESS:
+   *    If the workflow ran successfully and all requested datapins are valid.
+   * Note that WorkflowInstanceState.WORKFLOW_INSTANCE_STATE_PAUSED is never returned.
    */
   rpc WorkflowGetState(ansys.api.modelcenter.v0.workflow_messages.GetWorkflowStateRequest)
     returns (ansys.api.modelcenter.v0.workflow_messages.GetWorkflowStateResponse);

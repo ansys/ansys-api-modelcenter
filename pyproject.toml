@@ -1,3 +1,4 @@
+# Copyright © 2024 ANSYS, Inc. Unauthorized use, distribution, or duplication is prohibited. 
 [build-system]
 requires = ["setuptools >= 42.0.0", "wheel", "ansys_tools_protoc_helper"]
 build-backend = "setuptools.build_meta:__legacy__"

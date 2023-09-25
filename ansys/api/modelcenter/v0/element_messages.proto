@@ -69,9 +69,9 @@ enum ElementType {
   ELEMENT_TYPE_VARIABLE = 4;
 
   /*
-   * The element is an if component.
+   * The element is a driver component.
    */
-  ELEMENT_TYPE_IFCOMPONENT = 5;
+  ELEMENT_TYPE_DRIVERCOMPONENT = 5;
 }
 
 /**

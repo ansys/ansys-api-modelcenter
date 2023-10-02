@@ -31,14 +31,19 @@ message EngineProcessIdResponse {
  */
 enum WorkflowType {
   /**
+   * The workflow type is unspecified.
+   */
+  WORKFLOW_TYPE_UNSPECIFIED = 0;
+
+  /**
    * A data-dependency workflow.
    */
-  WORKFLOW_TYPE_DATA_DEPENDENCY = 0;
+  WORKFLOW_TYPE_DATA_DEPENDENCY = 1;
 
   /**
    * A process workflow.
    */
-  WORKFLOW_TYPE_PROCESS = 1;
+  WORKFLOW_TYPE_PROCESS = 2;
 }
 
 /**
@@ -77,14 +82,19 @@ message NewWorkflowResponse {
  */
 enum OnConnectionErrorMode {
   /**
+   * The error mode is not specified.
+   */
+  ON_CONNECTION_ERROR_MODE_UNSPECIFIED = 0;
+
+  /**
    * Raise an error in response.
    */
-  ON_CONNECTION_ERROR_MODE_RAISE_ERROR = 0;
+  ON_CONNECTION_ERROR_MODE_RAISE_ERROR = 1;
 
   /**
    * Ignore the connection failure and continue loading.
    */
-  ON_CONNECTION_ERROR_MODE_IGNORE = 1;
+  ON_CONNECTION_ERROR_MODE_IGNORE = 2;
 }
 
 /**

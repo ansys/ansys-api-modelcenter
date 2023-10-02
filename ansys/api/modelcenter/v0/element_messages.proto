@@ -317,7 +317,7 @@ message IfComponentSetExclusiveResponse {
 /**
  * A response to a request to get if an if-component has an else branch that is run if no conditions are met.
  */
-message IfComponentGetRunLastBranchByDefaultResponse {
+message IfComponentGetRunLastBranchAsDefaultResponse {
   /**
    * Is there a default branch?
    */
@@ -327,7 +327,7 @@ message IfComponentGetRunLastBranchByDefaultResponse {
 /**
  * A request to set if an if-component has an else branch that is run if no conditions are met.
  */
-message IfComponentSetRunLastBranchByDefaultRequest {
+message IfComponentSetRunLastBranchAsDefaultRequest {
   /**
    * The target component.
    */
@@ -343,7 +343,7 @@ message IfComponentSetRunLastBranchByDefaultRequest {
 /**
  * A response to a request to set if an if-component has an else branch that is run if no conditions are met.
  */
-message IfComponentSetRunLastBranchByDefaultResponse {
+message IfComponentSetRunLastBranchAsDefaultResponse {
 
 }
 

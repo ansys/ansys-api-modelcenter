@@ -219,15 +219,15 @@ service ModelCenterWorkflowService {
    * Get if there is an else branch that is run if no conditions are met.
    */
   rpc IfComponentGetRunLastBranchByDefault(ansys.api.modelcenter.v0.element_messages.ElementId)
-    returns (ansys.api.modelcenter.v0.element_messages.IfComponentGetRunLastBranchByDefaultResponse);
+    returns (ansys.api.modelcenter.v0.element_messages.IfComponentGetRunLastBranchAsDefaultResponse);
 
   /**
    * Set if there is an else branch that is run if no conditions are met.
    */
   rpc IfComponentSetRunLastBranchByDefault(
-    ansys.api.modelcenter.v0.element_messages.IfComponentSetRunLastBranchByDefaultRequest
+    ansys.api.modelcenter.v0.element_messages.IfComponentSetRunLastBranchAsDefaultRequest
     )
-    returns (ansys.api.modelcenter.v0.element_messages.IfComponentSetRunLastBranchByDefaultResponse);
+    returns (ansys.api.modelcenter.v0.element_messages.IfComponentSetRunLastBranchAsDefaultResponse);
 
   /**
    * Get the number of branches.

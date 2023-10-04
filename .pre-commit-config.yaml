@@ -1,4 +1,4 @@
-# Copyright © 2024 ANSYS, Inc. Unauthorized use, distribution, or duplication is prohibited. 
+# Copyright © 2024 ANSYS, Inc. Unauthorized use, distribution, or duplication is prohibited.
 repos:
 
 - repo: https://github.com/psf/black

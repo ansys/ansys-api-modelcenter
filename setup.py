@@ -1,4 +1,4 @@
-# Copyright © 2024 ANSYS, Inc. Unauthorized use, distribution, or duplication is prohibited. 
+# Copyright © 2024 ANSYS, Inc. Unauthorized use, distribution, or duplication is prohibited.
 """Installation file for the ansys-api-modelcenter package"""
 
 import os

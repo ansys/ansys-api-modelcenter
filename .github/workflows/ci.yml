@@ -9,63 +9,78 @@ on:
       - main
 
 env:
-  MAIN_PYTHON_VERSION: '3.10'
+  MAIN_PYTHON_VERSION: '3.13'
   LIBRARY_NAME: "ansys-api-modelcenter"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-jobs:
+permissions: {} # Zero permissions can be granted at the workflow level if not all jobs require permissions.
+                # As a good rule of thumb, this normally includes jobs that don't use secrets.
 
+jobs:
   code-style:
     name: "Code style"
     runs-on: ubuntu-latest
     steps:
-      - uses: ansys/actions/code-style@v4
+      - uses: ansys/actions/code-style@41f86da4c9ead510db9135e428e33df9cc6f92e1 # v10.2.3
 
   build-library:
     name: "Build library"
     needs: code-style
     runs-on: ubuntu-latest
     steps:
-      - uses: ansys/actions/build-library@v4
+      - uses: ansys/actions/build-library@41f86da4c9ead510db9135e428e33df9cc6f92e1 # v10.2.3
         with:
           library-name: ${{ env.LIBRARY_NAME }}
 
   release:
-    name: "Release"
+    name: "Release package to Github"
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
-    needs: build-library
+    needs: [build-library]
     runs-on: ubuntu-latest
+    # Specifying a GitHub environment is optional, but strongly encouraged
+    environment: release
+    permissions:
+      id-token: write
+      contents: write
     steps:
-
-      - name: "Set up Python"
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.MAIN_PYTHON_VERSION }}
-
       - name: "Download source and wheel distribution"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
         with:
-          path: dist
-
-      - name: "Display structure of downloaded files"
-        run: ls -R dist
-
-      - name: "Release to public PyPI"
-        run: |
-          python -m pip install twine
-          twine upload --skip-existing dist/**/*.whl
-          twine upload --skip-existing dist/**/*.tar.gz
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+          name: ${{ env.LIBRARY_NAME }}
+          path: ${{ env.LIBRARY_NAME }}
 
       - name: "Release to GitHub"
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
         with:
           generate_release_notes: true
           files: |
-            dist/**/*.whl
-            dist/**/*.tar.gz
+            ./**/*.whl
+            ./**/*.tar.gz
+
+  release-pypi:
+    name: "Release project tot PyPI"
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    needs: [build-library]
+    runs-on: ubuntu-latest
+    # Specifying a GitHub environment is optional, but strongly encouraged
+    environment: release
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - name: "Download source and wheel distribution"
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+        with:
+          name: ${{ env.LIBRARY_NAME }}
+          path: ${{ env.LIBRARY_NAME }}
+
+      - name: "Upload artifacts to PyPI using trusted publisher"
+        uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
+        with:
+          repository-url: "https://upload.pypi.org/legacy/"
+          print-hash: true
+          packages-dir: ${{ env.LIBRARY_NAME }}
+          skip-existing: false

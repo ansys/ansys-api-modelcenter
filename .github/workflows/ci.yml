@@ -30,6 +30,10 @@ jobs:
     name: "Build library"
     needs: code-style
     runs-on: ubuntu-latest
+    # Build on Python 3.11 only for this job, so ansys-tools-protoc-helper can install.
+    # TODO need to change or remove this once ansys-tools-protoc-helper updates to handel 3.13
+    env:
+      MAIN_PYTHON_VERSION: '3.11'
     steps:
       - uses: ansys/actions/build-library@41f86da4c9ead510db9135e428e33df9cc6f92e1 # v10.2.3
         with:

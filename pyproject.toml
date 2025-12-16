@@ -1,10 +1,4 @@
 # Copyright © 2024 ANSYS, Inc. Unauthorized use, distribution, or duplication is prohibited.
 [build-system]
-requires = [
-  "setuptools >= 80.9.0",
-  "wheel",
-  "ansys_tools_protoc_helper",
-  "grpcio-tools >= 1.63.0",       # Required for compiling .proto files; keep aligned with protobuf
-  "protobuf >= 6.31.1"            # Required
-]
+requires = ["setuptools >= 80.9.0", "wheel", "ansys_tools_protoc_helper"]
 build-backend = "setuptools.build_meta:__legacy__"

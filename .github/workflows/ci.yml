@@ -1,3 +1,4 @@
+
 name: GitHub CI
 
 on:
@@ -17,7 +18,6 @@ concurrency:
   cancel-in-progress: true
 
 permissions: {} # Zero permissions can be granted at the workflow level if not all jobs require permissions.
-                # As a good rule of thumb, this normally includes jobs that don't use secrets.
 
 jobs:
   code-style:
@@ -31,6 +31,32 @@ jobs:
     needs: code-style
     runs-on: ubuntu-latest
     steps:
+      # Checkout the source so we can write constraints alongside it
+      - uses: actions/checkout@v4
+
+      # Set up Python to ensure consistent pip behavior in pre-steps
+      - name: "Set up Python ${{ env.MAIN_PYTHON_VERSION }}"
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
+
+      # Create constraints that override the submodule pin (protobuf==4.21.12)
+      - name: "Write pip constraints"
+        run: |
+          echo "protobuf>=6.31.1" > constraints.txt
+          echo "grpcio>=1.66.2" >> constraints.txt       # minimum with Py 3.13 wheels
+          echo "grpcio-tools>=1.66.2" >> constraints.txt # match grpcio family
+
+      # Export PIP_CONSTRAINT so any pip invoked during build respects the override
+      - name: "Export constraints for subsequent steps"
+        shell: bash
+        run: |
+          echo "PIP_CONSTRAINT=${{ github.workspace }}/constraints.txt" >> $GITHUB_ENV
+          python -m pip install --upgrade pip
+          # Optional: pre-install overrides to prime the runner (not strictly required)
+          pip install -c "$PIP_CONSTRAINT" --upgrade setuptools wheel
+
+      # Run the Ansys build action; it will use pip internally and inherit PIP_CONSTRAINT
       - uses: ansys/actions/build-library@41f86da4c9ead510db9135e428e33df9cc6f92e1 # v10.2.3
         with:
           library-name: ${{ env.LIBRARY_NAME }}
@@ -40,7 +66,6 @@ jobs:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     needs: [build-library]
     runs-on: ubuntu-latest
-    # Specifying a GitHub environment is optional, but strongly encouraged
     environment: release
     permissions:
       id-token: write
@@ -65,7 +90,6 @@ jobs:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     needs: [build-library]
     runs-on: ubuntu-latest
-    # Specifying a GitHub environment is optional, but strongly encouraged
     environment: release
     permissions:
       id-token: write
@@ -80,7 +104,6 @@ jobs:
       - name: "Upload artifacts to PyPI using trusted publisher"
         uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
         with:
-          repository-url: "https://upload.pypi.org/legacy/"
+          repository-url: "          repository-url: "https://upload.pypi.org/legacy/"
           print-hash: true
           packages-dir: ${{ env.LIBRARY_NAME }}
-          skip-existing: false

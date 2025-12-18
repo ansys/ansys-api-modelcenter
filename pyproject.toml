@@ -1,7 +1,7 @@
 # Copyright © 2024 ANSYS, Inc. Unauthorized use, distribution, or duplication is prohibited.
 [build-system]
 requires = [
-  "setuptools >= 80.9.0",
+  "setuptools >= 65.5.1, <81",
   "wheel",
   "protobuf==4.21.12",
   "grpcio-tools<1.64.0",

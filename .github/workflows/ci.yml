@@ -39,7 +39,7 @@ jobs:
       - name: "Install with pinned build dependencies"
         run: |
           python -m pip install --upgrade pip
-          pip install setuptools>=65.5.1,<82 wheel protobuf==4.21.12 grpcio-tools==1.49.1
+          pip install "setuptools>=65.5.1,<82" wheel protobuf==4.21.12 grpcio-tools==1.49.1
 
       - uses: ansys/actions/build-library@41f86da4c9ead510db9135e428e33df9cc6f92e1 # v10.2.3
         with:
@@ -72,7 +72,7 @@ jobs:
             ./**/*.tar.gz
 
   release-pypi:
-    name: "Release project tot PyPI"
+    name: "Release project to PyPI"
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     needs: [build-library]
     runs-on: ubuntu-latest

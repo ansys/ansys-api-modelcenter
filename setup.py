@@ -1,3 +1,4 @@
+# Copyright © 2024 ANSYS, Inc. Unauthorized use, distribution, or duplication is prohibited.
 """Installation file for the ansys-api-modelcenter package"""
 
 import os
@@ -39,8 +40,8 @@ if __name__ == "__main__":
         long_description_content_type="text/markdown",
         url=f"https://github.com/{username}/{package_name}",
         license="MIT",
-        python_requires=">=3.9,<4.0",
-        install_requires=["grpcio>=1.59", "protobuf>=3.19"],
+        python_requires=">=3.10,<4.0",
+        install_requires=["grpcio>=1.76", "protobuf==4.21.12"],
         packages=setuptools.find_namespace_packages(".", include=("ansys.*",)),
         package_data={
             "": ["*.proto", "*.pyi", "py.typed", "VERSION"],
